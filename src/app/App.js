@@ -2,12 +2,8 @@ import React from 'react'
 
 const App = () => (
   <div>
+    <h1>{"hi"}</h1>
 
-
-
-
-    
-    <h1>{"hi im a portfolio"}</h1>
   </div>
 )
 
