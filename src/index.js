@@ -1,18 +1,7 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom'
-import App from './app/App'
-//
-// const root = document.getElementById('root')
-//
-// ReactDOM.render(<App />, root)
 import React from 'react'
-import { render } from 'react-dom'
-// import App from './App'
+import ReactDOM from 'react-dom'
+import App from './containers/App'
 
-function renderApp() {
-  render(<App />, root)
-}
+const root = document.getElementById('root')
 
-renderApp()
-
-module.hot.accept(renderApp)
+ReactDOM.render(<App />, root)
