@@ -1,17 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+// import React from 'react'
+// import ReactDOM from 'react-dom'
 import App from './app/App'
-
-const root = document.getElementById('root')
-
-ReactDOM.render(<App />, root)
-
 //
-// function renderApp() {
-//   const App = require('./app/App').default
-//   render(<App />, root)
-// }
+// const root = document.getElementById('root')
 //
-// renderApp()
-//
-// module.hot.accept(renderApp)
+// ReactDOM.render(<App />, root)
+import React from 'react'
+import { render } from 'react-dom'
+// import App from './App'
+
+function renderApp() {
+  render(<App />, root)
+}
+
+renderApp()
+
+module.hot.accept(renderApp)

@@ -2,7 +2,7 @@ MODULES  = ./node_modules/.bin
 ESLINT = $(MODULES)/eslint
 PARCEL  = $(MODULES)/parcel
 
-ENTRY_POINT = src/index.html
+ENTRY_POINT = index.html
 PUBLIC_DIR = public
 
 help:
