@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
 import Anime from 'animejs'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import { breakPoints } from '../../utils/styles'
+
 import HomeMenuSlider from '../home-components/HomeMenuSlider'
+import HomeMenuSection from '../home-components/HomeMenuSection'
+
+const items = ['contact', "development", "art"];
 
 export default class HomeMenu extends Component {
   componentDidMount() {
-    const tl = Anime.timeline()
-    tl.add({
-      targets: ['#'],
-    })
+    this.introAnimation()
   }
+
   render() {
     return (
       <div className={css(styles.homeMenuContainer)}>
+        <div className={css(styles.menuTagContainer)}>
+          {items.map( (item, index) =>
+            <HomeMenuSection index={index} item={item} />
+          )}
+        </div>
         <HomeMenuSlider />
       </div>
     )
+  }
+
+  introAnimation = () => {
+    // const tl = Anime.timeline()
+    // tl.add({
+    //   targets: ['#'],
+    // })
   }
 }
 
@@ -26,5 +41,20 @@ const styles = StyleSheet.create({
     left: '55vw',
     height: '80vh',
     width: '30vw',
+    // border:'1px solid blue',
+    color: 'white',
+    [breakPoints.tablet]: {
+      left: '55vw',
+      height: '80vh',
+      width: '20vw',
+    },
+  },
+  menuTagContainer: {
+    height: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // border:'1px solid pink'
   },
 })
