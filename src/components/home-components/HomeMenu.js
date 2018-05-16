@@ -18,7 +18,7 @@ export default class HomeMenu extends Component {
       <div className={css(styles.homeMenuContainer)}>
         <div className={css(styles.menuTagContainer)}>
           {items.map( (item, index) =>
-            <HomeMenuSection index={index} item={item} />
+            <HomeMenuSection key={index} index={index} item={item} />
           )}
         </div>
         <HomeMenuSlider />
@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily:"sans-serif",
+    letterSpacing:"3px"
     // border:'1px solid pink'
   },
 })

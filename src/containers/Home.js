@@ -2,7 +2,7 @@ import React, { Component, ImageBackground } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 
 import HomeMenu from '../components/home-components/HomeMenu'
-import Scroller from '../components/home-components/HomeScroller'
+import Scroller from '../components/home-components/Scroller'
 
 import backgroundImg from '../../assets/home/home_bk.jpeg'
 

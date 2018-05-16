@@ -30,7 +30,9 @@ export default class Socials extends Component {
 const styles = StyleSheet.create({
   socialContainer: {
     padding:"10%",
-    color:"white"
+    color:"white",
+    fontFamily:"sans-serif",
+    letterSpacing:"3px"
   },
 
 })
