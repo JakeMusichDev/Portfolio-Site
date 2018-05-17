@@ -1,70 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import WheelIndicator from 'wheel-indicator'
 import _ from 'underscore'
+
+import HomeMenu from './home-menu/HomeMenu'
 
 export default class Scroller extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      scrollLock: false,
-      direction:null,
-      animating:false
-    }
+    this.state = { currentItem: 0 }
 
-    this.handleScroll = _.throttle(this._handleScroll.bind(this), 1000, {trailing: false});
+    this.handleScroll = _.throttle(this.scrollMonitor, 1500, {trailing: false});
   }
 
+  scrollMonitor = (wheelEvent) => {
+    const direction = wheelEvent.deltaY > 0 ? 'up' : 'down'
+    const { currentItem } = this.state
+    let nextItem;
 
+    if (direction === 'down' && currentItem === 4) {
+      nextItem = 0
+    } else if (direction === 'down' && currentItem >= 0) {
+      nextItem = (currentItem + 1)
+    } else if (direction === 'up' && currentItem !== 0) {
+      nextItem = (currentItem - 1)
+    } else if (direction === 'up' && currentItem === 0 ) {
+      nextItem = 4
+    } else { return }
 
-  _handleScroll = (e) => {
-    const nextDirection = e.deltaY > 0 ? 'up' : 'down'
-    const _scrollMonitor = _.throttle(this.scrollMonitor, 3000, {trailing: false});
-
-    this.scroll = new WheelIndicator({
-      elem: window,
-      callback: this.scrollMonitor
-    });
-  };
-
-  scrollMonitor = (direction) => {
-    console.log(direction)
-    // if( !this.state.scrollLock && nextDirection !== this.state.direction ) {
-    //
-    //   this.setState({
-    //     scrollLock:true,
-    //     direction: nextDirection
-    //   })
-    //
-    // }
-    // if(direction === 'up' && this.currentPage === 0){
-    //   this.currentPage = 0; //this.currentPage = 4;
-    // } else if (direction === 'down' && this.currentPage <= (this.numberOfPillars - 1)) {
-    //   this.currentPage = (this.currentPage + 1); // % (this.numberOfPillars + 1);
-    // } else if (direction === 'up' && this.currentPage !== 0) {
-    //   this.currentPage--;
-    // }
-    // else {
-    //   return;
-    // }
-    // this.registerScroll(this.currentPage);
+    this.setState({ currentItem: nextItem })
   }
-
-  isSignificant = () => {
-
-  };
-
 
 
   render() {
+    const { currentItem } = this.state
     return (
       <div
         id="scroll-monitor"
         className={css(styles.scroller)}
         onWheel={this.handleScroll}
       >
-        {this.props.children}
+        <HomeMenu currentItem={currentItem} />
       </div>
     )
   };
@@ -75,6 +52,11 @@ const styles = StyleSheet.create({
     height: '100vh',
   }
 });
+
+
+// PropTypes = {}
+
+
 
 // import { Injectable } from '@angular/core';
 // import {BehaviorSubject} from 'rxjs/BehaviorSubject';

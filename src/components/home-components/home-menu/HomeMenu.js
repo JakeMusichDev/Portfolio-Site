@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Anime from 'animejs'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import { breakPoints } from '../../utils/styles'
+import { breakPoints } from '../../../utils/styles'
 
-import HomeMenuSlider from '../home-components/HomeMenuSlider'
-import HomeMenuSection from '../home-components/HomeMenuSection'
+import HomeMenuSlider from './HomeMenuSlider'
+import HomeMenuSection from './HomeMenuSection'
 
 const items = ['contact', "development", "art"];
 
@@ -13,13 +13,30 @@ export default class HomeMenu extends Component {
     this.introAnimation()
   }
 
+  componentWillReceiveProps(nextProps, prevState) {
+    this.animateSection(nextProps.currentItem)
+  }
+
+  animateSection = (currentItem) => {
+    console.log(currentItem);
+    let el = document.getElementById(`menu-section-${currentItem}`)
+    console.log(el);
+    Anime({
+      targets: `#menu-section-${currentItem}`,
+      translateY:"100px",
+      duration:100
+    })
+  }
+
   render() {
     return (
       <div className={css(styles.homeMenuContainer)}>
         <div className={css(styles.menuTagContainer)}>
-          {items.map( (item, index) =>
-            <HomeMenuSection key={index} index={index} item={item} />
-          )}
+          {
+            items.map( (item) =>
+              <HomeMenuSection item={item} /> 
+            )
+          }
         </div>
         <HomeMenuSlider />
       </div>
@@ -44,19 +61,16 @@ const styles = StyleSheet.create({
     // border:'1px solid blue',
     color: 'white',
     [breakPoints.tablet]: {
-      left: '55vw',
+      left: '10vw',
       height: '80vh',
-      width: '20vw',
+      width: '80vw',
     },
   },
   menuTagContainer: {
     height: '90%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     fontFamily:"sans-serif",
-    letterSpacing:"3px"
-    // border:'1px solid pink'
+    letterSpacing:"3px",
+    // overflowY:'hidden',
+    border:'1px solid pink'
   },
 })
