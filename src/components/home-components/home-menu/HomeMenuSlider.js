@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   sliderCircle: {
     position: 'relative',
     // transform:'translateX(10vw)',
-    border: '1px solid red',
+    // border: '1px solid red',
     width: 'auto',
   },
 })

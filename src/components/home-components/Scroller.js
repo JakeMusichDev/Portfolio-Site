@@ -9,39 +9,39 @@ export default class Scroller extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { currentItem: 0 }
+    this.state = { currentItem: 0, direction:null }
 
     this.handleScroll = _.throttle(this.scrollMonitor, 1500, {trailing: false});
   }
 
   scrollMonitor = (wheelEvent) => {
-    const direction = wheelEvent.deltaY > 0 ? 'up' : 'down'
+    const direction = wheelEvent.deltaY > 0 ? '+' : '-'
     const { currentItem } = this.state
     let nextItem;
 
-    if (direction === 'down' && currentItem === 4) {
+    if (direction === '+' && currentItem === 3) {
       nextItem = 0
-    } else if (direction === 'down' && currentItem >= 0) {
+    } else if (direction === '-' && currentItem >= 0) {
       nextItem = (currentItem + 1)
-    } else if (direction === 'up' && currentItem !== 0) {
+    } else if (direction === '+' && currentItem !== 0) {
       nextItem = (currentItem - 1)
-    } else if (direction === 'up' && currentItem === 0 ) {
-      nextItem = 4
-    } else { return }
-
-    this.setState({ currentItem: nextItem })
+    } else if (direction === '+' && currentItem === 0 ) {
+      nextItem = 3
+    } else {
+    console.log('something'); }
+    this.setState({ currentItem: nextItem, direction })
   }
 
 
   render() {
-    const { currentItem } = this.state
+    const { currentItem, direction } = this.state
     return (
       <div
         id="scroll-monitor"
         className={css(styles.scroller)}
         onWheel={this.handleScroll}
       >
-        <HomeMenu currentItem={currentItem} />
+        <HomeMenu currentItem={currentItem} direction={direction} />
       </div>
     )
   };

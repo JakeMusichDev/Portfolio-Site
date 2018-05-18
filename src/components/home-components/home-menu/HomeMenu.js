@@ -6,24 +6,25 @@ import { breakPoints } from '../../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = ['contact', "development", "art"];
+const items = ["development", "art", 'contact'];
 
 export default class HomeMenu extends Component {
   componentDidMount() {
-    this.introAnimation()
+    // this.introAnimation()
   }
 
   componentWillReceiveProps(nextProps, prevState) {
-    this.animateSection(nextProps.currentItem)
+    this.animateSection(nextProps)
   }
 
-  animateSection = (currentItem) => {
-    console.log(currentItem);
-    let el = document.getElementById(`menu-section-${currentItem}`)
-    console.log(el);
+  animateSection = (nextProps) => {
+
+    let currentSection = document.getElementById(`menu-section-${nextProps.currentItem}`)
+    console.log(nextProps);
+
     Anime({
-      targets: `#menu-section-${currentItem}`,
-      translateY:"100px",
+      targets: currentSection,
+      translateY:`${nextProps.direction}100%`,
       duration:100
     })
   }
@@ -33,21 +34,14 @@ export default class HomeMenu extends Component {
       <div className={css(styles.homeMenuContainer)}>
         <div className={css(styles.menuTagContainer)}>
           {
-            items.map( (item) =>
-              <HomeMenuSection item={item} /> 
+            items.map( (item, index) =>
+              <HomeMenuSection key={index} item={item} index={index} />
             )
           }
         </div>
         <HomeMenuSlider />
       </div>
     )
-  }
-
-  introAnimation = () => {
-    // const tl = Anime.timeline()
-    // tl.add({
-    //   targets: ['#'],
-    // })
   }
 }
 
@@ -70,7 +64,7 @@ const styles = StyleSheet.create({
     height: '90%',
     fontFamily:"sans-serif",
     letterSpacing:"3px",
-    // overflowY:'hidden',
-    border:'1px solid pink'
+    overflowY:'hidden',
+    // border:'1px solid pink'
   },
 })
