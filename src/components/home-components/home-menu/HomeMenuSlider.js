@@ -57,12 +57,8 @@ export default class HomeMenu extends Component {
 
 const styles = StyleSheet.create({
   homeMenuSliderContainer: {
-    // border:'1px solid orange',
+    border:'1px solid orange',
     height: '10%',
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   slderRect: {
     height: '575.5px',
@@ -71,7 +67,7 @@ const styles = StyleSheet.create({
   sliderCircle: {
     position: 'relative',
     // transform:'translateX(10vw)',
-    border: '1px solid red',
+    border: '1px solid pink',
     width: 'auto',
   },
 })
