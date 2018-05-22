@@ -1,7 +1,6 @@
-import React, {
-  Component, PropTypes
-} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important'
+import '../../styles/index.css'
 
 const socials = [
   "github",
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
   socialContainer: {
     padding:"10%",
     color:"white",
-    fontFamily:"sans-serif",
+    fontFamily:"Source-Sans-Pro",
     letterSpacing:"3px"
   },
 

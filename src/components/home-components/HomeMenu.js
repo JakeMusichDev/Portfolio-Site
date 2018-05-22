@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Anime from 'animejs'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import { breakPoints } from '../../utils/styles'
+import '../../styles/index.css'
 
 import HomeMenuSlider from '../home-components/HomeMenuSlider'
 import HomeMenuSection from '../home-components/HomeMenuSection'
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily:"sans-serif",
+    fontFamily:"Source Sans Pro",
     letterSpacing:"3px"
     // border:'1px solid pink'
   },
