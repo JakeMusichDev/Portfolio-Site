@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, ImageBackground } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import HomeMenu from '../components/home-components/HomeMenu'
-// import PropTypes from 'prop-types'
+
+import Scroller from '../components/home-components/Scroller'
+import TitleHeader from '../components/home-components/TitleHeader'
+
+import backgroundImg from '../../assets/home/home_bk.jpeg'
 
 export default class Home extends Component {
   render() {
     return (
       <div className={css(styles.homeContainer)}>
-        <HomeMenu />
+        <TitleHeader />
+        <Scroller />
       </div>
     )
   }
@@ -15,11 +19,11 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
     height: '100vh',
-    width: '100vw',
-    backgroundColor: 'black',
+    background: `url(${backgroundImg}) no-repeat center center`,
+    backgroundSize: 'cover',
+  },
+  cont: {
+    height: '200vh',
   },
 })

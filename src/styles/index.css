@@ -1,15 +1,11 @@
-/* html, #root {
+html, body {
+  margin: 0;
+  padding: 0;
   height: 100vh;
+  position: relative;
+  outline: none;
   overflow: hidden;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: #FAFAFA;
-  color: #191919;
-  font-family: 'regular';
-  outline: none;
-  overflow: hidden;
-} */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+@import url('https://fonts.googleapis.com/css?family=Lato:100');

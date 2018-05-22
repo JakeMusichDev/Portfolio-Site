@@ -1,8 +1,8 @@
-export const padding = {
-  default: '66px 80px',
-  mobile: '50px 40px',
-  menu: '66px 80px 0 80px',
-}
+// export const padding = {
+//   default: '66px 80px',
+//   mobile: '50px 40px',
+//   menu: '66px 80px 0 80px',
+// }
 
 export const easing = {
   fn: 'cubic-bezier(0.860, 0.000, 0.070, 1.000)',
