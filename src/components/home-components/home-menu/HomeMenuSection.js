@@ -13,11 +13,9 @@ export default class HomeMenuSection extends Component {
     const {item, index} = this.props;
     return (
       <div id={`menu-section-${index}`} className={css(styles.sectionContainer)}>
-        <div className={css(styles.section)}>
-          <div>
-            {item.toUpperCase()}
-          </div>
-        </div>
+        <Link className={css(styles.section)} to={`/${item}`}>
+          { item.toUpperCase() }
+        </Link>
       </div>
     )
   }
@@ -25,14 +23,17 @@ export default class HomeMenuSection extends Component {
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    height:"100%",
+    height:"10vh",
     width:"100%",
   },
   section: {
     textAlign:'right',
-    fontSize:"3vw",
     textDecoration: 'none',
     color:"white",
-    fontFamily:["Source Sans Pro","sans-serif"],
+    opacity:"0.5",
+    fontFamily:["serif","sans-serif"],
   },
 })
+// <svg className={css(styles.svg)} viewBox="0 0 350 50">
+//   <text className={css(styles.text)} y="40">JAKE MUSICH</text>
+// </svg>

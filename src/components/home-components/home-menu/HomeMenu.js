@@ -6,7 +6,7 @@ import { breakPoints } from '../../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = ["art", "*", '*'];
+const items = ["a   rt", "c     n ct", 'd   vlp   m nt'];
 
 export default class HomeMenu extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ export default class HomeMenu extends Component {
   animateSection = (nextProps) => {
     let currentSection = document.getElementById(`menu-section-${nextProps.currentItem}`)
     let bounding = currentSection.getBoundingClientRect()
-    let top = bounding.top + bounding.height 
+    let top = bounding.top + bounding.height
     console.log(top);
     Anime({
       targets: this.container,
@@ -39,11 +39,11 @@ export default class HomeMenu extends Component {
             )
           }
         </div>
-        <HomeMenuSlider />
       </div>
     )
   }
 }
+{/*  <HomeMenuSlider /> */}
 
 const styles = StyleSheet.create({
   homeMenuContainer: {

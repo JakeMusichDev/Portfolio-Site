@@ -2,12 +2,13 @@ import React, {
   Component, PropTypes
 } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important'
+import '../../styles/index.css'
 
 const socials = [
-  "github",
-  'linkedin',
-  'medium',
-  'instagram'
+  "Github",
+  'LinkedIn',
+  'Medium',
+  'Instagram'
 ]
 
 export default class Socials extends Component {
@@ -16,7 +17,7 @@ export default class Socials extends Component {
     return (
       <div className={css(styles.socialContainer)}>
         {socials.map( (item, index) =>
-          <div>
+          <div className={css(styles.item)}>
             {item}
           </div>
         )}
@@ -29,10 +30,13 @@ export default class Socials extends Component {
 
 const styles = StyleSheet.create({
   socialContainer: {
-    padding:"10%",
     color:"white",
-    fontFamily:"sans-serif",
-    letterSpacing:"3px"
+    fontFamily:["Source Code Pro","sans-serif"],
+    height:"auto"
+    // letterSpacing:"3px",
+    // border:'1px solid green'
   },
-
+  item: {
+    marginBottom:'3px'
+  }
 })
