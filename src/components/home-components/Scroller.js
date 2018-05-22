@@ -21,14 +21,14 @@ export default class Scroller extends Component {
 
     if (direction === '+' && currentItem === 3) {
       nextItem = 0
-    } else if (direction === '-' && currentItem >= 0) {
+    } else if (direction === '+' && currentItem >= 0) {
       nextItem = (currentItem + 1)
-    } else if (direction === '+' && currentItem !== 0) {
+    } else if (direction === '-' && currentItem !== 0) {
       nextItem = (currentItem - 1)
-    } else if (direction === '+' && currentItem === 0 ) {
+    } else if (direction === '-' && currentItem === 0 ) {
       nextItem = 3
-    } else {
-    console.log('something'); }
+    } else { console.log('scroll erro') }
+
     this.setState({ currentItem: nextItem, direction })
   }
 

@@ -11,13 +11,12 @@ export default class HomeMenuSection extends Component {
 
   render() {
     const {item, index} = this.props;
-    // {name}
     return (
       <div id={`menu-section-${index}`} className={css(styles.sectionContainer)}>
         <div className={css(styles.section)}>
-          <Link to={`/${item}`}>
+          <div>
             {item.toUpperCase()}
-          </Link>
+          </div>
         </div>
       </div>
     )
@@ -28,12 +27,12 @@ const styles = StyleSheet.create({
   sectionContainer: {
     height:"100%",
     width:"100%",
-    background:"lightblue",
-    opacity:'0.5'
   },
   section: {
-    textAlign:'center',
-    fontSize:"1vw",
-
+    textAlign:'right',
+    fontSize:"3vw",
+    textDecoration: 'none',
+    color:"white",
+    fontFamily:["Source Sans Pro","sans-serif"],
   },
 })

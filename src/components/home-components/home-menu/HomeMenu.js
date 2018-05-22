@@ -6,7 +6,7 @@ import { breakPoints } from '../../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = ["development", "art", 'contact'];
+const items = ["art", "*", '*'];
 
 export default class HomeMenu extends Component {
   componentDidMount() {
@@ -18,13 +18,13 @@ export default class HomeMenu extends Component {
   }
 
   animateSection = (nextProps) => {
-
     let currentSection = document.getElementById(`menu-section-${nextProps.currentItem}`)
-    console.log(nextProps);
-
+    let bounding = currentSection.getBoundingClientRect()
+    let top = bounding.top + bounding.height 
+    console.log(top);
     Anime({
-      targets: currentSection,
-      translateY:`${nextProps.direction}100%`,
+      targets: this.container,
+      scrollTop:top,
       duration:100
     })
   }
@@ -32,7 +32,7 @@ export default class HomeMenu extends Component {
   render() {
     return (
       <div className={css(styles.homeMenuContainer)}>
-        <div className={css(styles.menuTagContainer)}>
+        <div ref={el => {this.container = el}}className={css(styles.menuTagContainer)}>
           {
             items.map( (item, index) =>
               <HomeMenuSection key={index} item={item} index={index} />
@@ -48,11 +48,10 @@ export default class HomeMenu extends Component {
 const styles = StyleSheet.create({
   homeMenuContainer: {
     position: 'absolute',
-    top: '10vh',
-    left: '55vw',
     height: '80vh',
     width: '30vw',
-    // border:'1px solid blue',
+    top: '10vh',
+    left: '55vw',
     color: 'white',
     [breakPoints.tablet]: {
       left: '10vw',
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     height: '90%',
     fontFamily:"sans-serif",
     letterSpacing:"3px",
-    overflowY:'hidden',
+    overflowY:'hidden'
     // border:'1px solid pink'
   },
 })
