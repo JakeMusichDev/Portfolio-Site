@@ -15,7 +15,7 @@ export default class Socials extends Component {
     return (
       <div className={css(styles.socialContainer)}>
         {socials.map( (item, index) =>
-          <div className={css(styles.item)}>
+          <div key={index} className={css(styles.item)}>
             {item}
           </div>
         )}
@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
   socialContainer: {
     color:"white",
     fontFamily:["Source Code Pro","sans-serif"],
-    height:"auto"
+    height:"auto",
+    fontSize:10
     // letterSpacing:"3px",
     // border:'1px solid green'
   },

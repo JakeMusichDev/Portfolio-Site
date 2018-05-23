@@ -11,10 +11,11 @@ export default class HomeMenuSection extends Component {
 
   render() {
     const {item, index} = this.props;
+    console.log(item);
     return (
       <div id={`menu-section-${index}`} className={css(styles.sectionContainer)}>
-        <Link className={css(styles.section)} to={`/${item}`}>
-          { item.toUpperCase() }
+        <Link className={css(styles.section)} to={`${item.route}`}>
+          { item.name.toUpperCase() }
         </Link>
       </div>
     )

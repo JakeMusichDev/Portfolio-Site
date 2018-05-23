@@ -9,7 +9,7 @@ import * as PIXI from 'pixi.js'
 
 export default class Home extends Component {
   app: PIXI.Application;
-  gameCanvas: HTMLDivElement;
+  canvasAnchor: HTMLDivElement;
 
   componentDidMount() {
     this.initPixi()
@@ -18,37 +18,69 @@ export default class Home extends Component {
     let component = this;
     return (
       <div id='home' className={css(styles.homeContainer)}>
-        <div ref={(thisDiv) => {component.gameCanvas = thisDiv}} />
+        <div ref={(thisDiv) => {component.canvasAnchor = thisDiv}} />
         <Scroller />
       </div>
     )
   }
 
   initPixi = () => {
-          // Create a new application
-      this.app = new PIXI.Application(window.innerWidth, window.innerHeight);
+    //Aliases
+    const home = document.getElementById('home')
 
-      this.gameCanvas.appendChild(this.app.view);
-      // this.app.start();
-      // Draw a green rectangle
-      const rect = new PIXI.Graphics()
-          .beginFill(0x00ff00)
-          .drawRect(40, 40, 200, 200);
+    let Application = PIXI.Application,
+        loader = PIXI.loader,
+        resources = PIXI.loader.resources,
+        Sprite = PIXI.Sprite;
 
-      // Add a blur filter
-      rect.filters = [new PIXI.filters.BlurFilter()];
+    //Create a Pixi Application
+    let app = new Application({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        antialias: true,
+        transparent: false,
+        resolution: 1
+      }
+    );
 
-      // Display rectangle
-      const home = document.getElementById('home')
-      // app.stage.addChild(rect);
-      // home.appendChild(app.view);
+    //Add the canvas that Pixi automatically created for you to the HTML document
+    this.canvasAnchor.appendChild(app.view);
+
+    //load an image and run the `setup` function when it's done
+    loader
+      .add(`${backgroundImg}`)
+      .on("progress", loadProgressHandler)
+      .load(setup);
+
+      function loadProgressHandler() {
+        console.log("loading");
+      }
+
+    //This `setup` function will run when the image has loaded
+    function setup() {
+
+      //Create the cat sprite
+      const back = new Sprite(resources[`${backgroundImg}`].texture);
+      back.height = window.innerHeight
+      back.width = window.innerWidth
+
+
+      // const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
+      back.filters = [new PIXI.filters.BlurFilter()];
+
+      // app.stage.filters = [displacementFilter];
+      // app.stage.addChild(displacementFilter);
+      // app.stage.addChild(image);
+      app.stage.addChild(back);
+    }
+
   }
 }
 
 const styles = StyleSheet.create({
   homeContainer: {
     height: '100vh',
-    background: `url(${backgroundImg}) no-repeat center center`,
+    // background: `url(${backgroundImg}) no-repeat center center`,
     backgroundSize: 'cover',
   },
   cont: {

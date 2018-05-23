@@ -6,7 +6,7 @@ import { breakPoints } from '../../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = ["a   rt", "c     n ct", 'd   vlp   m nt'];
+const items = [{name:"a   rt", route:"/art"}, {name:"c     n ct", route:'/contact'}, {name:'d   vlp   m nt', route:"/development"}];
 
 export default class HomeMenu extends Component {
   componentDidMount() {
