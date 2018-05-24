@@ -4,16 +4,17 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import backgroundImg from '../../../assets/home/home_bk.jpeg'
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
 import * as PIXI from 'pixi.js'
+// import Signale from 'signale'
+// import { log } from 'util';
 
 export default class Home extends Component {
-  app: PIXI.Application;
-  canvasAnchor: HTMLDivElement;
-  displacementFilter: PIXI.filter;
-  count:Number;
-
   constructor(props) {
     super(props);
 
+    this.app = PIXI.Application;
+    this.canvasAnchor = HTMLDivElement;
+    this.displacementFilter = PIXI.filter;
+    this.count = Number;
     this._animateCanvas = this.animateCanvas.bind(this)
   }
 
@@ -25,7 +26,11 @@ export default class Home extends Component {
   render() {
     let component = this;
     return (
-      <div onClick={this._animateCanvas} className={css(styles.homeContainer)}>
+      <div 
+        onMouseMove={this._animateCanvas} 
+        onMouseLeave={this.rewindAnimation}
+        className={css(styles.homeContainer)}
+      >
         <div ref={(thisDiv) => {component.canvasAnchor = thisDiv}} />
       </div>
     )
@@ -59,10 +64,11 @@ export default class Home extends Component {
     PIXI.loader
       .add("background", `${backgroundImg}`)
       .add("filter", `${displacementFilterImg}`)
-      .load(this.textureConfig);
+      .load(this.attachFilteredImage);
   };
 
-  textureConfig = () => {
+
+  attachFilteredImage = () => {
     //Create the main image sprite
     const background = new PIXI.Sprite(PIXI.loader.resources['background'].texture);
     background.height = window.innerHeight
@@ -80,26 +86,34 @@ export default class Home extends Component {
     this.app.stage.addChild(background);
   }
 
+
   animateCanvas = () => {
     const loop = window.requestAnimationFrame(this.animateCanvas.bind(this))
-    this.displacementFilter.scale.x = this.count*10;
-	  this.displacementFilter.scale.y = this.count*10;
-
-    if (this.count === 0 || this.count < 10 ) {
-      this.count += 0.05
-    } else if(this.count >= 10 ){
-      this.count -= 0.05;
-    } else {
-      console.log('anim eror');
+    this.displacementFilter.scale.x = this.count * 10;
+	  this.displacementFilter.scale.y = this.count * 10;
+    
+    this.count += 0.01
+    if(this.count >= 10) {
+      window.cancelAnimationFrame(loop);
     }
+  }
 
-    console.log(this.count)
+  rewindAnimation = () => {
+    const loop = window.requestAnimationFrame(this.rewindAnimation.bind(this))
+    this.displacementFilter.scale.x = this.count * 10;
+	  this.displacementFilter.scale.y = this.count * 10;
+    
+    this.count -= 0.01
+
+    if(this.count === 0) {
+      window.cancelAnimationFrame(loop);
+    }
   }
 
 }
 
 const styles = StyleSheet.create({
   homeContainer: {
-    height: '100vh',
+    height: '100vh'
   },
 })
