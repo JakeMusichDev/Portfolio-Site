@@ -1,11 +1,9 @@
 import React, { Component, ImageBackground } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import * as PIXI from 'pixi.js'
 
 import backgroundImg from '../../../assets/home/home_bk.jpeg'
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
-import * as PIXI from 'pixi.js'
-// import Signale from 'signale'
-// import { log } from 'util';
 
 export default class Home extends Component {
   constructor(props) {

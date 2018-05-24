@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     height: '90%',
     fontFamily:"sans-serif",
     letterSpacing:"3px",
-    overflowY:'hidden'
-    // border:'1px solid pink'
+    overflowY:'hidden',
+    border:'1px solid pink'
   },
 })
