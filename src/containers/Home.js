@@ -4,93 +4,21 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import Scroller from '../components/home-components/Scroller'
 import TitleHeader from '../components/general-components/TitleHeader'
 
-import backgroundImg from '../../assets/home/home_bk.jpeg'
-import displacementImg from '../../assets/home/displacementMapTile.jpg'
-
-import * as PIXI from 'pixi.js'
+import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
 
 export default class Home extends Component {
-  app: PIXI.Application;
-  canvasAnchor: HTMLDivElement;
-
   componentDidMount() {
-    this.initPixi()
   }
-
 
   render() {
     let component = this;
     return (
-      <div className={css(styles.homeContainer)}>
-        <div ref={(thisDiv) => {component.canvasAnchor = thisDiv}} />
+      <div id='home' className={css(styles.homeContainer)}>
+        <PixiDisplacementImage />
         <Scroller />
       </div>
     )
   }
-
-
-
-  initPixi = () => {
-    this.setupApp()
-
-    var displacementSprite = PIXI.Sprite.fromImage("http://i.imgur.com/2yYayZk.png")
-
-    //load an image and run the `setup` function when it's done
-    PIXI.loader
-      .add(`${backgroundImg}`)
-      .on("progress", loadProgressHandler)
-      .load(setup);
-
-    const progressHandler = function() {
-      console.log("loading");
-    }
-
-    var displacementSprite = PIXI.Sprite.fromImage(`${displacementImg}`);
-    var displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
-
-    displacementSprite.scale.y = 0.1;
-    displacementSprite.scale.x = 0.1;
-
-    function setup() {
-      const back = new Sprite(resources[`${backgroundImg}`].texture)
-      back.height = window.innerHeight
-      back.width = window.innerWidth
-
-      back.filters = [new PIXI.filters.BlurFilter()]
-
-      this.app.stage.filters = [displacementFilter]
-      this.app.stage.addChild(displacementFilter)
-      this.app.stage.addChild(back)
-    }
-
-  };
-
-  setupApp = () => {
-    //Create a Pixi Application
-    this.app = new PIXI.Application({
-        width: window.innerWidth,
-        height: window.innerHeight,
-        antialias: true,
-        transparent: false,
-        resolution: 1
-      }
-    );
-
-    //Add the canvas that Pixi automatically created for you to the canvas container
-    this.canvasAnchor.appendChild(this.app.view);
-  };
-
-  setImg = () => {
-    const back = new Sprite(resources[`${backgroundImg}`].texture)
-    back.height = window.innerHeight
-    back.width = window.innerWidth
-
-    this.app.stage.filters = [displacementFilter]
-    this.app.stage.addChild(displacementFilter)
-    this.app.stage.addChild(back)
-  }
-
-
 
 }
 
