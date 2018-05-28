@@ -1,6 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import WheelIndicator from 'wheel-indicator'
 import _ from 'underscore'
 
 import HomeMenu from './home-menu/HomeMenu'
@@ -9,54 +8,53 @@ export default class Scroller extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { currentItem: 0, direction:null }
+    this.state = { currentItem: 0, direction: null }
 
-    this.handleScroll = _.throttle(this.scrollMonitor, 1500, {trailing: false});
+    this.handleScroll = _.throttle(this.scrollMonitor, 1500, { trailing: false })
+    window.addEventListener('wheel', this.handleScroll)
   }
 
-  scrollMonitor = (wheelEvent) => {
+  scrollMonitor = wheelEvent => {
     const direction = wheelEvent.deltaY > 0 ? '+' : '-'
     const { currentItem } = this.state
-    let nextItem;
+    let nextItem
 
-    if (direction === '+' && currentItem === 3) {
+    if (direction === '+' && currentItem === 2) {
       nextItem = 0
     } else if (direction === '+' && currentItem >= 0) {
-      nextItem = (currentItem + 1)
+      nextItem = currentItem + 1
     } else if (direction === '-' && currentItem !== 0) {
-      nextItem = (currentItem - 1)
-    } else if (direction === '-' && currentItem === 0 ) {
-      nextItem = 3
-    } else { console.log('scroll erro') }
+      nextItem = currentItem - 1
+    } else if (direction === '-' && currentItem === 0) {
+      nextItem = 2
+    } else { return }
 
     this.setState({ currentItem: nextItem, direction })
   }
 
-
   render() {
     const { currentItem, direction } = this.state
+    const { onSectionClick } = this.props
+
     return (
-      <div
-        id="scroll-monitor"
-        className={css(styles.scroller)}
-        onWheel={this.handleScroll}
-      >
-        <HomeMenu currentItem={currentItem} direction={direction} />
+      <div className={css(styles.scroller)}>
+        <HomeMenu
+          onSectionClick={onSectionClick}
+          currentItem={currentItem}
+          direction={direction}
+        />
       </div>
     )
-  };
+  }
 }
 
 const styles = StyleSheet.create({
   scroller: {
     height: '100vh',
-  }
-});
-
-
-// PropTypes = {}
-
-
+    width: '100vw',
+    border: "1px solid white",
+  },
+})
 
 // import { Injectable } from '@angular/core';
 // import {BehaviorSubject} from 'rxjs/BehaviorSubject';

@@ -1,40 +1,50 @@
 import React, { Component, ImageBackground } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import Anime from 'animejs'
 
 import Scroller from '../components/home-components/Scroller'
-import TitleHeader from '../components/general-components/TitleHeader'
 
 import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
 
 export default class Home extends Component {
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
-    let component = this;
     return (
-      <div id='home' className={css(styles.homeContainer)}>
+      <div id="home" className={css(styles.homeContainer)}>
         <PixiDisplacementImage />
-        <Scroller />
+        <Scroller onSectionClick={this.onSectionClick} />
+        <div id="line" className={css(styles.homeMenu)} />
       </div>
     )
   }
 
+  onSectionClick = (event, section) => {
+    const tl = Anime.timeline()
+    console.log('hit')
+
+    tl.add({
+      targets: '#line',
+      width: '800px',
+      duration: 2000,
+    })
+  }
 }
 
 const styles = StyleSheet.create({
   homeContainer: {
     height: '100vh',
-    // background: `url(${backgroundImg}) no-repeat center center`,
-    backgroundSize: 'cover',
+    // backgroundColor: 'black',
   },
-  cont: {
-    height: '200vh',
+  homeMenu: {
+    height: '80vh',
+    width: '1px',
+    position: 'absolute',
+    top: '10vh',
+    left: '80vw',
+    border: '0.5px solid white',
   },
 })
-
-
-
 
 // var width = window.offsetWidth;
 // var height = window.offsetHeight;
