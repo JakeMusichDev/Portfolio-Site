@@ -58,7 +58,7 @@ export default class HomeMenu extends Component {
 const styles = StyleSheet.create({
   homeMenuSliderContainer: {
     border:'1px solid orange',
-    height: '10%',
+    height: '10vh',
   },
   slderRect: {
     height: '575.5px',

@@ -3,6 +3,7 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import _ from 'underscore'
 
 import HomeMenu from './home-menu/HomeMenu'
+import HomeMenuSlider from './home-menu/HomeMenuSlider'
 
 export default class Scroller extends Component {
   constructor(props) {
@@ -38,11 +39,13 @@ export default class Scroller extends Component {
 
     return (
       <div className={css(styles.scroller)}>
+        <HomeMenuSlider />  
         <HomeMenu
           onSectionClick={onSectionClick}
           currentItem={currentItem}
           direction={direction}
         />
+
       </div>
     )
   }

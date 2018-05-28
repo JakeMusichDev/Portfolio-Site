@@ -4,7 +4,8 @@ import * as PIXI from 'pixi.js'
 import Anime from 'animejs'
 
 import backgroundImg from '../../../assets/home/home_bk.jpeg'
-import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
+import displacementFilterImg from '../../../assets/home/06.jpg'
+import { request } from 'http';
 
 export default class Home extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export default class Home extends Component {
 
   buildApp = () => {
     const anchorBounds = this.canvasAnchor.getBoundingClientRect()
-
+    // this.app = PIXI.autoDetectRenderer(256, 256);
     this.app = new PIXI.Application({
       width:  anchorBounds.width,
       height: anchorBounds.height,
@@ -69,40 +70,57 @@ export default class Home extends Component {
       interactive:true
     })
 
-    
     // this.app.renderer.resize(anchorBounds.height, anchorBounds.width)
     this.canvasAnchor.appendChild(this.app.view)
+
     this.attachFilteredImage()
   }
 
   attachFilteredImage = () => {
-    const anchorBounds = this.canvasAnchor.getBoundingClientRect()
-    //Create the main image sprite
+    // Create stage
+    const stageContainer = new PIXI.Container()
+    this.app.stage.addChild(stageContainer)
+    
+    // Create Image itself
     const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background'].texture)
-    imageSprite.height = anchorBounds.height
-    imageSprite.width = anchorBounds.width
+    imageSprite.scale.set(0.15, 0.15)
 
-    this.filterSprite = new PIXI.Sprite(PIXI.loader.resources['filter'].texture)
-    this.filterSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
-    this.filterSprite.anchor.set(0)
+    // Create Filter sprite 
+    // const filterSprite = new PIXI.Sprite(PIXI.loader.resources['filter'].texture)
+    const filterSprite = PIXI.Sprite.fromImage(`${displacementFilterImg}`);
+    // Create filter
+    const displacementFilter = new PIXI.filters.DisplacementFilter(filterSprite)
+    displacementFilter.autoFit = true
 
-    this.filterSprite = new PIXI.filters.DisplacementFilter(this.filterSprite)
-
-    this.filterSprite.scale.x = 0;
-    this.filterSprite.scale.y = 0;
-
-    this.app.stage.filters = [this.filterSprite]
-
-    this.app.stage.addChild(imageSprite)
-    this.animateCanvas()
-    // animate(this.displacementFilter, this.count)
-
-    // function animate(sprite, count) {
-    //   console.log(sprite.scale);
-      
-    //   sprite.scale.x =  count * 10
+    filterSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+    filterSprite.texture.baseTexture.wrapMode
+    filterSprite.scale.x = 0.6;
+    filterSprite.scale.y = 0.6;
+    // Add sprites and filter to container
+    stageContainer.addChild(filterSprite)
+    stageContainer.addChild(imageSprite)
+    stageContainer.filters = [displacementFilter]
+    
+    let count = 0    
+    this.app.ticker.add((delta) => {
+      filterSprite.x = count*10
+      filterSprite.y = count*10
+      count += 0.05
+     })
+    // function animate() {
+    //   requestAnimationFrame(bound);
+    //   filterSprite.scale.x += count;
+    //   filterSprite.scale.y += count;
+    //   // displacementFilter.x += count
+    //   // displacementFilter.y += count
     //   count += 0.01
-    //   const loop = window.requestAnimationFrame(animate.bind(this))
+
+    //   // stageContainer.filters = [displacementFilter]
+      
+    //   this.app.render(stageContainer)
+      
+    //   // this.app.stage.filters = [this.filterSprite];
+    //   // this.app.renderer.render(stage);
     // }
   }
 
@@ -148,7 +166,7 @@ const styles = StyleSheet.create({
     background:'black',
   },
   home: {
-    height: '400px',
+    height: '300px',
     width: '500px',
     // position: "absolute",
     // top: '10vh',

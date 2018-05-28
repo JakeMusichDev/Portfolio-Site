@@ -14,7 +14,6 @@ export default class Home extends Component {
       <div id="home" className={css(styles.homeContainer)}>
         <PixiDisplacementImage />
         <Scroller onSectionClick={this.onSectionClick} />
-        <div id="line" className={css(styles.homeMenu)} />
       </div>
     )
   }
@@ -34,15 +33,15 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   homeContainer: {
     height: '100vh',
-    // backgroundColor: 'black',
   },
   homeMenu: {
-    height: '80vh',
+    height: '60vh',
     width: '1px',
     position: 'absolute',
-    top: '10vh',
-    left: '80vw',
-    border: '0.5px solid white',
+    top: '20vh',
+    right:'5vw',
+    // marginLeft:'100',
+    border: '0.25px solid white',
   },
 })
 

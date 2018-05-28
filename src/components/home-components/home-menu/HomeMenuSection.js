@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   section: {
     textDecoration: 'none',
     color: 'white',
-    opacity: '0.8',
-    fontSize: '4em',
+    opacity: '0.5',
+    fontSize: '8em',
     fontFamily: ['Vesper Libre', 'sans-serif'],
     letterSpacing: "2px"
   },

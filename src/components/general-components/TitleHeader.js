@@ -26,7 +26,7 @@ export default class TitleHeader extends Component {
       <div className={css(styles.titleWrapper)}>
         <div ref={el => {this.header = el}} className={css(styles.titleHeader)} >
           <Link to='/' className={css(styles.titleHeader)}>
-            JAKE <br/> MUSICH
+            JAKeMUSICH
           </Link>
         </div>
       </div>
