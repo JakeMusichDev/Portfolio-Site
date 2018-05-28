@@ -3,8 +3,8 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import * as PIXI from 'pixi.js'
 import Anime from 'animejs'
 
-import backgroundImg from '../../../assets/home/home_bk.jpeg'
-import displacementFilterImg from '../../../assets/home/06.jpg'
+import backgroundImg from '../../../assets/home/film_bk.JPG'
+import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
 import { request } from 'http';
 
 export default class Home extends Component {
@@ -83,7 +83,9 @@ export default class Home extends Component {
     
     // Create Image itself
     const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background'].texture)
-    imageSprite.scale.set(0.15, 0.15)
+    imageSprite.autoFit = true
+    imageSprite.scale.set(0.3, 0.3)
+    imageSprite.anchor.set(0.2,0.2)
 
     // Create Filter sprite 
     // const filterSprite = new PIXI.Sprite(PIXI.loader.resources['filter'].texture)
@@ -101,51 +103,16 @@ export default class Home extends Component {
     stageContainer.addChild(imageSprite)
     stageContainer.filters = [displacementFilter]
     
+    this.animateCanvas(filterSprite)
+  }
+
+  animateCanvas = (filterSprite) => {
     let count = 0    
     this.app.ticker.add((delta) => {
       filterSprite.x = count*10
       filterSprite.y = count*10
       count += 0.05
-     })
-    // function animate() {
-    //   requestAnimationFrame(bound);
-    //   filterSprite.scale.x += count;
-    //   filterSprite.scale.y += count;
-    //   // displacementFilter.x += count
-    //   // displacementFilter.y += count
-    //   count += 0.01
-
-    //   // stageContainer.filters = [displacementFilter]
-      
-    //   this.app.render(stageContainer)
-      
-    //   // this.app.stage.filters = [this.filterSprite];
-    //   // this.app.renderer.render(stage);
-    // }
-  }
-
-  animateCanvas = () => {
-    // this.filterSprite.scale.x = this.count * 10
-    this.filterSprite.scale.y = this.count * 10
-
-    this.count += 0.02
-    const loop = window.requestAnimationFrame(this.animateCanvas.bind(this))
-
-    // if ( this.count === 0 ) {
-    //   this.count += 0.01
-
-    // } else if ( this.count <= 100 ) {
-    //   this.count += 0.01
-
-    // } else if ( this.count >= 100) {
-    //   this.count -= 0.05
-      
-    // }
-    
-    
-    // if (this.count >= 100) {
-    //   window.cancelAnimationFrame(loop);
-    // }
+    })
   }
 
   resizeCanvas = () => {
@@ -163,11 +130,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    background:'black',
+    background:'black'
   },
   home: {
-    height: '300px',
-    width: '500px',
+    height: '60%',
+    width: '50%',
+    // border:"1px solid black"
     // position: "absolute",
     // top: '10vh',
     // left: "10vw",

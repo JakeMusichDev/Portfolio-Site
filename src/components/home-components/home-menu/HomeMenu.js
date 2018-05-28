@@ -7,9 +7,9 @@ import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
 const items = [
-  { name: 'art', route: '/art' },
+  { name: 'projects', route: '/art' },
   { name: 'about', route: '/contact' },
-  { name: 'code', route: '/development' },
+  { name: 'development', route: '/development' },
 ]
 
 export default class HomeMenu extends Component {
@@ -41,25 +41,23 @@ export default class HomeMenu extends Component {
             this.container = el
           }}
           className={css(styles.menuTagContainer)}>
-          {items.map(
-            (item, index) =>
-              currentItem === index && (
-              <HomeMenuSection
-              key={`menu-section-${index}`}
-              item={item}
-              index={index}
-              active={currentItem}
-              direction={direction}
-              onSectionClick={onSectionClick}
-            />
-          ))}
+            {items.map(
+              (item, index) =>
+                currentItem === index && (
+                <HomeMenuSection
+                key={`menu-section-${index}`}
+                item={item}
+                index={index}
+                active={currentItem}
+                direction={direction}
+                onSectionClick={onSectionClick}
+              />
+            ))}
         </div>
+        
       </div>
     )
   }
-}
-{
-  /*  <HomeMenuSlider /> */
 }
 
 const styles = StyleSheet.create({
@@ -67,8 +65,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 'auto',
     width: 'auto',
-    top: '40vh',
-    left: '15vw',
+    bottom: '40vh',
+    left: '40vw',
     // border: '1px solid green',
     color: 'white',
     [breakPoints.tablet]: {
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
   menuTagContainer: {
     height: '100%',
     fontFamily: 'sans-serif',
-    letterSpacing: '3px',
+    // letterSpacing: '3px',
     // overflowY: 'hidden',
     // border: '1px solid pink',
   },

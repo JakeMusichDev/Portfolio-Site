@@ -19,6 +19,7 @@ export default class Home extends Component {
   }
 
   onSectionClick = (event, section) => {
+    const _this = this
     const tl = Anime.timeline()
     console.log('hit')
 
@@ -26,6 +27,9 @@ export default class Home extends Component {
       targets: '#line',
       width: '800px',
       duration: 2000,
+      complete: () => {
+        _this.props.history.push(`${section.route}`)
+      }
     })
   }
 }

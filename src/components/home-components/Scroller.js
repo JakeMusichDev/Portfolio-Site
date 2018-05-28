@@ -39,13 +39,13 @@ export default class Scroller extends Component {
 
     return (
       <div className={css(styles.scroller)}>
-        <HomeMenuSlider />  
+        <HomeMenuSlider/>
+ 
         <HomeMenu
           onSectionClick={onSectionClick}
           currentItem={currentItem}
           direction={direction}
         />
-
       </div>
     )
   }

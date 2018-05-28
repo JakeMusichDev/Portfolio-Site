@@ -37,31 +37,13 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-  // titleWrapper: {
-  //   position:"absolute",
-  //   width:"auto",
-  //   paddingBottom:"10px",
-  //   top:"50px",
-  //   marginLeft:'50px',
-  //   overflow:"hidden"
-  // },
-  // titleHeader: {
-  //   color: "white",
-  //   fontFamily:["Lato","sans-serif"],
-  //   width:"auto",
-  //   fontSize:14,
-  //   fontWeight:100,
-  //   // letterSpacing:"1px"
-  // },
-  // svg: {
-  //   font:"bold 100px 'Arial'",
-  //   width:'50%',
-  //   height:'auto'
-  // },
-  // text:{
-  //   fill:'none',
-  //   stroke:"white",
-  //   strokeWidth:"1px",
-  //   strokeLinejoin:'round'
-  // }
+  headerWrapper: {
+    // border:"1px solid blue",
+    height:"8vh",
+    position: 'absolute',
+    width: '100vw',
+    // paddingLeft:'10%'
+  },
+  titleHeader: {
+  },
 })

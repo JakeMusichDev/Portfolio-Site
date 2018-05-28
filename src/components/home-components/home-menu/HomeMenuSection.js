@@ -73,9 +73,14 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
     color: 'white',
     opacity: '0.5',
-    fontSize: '8em',
-    fontFamily: ['Vesper Libre', 'sans-serif'],
-    letterSpacing: "2px"
+    fontSize: '5em',
+    fontFamily: ['Raleway', 'sans-serif'],
+    // letterSpacing: "6px",
+    transition:'0.2s all',
+    fontWeight:500,
+    ":hover" : {
+      opacity:0.9
+    }
   },
   active: {
     display: 'flex',
@@ -84,3 +89,40 @@ const styles = StyleSheet.create({
 // <svg className={css(styles.svg)} viewBox="0 0 350 50">
 //   <text className={css(styles.text)} y="40">JAKE MUSICH</text>
 // </svg>
+  // initTilt = () => {
+  //   if( this.checkSize() && !this.isSafari() ) {
+  //     const tiltArray = [];
+  //     const elements = document.getElementsByName('member-headshot')
+  //     for (var i = 0; i < elements.length; i++) {
+  //       var elementToDestroy = elements[i];
+  //       tiltArray.push(elementToDestroy)
+  //       VanillaTilt.init(elements[i], {
+  //         reverse: false,
+  //         max: 30,
+  //         perspective: 1000,
+  //         scale: 1,
+  //         speed: 700,
+  //         transition: true,
+  //         axis: null,
+  //         reset: true,
+  //         easing: "cubic-bezier(.03,.98,.52,.99)",
+  //       });
+  //     }
+  //     this.setState({tiltArray})
+  //   }
+  // };
+
+  // destroyTilt = () => {
+  //   const {tiltArray} = this.state;
+  //   if ( this.checkSize() && !this.isSafari() ) {
+  //     for (var i = 0; i < tiltArray.length; i++) {
+  //       if(tiltArray[i].vanillaTilt) {
+  //         tiltArray[i].vanillaTilt.destroy();
+  //       }
+  //     }
+  //   }
+  // }
+
+  // checkSize = () => {
+  //   return window.innerWidth > 800;
+  // };
