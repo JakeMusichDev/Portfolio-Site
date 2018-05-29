@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     border:"1px solid blue",
     height: '5vh',
     width: '100vw',
-    position: 'absolute',
+    // position: 'absolute',
+    display: 'inline-block'
   }
 })

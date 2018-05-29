@@ -8,12 +8,9 @@ export default class ScrollInstruction extends Component {
   }
 
   render() {
-    const { currentItem, direction } = this.state
-    const { onSectionClick } = this.props
-
     return (
 			<div className={css(styles.scrollInstructionContainer)}>
-				
+				SCROLL
 			</div>
 		)
   }
@@ -21,8 +18,11 @@ export default class ScrollInstruction extends Component {
 
 const styles = StyleSheet.create({
   scrollInstructionContainer: {
-    height: '100vh',
-    width: '100vw',
-    border: '1px solid white',
+    height: '100px',
+    width: '100px',
+		border: '1px solid black',
+		position: 'absolute',
+		top: '0',
+		left: '0'
   },
 })

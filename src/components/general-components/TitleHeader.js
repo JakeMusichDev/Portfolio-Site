@@ -38,13 +38,19 @@ const styles = StyleSheet.create({
   titleWrapper: {
     width:"auto",
     overflow:"hidden",
-    border:'1px solid blue',
-    marginTop:'5vh'
+    border:'1px solid red',
+    height:'100%',
+    marginLeft: '10px',
+    display:'flex',
+    flexDirection: 'column',
+    alignContent: 'center',
+    justifyContent: 'center'
   },
   titleHeader: {
-    color: "black",
+    color: "white",
     fontFamily:["Lato","sans-serif"],
     width:"auto",
+    height: 'auto',
     fontSize:14,
     fontWeight:100,
     textDecoration:"none",

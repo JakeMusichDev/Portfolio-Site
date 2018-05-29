@@ -4,6 +4,7 @@ import _ from 'underscore'
 
 import HomeMenu from './home-menu/HomeMenu'
 import HomeMenuSlider from './home-menu/HomeMenuSlider'
+import ScrollInstruction from './ScrollInstruction'
 
 export default class Scroller extends Component {
   constructor(props) {
@@ -40,7 +41,6 @@ export default class Scroller extends Component {
     return (
       <div className={css(styles.scroller)}>
         <HomeMenuSlider/>
- 
         <HomeMenu
           onSectionClick={onSectionClick}
           currentItem={currentItem}
@@ -55,7 +55,12 @@ const styles = StyleSheet.create({
   scroller: {
     height: '100vh',
     width: '100vw',
-    border: "1px solid white",
+    border: "1px solid red",
+    display: 'block',
+    background:'none',
+    // position:'absolute',
+    // top: 0,
+    // left: 0
   },
 })
 

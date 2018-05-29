@@ -9,7 +9,7 @@ import HomeMenuSection from './HomeMenuSection'
 const items = [
   { name: 'art', route: '/art' },
   { name: 'about', route: '/contact' },
-  { name: 'code', route: '/development' },
+  { name: 'work', route: '/work' },
 ]
 
 export default class HomeMenu extends Component {
@@ -65,15 +65,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 'auto',
     width: 'auto',
-    top: '80vh',
-    left: '10vw',
-    // border: '1px solid green',
+    top: '40vh',
+    left: '60vw',
+    border: '1px solid green',
     color: 'white',
-    [breakPoints.tablet]: {
-      // left: '10vw',
-      // height: '80vh',
-      // width: '80vw',
-    },
   },
   menuTagContainer: {
     height: '100%',

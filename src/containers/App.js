@@ -10,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className={css(styles.app)}>
           <Header />
           <Routes />
         </div>
@@ -18,3 +18,11 @@ export default class App extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  app: {
+    display:'block',
+    height:'100vh',
+    width: '100vw'
+  }
+})

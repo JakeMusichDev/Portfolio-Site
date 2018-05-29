@@ -4,9 +4,18 @@ import Anime from 'animejs'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import { breakPoints } from '../../../utils/styles'
 import '../../../styles/index.css'
+import VanillaTilt from 'vanilla-tilt'
 
 export default class HomeMenuSection extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      tiltArray:[]
+    }
+  }
   componentDidMount() {
+    this.attachTilt()
     this.animateIn()
   }
 
@@ -31,12 +40,12 @@ export default class HomeMenuSection extends Component {
         ? css([styles.sectionContainer, styles.active])
         : css(styles.sectionContainer)
     return (
-      <div className={css(styles.sectionWrapper)} >
+      <div name='menu--section' className={css(styles.sectionWrapper)} >
         <div id={`menu-section-${index}`} className={sectionStyle}>
           <div
             onClick={e => onSectionClick(e, item)}
             className={css(styles.section)}>
-            {item.name.toUpperCase()}
+            { item.name.toUpperCase() }
           </div>
         </div>
       </div>
@@ -63,8 +72,44 @@ export default class HomeMenuSection extends Component {
   }
 
   attachTilt = () => {
-
+    if( this.checkSize() ) {
+      const tiltArray = [];
+      const elements = document.getElementsByName('menu--section')
+      console.log(elements);
+      
+      for (var i = 0; i < elements.length; i++) {
+        var elementToDestroy = elements[i];
+        tiltArray.push(elementToDestroy)
+        VanillaTilt.init(elements[i], {
+          reverse: false,
+          max: 50,
+          perspective: 1000,
+          scale: 1,
+          speed: 700,
+          transition: true,
+          axis: null,
+          reset: true,
+          easing: "cubic-bezier(.03,.98,.52,.99)",
+        });
+      }
+      this.setState({tiltArray})
+    }
   }
+
+  destroyTilt = () => {
+    const {tiltArray} = this.state;
+    if ( this.checkSize() && !this.isSafari() ) {
+      for (var i = 0; i < tiltArray.length; i++) {
+        if(tiltArray[i].vanillaTilt) {
+          tiltArray[i].vanillaTilt.destroy();
+        }
+      }
+    }
+  }
+
+  checkSize = () => {
+    return window.innerWidth > 600;
+  };
   
 }
 
@@ -82,16 +127,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     display: 'none',
+    padding: '20px'
   },
   section: {
     textDecoration: 'none',
     color: 'black',
-    opacity: '0.5',
+    opacity: '1',
     fontSize: '4em',
-    fontFamily: ['Vesper Libre', 'sans-serif'],
+    fontFamily: ['Vollkorn', 'sans-serif'],
     // letterSpacing: "6px",
     transition:'0.2s all',
-    fontWeight:500,
+    fontWeight:900,
     ":hover" : {
       opacity:0.9
     }
@@ -100,43 +146,3 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
 })
-// <svg className={css(styles.svg)} viewBox="0 0 350 50">
-//   <text className={css(styles.text)} y="40">JAKE MUSICH</text>
-// </svg>
-  // initTilt = () => {
-  //   if( this.checkSize() && !this.isSafari() ) {
-  //     const tiltArray = [];
-  //     const elements = document.getElementsByName('member-headshot')
-  //     for (var i = 0; i < elements.length; i++) {
-  //       var elementToDestroy = elements[i];
-  //       tiltArray.push(elementToDestroy)
-  //       VanillaTilt.init(elements[i], {
-  //         reverse: false,
-  //         max: 30,
-  //         perspective: 1000,
-  //         scale: 1,
-  //         speed: 700,
-  //         transition: true,
-  //         axis: null,
-  //         reset: true,
-  //         easing: "cubic-bezier(.03,.98,.52,.99)",
-  //       });
-  //     }
-  //     this.setState({tiltArray})
-  //   }
-  // };
-
-  // destroyTilt = () => {
-  //   const {tiltArray} = this.state;
-  //   if ( this.checkSize() && !this.isSafari() ) {
-  //     for (var i = 0; i < tiltArray.length; i++) {
-  //       if(tiltArray[i].vanillaTilt) {
-  //         tiltArray[i].vanillaTilt.destroy();
-  //       }
-  //     }
-  //   }
-  // }
-
-  // checkSize = () => {
-  //   return window.innerWidth > 800;
-  // };

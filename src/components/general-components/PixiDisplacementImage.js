@@ -3,7 +3,9 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import * as PIXI from 'pixi.js'
 import Anime from 'animejs'
 
-import backgroundImg from '../../../assets/home/film_bk.JPG'
+import backgroundImg from '../../../assets/home/home_bk.jpeg'
+import backgroundImg2 from '../../../assets/home/home_bk_2.jpeg'
+
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
 import { request } from 'http';
 
@@ -19,12 +21,12 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    this.initPixi()
-    // Anime({
-    //   targets: this.canvasAnchor,
-    //   opacity:[0,1],
-    //   duration: 5000
-    // })
+    Anime({
+      targets: this.canvasAnchor,
+      opacity:[0,1],
+      duration: 1000,
+      complete:() => this.initPixi()
+    })
   }
 
   render() {
@@ -33,6 +35,7 @@ export default class Home extends Component {
       <div
         className={css(styles.homeContainer)}>
         <div
+          onClick={this.changePhoto}
           className={css(styles.home)}
           ref={thisDiv => {
             component.canvasAnchor = thisDiv
@@ -53,6 +56,7 @@ export default class Home extends Component {
   loaderConfig = () => {
     PIXI.loader
       .add('background', `${backgroundImg}`)
+      .add('background_2', `${backgroundImg2}`)
       .add('filter', `${displacementFilterImg}`)
       .load(this.buildApp);
   }
@@ -78,8 +82,8 @@ export default class Home extends Component {
 
   attachFilteredImage = () => {
     // Create stage
-    const stageContainer = new PIXI.Container()
-    this.app.stage.addChild(stageContainer)
+    this.stageContainer = new PIXI.Container()
+    this.app.stage.addChild(this.stageContainer)
     
     // Create Image itself
     const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background'].texture)
@@ -99,9 +103,9 @@ export default class Home extends Component {
     filterSprite.scale.x = 0.6;
     filterSprite.scale.y = 0.6;
     // Add sprites and filter to container
-    stageContainer.addChild(filterSprite)
-    stageContainer.addChild(imageSprite)
-    stageContainer.filters = [displacementFilter]
+    this.stageContainer.addChild(filterSprite)
+    this.stageContainer.addChild(imageSprite)
+    this.stageContainer.filters = [displacementFilter]
     
     this.animateCanvas(filterSprite)
   }
@@ -113,6 +117,16 @@ export default class Home extends Component {
       filterSprite.y = count*10
       count += 0.05
     })
+  }
+
+  
+  changePhoto = () => {
+    // Create Image itself
+    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background_2'].texture)
+    imageSprite.autoFit = true
+    imageSprite.scale.set(0.3, 0.3)
+    imageSprite.anchor.set(0.2,0.2)
+    this.stageContainer.addChild(imageSprite)
   }
 
   resizeCanvas = () => {
@@ -130,10 +144,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    background:'white'
+    background:'white',
   },
   home: {
-    height: '30%',
-    width: '70%'
+    height: '50%',
+    width: '30%',
+    // border: '1px solid black'
   },
 })
