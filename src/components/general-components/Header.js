@@ -20,6 +20,7 @@ export default class Header extends Component {
   }
 }
 
+
 const styles = StyleSheet.create({
   headerWrapper: {
     border:"1px solid blue",
@@ -27,5 +28,6 @@ const styles = StyleSheet.create({
     width: '100vw',
     // position: 'absolute',
     display: 'inline-block'
-  }
+  },
+  
 })
