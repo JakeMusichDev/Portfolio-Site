@@ -36,25 +36,22 @@ export default class TitleHeader extends Component {
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    position:"absolute",
     width:"auto",
-    // paddingBottom:"20px",
-    // left:'20px',0
     overflow:"hidden",
-    // border:'1px solid blue'
+    border:'1px solid blue',
+    marginTop:'5vh'
   },
   titleHeader: {
-    color: "#FAFAFA",
+    color: "black",
     fontFamily:["Lato","sans-serif"],
     width:"auto",
     fontSize:14,
     fontWeight:100,
     textDecoration:"none",
     outline:"none",
-    margin:'30px 0px 0px 30px',
-    transition:'0.3s all',
-    ':hover': {
-      color:'blue'
-    }
+    // transition:'0.3s all',
+    // ':hover': {
+    //   color:'blue'
+    // }
   }
 })

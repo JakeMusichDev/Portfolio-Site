@@ -10,6 +10,20 @@ export default class HomeMenuSection extends Component {
     this.animateIn()
   }
 
+  componentWillUnmount() {
+    const { index, direction } = this.props
+    const tl = Anime.timeline()
+    tl
+      .add({
+        targets: `#menu-section-${index}`,
+        translateY: '100%',
+        opacity:[0,1],
+        duration: 1000,
+        easing: 'easeInOutQuint',
+        elasticity: 100,
+      })
+  }
+
   render() {
     const { item, index, active, onSectionClick } = this.props
     const sectionStyle =
@@ -71,10 +85,10 @@ const styles = StyleSheet.create({
   },
   section: {
     textDecoration: 'none',
-    color: 'white',
+    color: 'black',
     opacity: '0.5',
-    fontSize: '5em',
-    fontFamily: ['Raleway', 'sans-serif'],
+    fontSize: '4em',
+    fontFamily: ['Vesper Libre', 'sans-serif'],
     // letterSpacing: "6px",
     transition:'0.2s all',
     fontWeight:500,

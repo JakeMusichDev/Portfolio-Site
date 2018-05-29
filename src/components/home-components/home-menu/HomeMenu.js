@@ -7,9 +7,9 @@ import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
 const items = [
-  { name: 'projects', route: '/art' },
+  { name: 'art', route: '/art' },
   { name: 'about', route: '/contact' },
-  { name: 'development', route: '/development' },
+  { name: 'code', route: '/development' },
 ]
 
 export default class HomeMenu extends Component {
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 'auto',
     width: 'auto',
-    bottom: '40vh',
-    left: '40vw',
+    top: '80vh',
+    left: '10vw',
     // border: '1px solid green',
     color: 'white',
     [breakPoints.tablet]: {

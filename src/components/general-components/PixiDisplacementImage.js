@@ -130,15 +130,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    background:'black'
+    background:'white'
   },
   home: {
-    height: '60%',
-    width: '50%',
-    // border:"1px solid black"
-    // position: "absolute",
-    // top: '10vh',
-    // left: "10vw",
-
+    height: '30%',
+    width: '70%'
   },
 })
