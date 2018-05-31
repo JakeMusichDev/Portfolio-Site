@@ -1,34 +1,28 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 
-// import Socials from '../components/contact-components/Socials'
+import PhotoGridRow from './PhotoGridRow'
+import {photographyGridData} from '../../utils/data'
 
-// import backgroundImg from '../../assets/home/home_bk.jpeg'
-
-export default class Art extends Component {
+export default class PhotoGrid extends Component {
   render() {
     return (
       <div className={css(styles.artContainer)}>
-        <div className={css(styles.artGridWrapper)} >
-        
-        </div>  
+      {photographyGridData.map( (content) => (
+        <PhotoGridRow key={`${content.key}`} content={content} />
+      ))}
       </div>
     )
   }
 }
 
-const gridRow = props => {
-  return (
-    <div className={}>
-
-    </div>
-  )
-}
 
 const styles = StyleSheet.create({
   artContainer: {
     height: '100%',
-    border: '1px solid red',
+    border: '1px solid purple',
+    display: 'inline-block',
+    width: '100%'
   },
   artGridWrapper: {},
 })
