@@ -21,7 +21,20 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    Anime({
+    const tl = Anime.timeline()
+    
+    tl
+    .add({
+      targets: this.canvasAnchor,
+      height: '0%',
+      duration: 1000,
+    })
+    .add({
+      targets: this.canvasAnchor,
+      height:'50%',
+      duration: 1000,
+    })
+    .add({
       targets: this.canvasAnchor,
       opacity:[0,1],
       duration: 1000,
@@ -149,6 +162,7 @@ const styles = StyleSheet.create({
   home: {
     height: '50%',
     width: '30%',
-    // border: '1px solid black'
+    border: '1px solid black',
+    overflow: 'hidden'
   },
 })

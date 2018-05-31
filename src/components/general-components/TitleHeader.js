@@ -15,7 +15,7 @@ export default class TitleHeader extends Component {
     Anime({
       targets: this.header,
       translateY: ['0%'],
-      opacity: 0.7,
+      opacity: 1,
       duration: 2000,
       delay: 1000
     })
@@ -36,28 +36,28 @@ export default class TitleHeader extends Component {
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    width:"auto",
+    width:"40%",
     overflow:"hidden",
     border:'1px solid red',
     height:'100%',
-    marginLeft: '10px',
-    display:'flex',
-    flexDirection: 'column',
-    alignContent: 'center',
-    justifyContent: 'center'
+    // marginLeft: '10%',
+    // display:'flex',
+    // flexDirection: 'column',
+    // alignContent: 'center',
+    // justifyContent: 'center'
   },
   titleHeader: {
-    color: "white",
-    fontFamily:["Lato","sans-serif"],
-    width:"auto",
+    color: 'black',
+    fontFamily: ["Lato", "sans-serif"],
+    width: "auto",
     height: 'auto',
-    fontSize:14,
-    fontWeight:100,
+    fontSize:16,
+    fontWeight:300,
     textDecoration:"none",
     outline:"none",
-    // transition:'0.3s all',
-    // ':hover': {
-    //   color:'blue'
-    // }
+    transition:'0.3s all',
+    ':hover': {
+      color:'blue'
+    }
   }
 })

@@ -8,9 +8,10 @@ export default class ScrollInstruction extends Component {
   }
 
   render() {
+    const { currentItem } = this.props
     return (
 			<div className={css(styles.scrollInstructionContainer)}>
-				SCROLL
+				<span>{currentItem}. / 03</span>
 			</div>
 		)
   }
@@ -18,11 +19,10 @@ export default class ScrollInstruction extends Component {
 
 const styles = StyleSheet.create({
   scrollInstructionContainer: {
-    height: '100px',
-    width: '100px',
-		border: '1px solid black',
+    height: '50px',
+    width: '50px',
 		position: 'absolute',
-		top: '0',
-		left: '0'
+		top: '90vh',
+		left: '10vw'
   },
 })

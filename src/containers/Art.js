@@ -21,11 +21,13 @@ export default class Art extends Component {
 const styles = StyleSheet.create({
   artContainer: {
     height: 'calc(100vh - 5vh)',
-    // border:'1px solid blue',
-    overflowY: 'scroll',
-
+    border:'1px solid blue',
   },
   artGridWrapper: {
-    
+    height:'100%',
+    width: '90%',
+    marginLeft:'10%',
+    overflowY: 'scroll',
+    background: 'lightblue'
   }
 })

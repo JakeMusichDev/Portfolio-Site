@@ -9,7 +9,11 @@ export default class Art extends Component {
   render() {
     return (
       <div className={css(styles.artContainer)}>
-        <div className={css(styles.artGridWrapper)} />
+        {socials.map((item, index) => (
+          <div key={index} className={css(styles.item)}>
+            {item}
+          </div>
+        )}
       </div>
     )
   }
@@ -22,7 +26,8 @@ const gridRow = props => {
 const styles = StyleSheet.create({
   artContainer: {
     height: '100%',
-    border: '1px solid red',
+    border: '1px solid blue',
   },
   artGridWrapper: {},
 })
+ 

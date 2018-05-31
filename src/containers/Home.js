@@ -1,19 +1,39 @@
 import React, { Component, ImageBackground } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
+import _ from 'underscore'
 
-import Scroller from '../components/home-components/Scroller'
-
+import HomeMenu from '../components/home-components/home-menu/HomeMenu'
+import HomeMenuSlider from '../components/home-components/home-menu/HomeMenuSlider'
+import ScrollInstruction from '../components/home-components/ScrollInstruction'
 import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
 
 export default class Home extends Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props)
+
+    this.state = { currentItem: 0, direction: null }
+
+    this.handleScroll = _.throttle(this.scrollMonitor, 1500, {
+      trailing: false,
+    })
+    window.addEventListener('wheel', this.handleScroll)
+  }
+
 
   render() {
+    const { currentItem, direction } = this.state
+
     return (
       <div id="home" className={css(styles.homeContainer)}>
         <PixiDisplacementImage />
-        <Scroller onSectionClick={this.onSectionClick} />
+        <HomeMenuSlider currentItem={currentItem} direction={direction} />
+        <HomeMenu
+          onSectionClick={this.onSectionClick}
+          currentItem={currentItem}
+          direction={direction}
+        />
+        <ScrollInstruction currentItem={currentItem} direction={direction} />
       </div>
     )
   }
@@ -29,92 +49,46 @@ export default class Home extends Component {
       duration: 2000,
       complete: () => {
         _this.props.history.push(`${section.route}`)
-      }
+      },
     })
+  }
+
+  scrollMonitor = wheelEvent => {
+    const direction = wheelEvent.deltaY > 0 ? '+' : '-'
+    const { currentItem } = this.state
+    let nextItem
+
+    if (direction === '+' && currentItem === 2) {
+      nextItem = 0
+    } else if (direction === '+' && currentItem >= 0) {
+      nextItem = currentItem + 1
+    } else if (direction === '-' && currentItem !== 0) {
+      nextItem = currentItem - 1
+    } else if (direction === '-' && currentItem === 0) {
+      nextItem = 2
+    } else {
+      return
+    }
+
+    this.setState({ currentItem: nextItem, direction })
   }
 }
 
 const styles = StyleSheet.create({
   homeContainer: {
-    height: '100vh',
+    height: 'calc(100vh - 5vh)',
+    width: '100vw',
+    border: '1px solid red',
+    display: 'block',
+    background: 'none',
   },
   homeMenu: {
     height: '60vh',
     width: '1px',
     position: 'absolute',
     top: '20vh',
-    right:'5vw',
+    right: '5vw',
     // marginLeft:'100',
     border: '0.25px solid white',
   },
 })
-
-// var width = window.offsetWidth;
-// var height = window.offsetHeight;
-// var playground = document.getElementById('px-render');
-//
-// var canvas;
-//
-// var ratio = 150 / 830;
-//
-// var count = 0;
-// var raf;
-//
-//
-// var renderer = PIXI.autoDetectRenderer(width, height, {transparent:true});
-// renderer.autoResize = true;
-// var tp, preview;
-// var displacementSprite,
-// displacementFilter,
-// stage;
-//
-// function setScene(url){
-//       playground.appendChild(renderer.view);
-//
-//         stage = new PIXI.Container();
-//
-//         tp = PIXI.Texture.fromImage(url);
-//         preview = new PIXI.Sprite(tp);
-//
-//         preview.anchor.x = 0;
-//
-//         displacementSprite = PIXI.Sprite.fromImage('https://res.cloudinary.com/dvxikybyi/image/upload/v1486634113/2yYayZk_vqsyzx.png');
-//         displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
-//
-//         displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
-//
-//         displacementSprite.scale.y = 0.6;
-//         displacementSprite.scale.x = 0.6;
-//
-//
-//         stage.addChild(displacementSprite);
-//
-//         stage.addChild(preview);
-//
-//     animate();
-// }
-//
-// function removeScene(){
-// cancelAnimationFrame(raf);
-// stage.removeChildren();
-// stage.destroy(true);
-// playground.removeChild(canvas);
-// }
-//
-//
-// function animate() {
-//   raf = requestAnimationFrame(animate);
-//
-//   displacementSprite.x = count*10;
-// displacementSprite.y = count*10;
-//
-// count += 0.05;
-//
-//   stage.filters = [displacementFilter];
-//
-//   renderer.render(stage);
-//
-//   canvas = playground.querySelector('canvas');
-// }
-//
-// setScene('https://unsplash.it/600/?random');
