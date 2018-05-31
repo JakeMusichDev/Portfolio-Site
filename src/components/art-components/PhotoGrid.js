@@ -9,14 +9,20 @@ export default class Art extends Component {
   render() {
     return (
       <div className={css(styles.artContainer)}>
-        <div className={css(styles.artGridWrapper)} />
+        <div className={css(styles.artGridWrapper)} >
+        
+        </div>  
       </div>
     )
   }
 }
 
 const gridRow = props => {
-  return <div />
+  return (
+    <div className={}>
+
+    </div>
+  )
 }
 
 const styles = StyleSheet.create({
