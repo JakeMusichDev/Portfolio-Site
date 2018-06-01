@@ -23,7 +23,7 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   headerWrapper: {
-    background: 'pink',
+    // background: 'pink',
     height: '5vh',
     width: '100vw',
     // position: 'absolute',

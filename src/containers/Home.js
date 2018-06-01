@@ -27,13 +27,19 @@ export default class Home extends Component {
     return (
       <div id="home" className={css(styles.homeContainer)}>
         <PixiDisplacementImage />
-        <HomeMenuSlider currentItem={currentItem} direction={direction} />
+        <HomeMenuSlider 
+          currentItem={currentItem} 
+          direction={direction}
+        />
         <HomeMenu
           onSectionClick={this.onSectionClick}
           currentItem={currentItem}
           direction={direction}
         />
-        <ScrollInstruction currentItem={currentItem} direction={direction} />
+        <ScrollInstruction 
+          currentItem={currentItem} 
+          direction={direction}
+        />
       </div>
     )
   }

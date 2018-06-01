@@ -28,7 +28,7 @@ export default class HomeMenu extends Component {
     Anime({
       targets: this.container,
       opacity: [0,1],
-      duration: 1000
+      duration: 2000
     })
   }
 
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     width: 'auto',
     top: '40vh',
     left: '60vw',
-    border: '1px solid green',
+    // border: '1px solid green',
     color: 'white',
   },
   menuTagContainer: {

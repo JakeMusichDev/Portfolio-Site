@@ -36,9 +36,9 @@ export default class TitleHeader extends Component {
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    width:"40%",
+    width:"20%",
     overflow:"hidden",
-    border:'1px solid red',
+    border:'1px solid blue',
     height:'100%',
     // marginLeft: '10%',
     // display:'flex',
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     textDecoration:"none",
     outline:"none",
     transition:'0.3s all',
+    border:'1px solid green',
     ':hover': {
       color:'blue'
     }

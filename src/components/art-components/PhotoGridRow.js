@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import { log } from 'util';
-
 
 export default class PhotoGridRow extends Component {
   render() {
@@ -9,11 +7,14 @@ export default class PhotoGridRow extends Component {
     return (
       <div className={css(styles.gridRowContainer)}>
         <div className={css(styles.gridRow)}>
-          <div className={css(styles.photo)}>
-            <img src={`${content.src}`} alt='' />
-          </div>
-          <div className={css(styles.photoDetail)}>
-            {content.title.toUpperCase()}
+          <div className={css(styles.photoWrapper)}>
+          { content.src && 
+              <img
+                className={css(styles.photo)}
+                src={`${content.src}`}
+                alt="photo"
+              />
+          }
           </div>
         </div>
       </div>
@@ -22,16 +23,29 @@ export default class PhotoGridRow extends Component {
 }
 
 
+{/* <div className={css(styles.photoDetail)}>
+{content.title.toUpperCase()}
+</div> */}
+
 const styles = StyleSheet.create({
   gridRowContainer: {
     height: 'auto',
-    width: '100%',
-    border: '1px solid pink',
-    // display: 'flex',
-    // flexDirection: 'row',
+    width: 'auto',
+    // border: '1px solid red',
   },
-  gridRow: {
-    height: '100%',
-    width: '100%',
+  // gridRow: {
+  //   height: '100%',
+  //   width: '100%',
+  // },
+  // photoWrapper: {
+  //   height: '100%',
+  //   width: '100%',
+  //   // border: '1px solid yellow',
+  // }, 
+  photo: {
+    height: 'auto',
+    width: '200px',
+    margin:'20px',
+    border: '1px solid yellow',
   }
 })

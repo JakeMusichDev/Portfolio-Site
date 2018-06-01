@@ -9,7 +9,7 @@ export default class PhotoGrid extends Component {
     return (
       <div className={css(styles.artContainer)}>
       {photographyGridData.map( (content) => (
-        <PhotoGridRow key={`${content.key}`} content={content} />
+          <PhotoGridRow key={`${content.key}`} content={content} />
       ))}
       </div>
     )
@@ -20,9 +20,14 @@ export default class PhotoGrid extends Component {
 const styles = StyleSheet.create({
   artContainer: {
     height: '100%',
-    border: '1px solid purple',
-    display: 'inline-block',
-    width: '100%'
-  },
-  artGridWrapper: {},
+    width: '90%',
+    marginLeft: '5%',
+    overflowY: 'scroll',
+    display: 'flex',
+    // background: 'lightblue',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent:'space-evenly',
+    
+  }
 })

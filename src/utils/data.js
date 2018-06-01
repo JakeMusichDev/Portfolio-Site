@@ -1,11 +1,22 @@
+import displacementFilterImg from '../../assets/home/displacementFilterHome.jpeg'
+import bk_2 from '../../assets/home/home_bk_2.jpeg'
+
 const photoPath = '../../assets/photography/'
 
-const photo = {
+const photo1 = {
   type: 'photo',
   title: 'Iceland #12',
-  src: photoPath + 'images/smart1.jpg',
+  src: bk_2,
   css_class: '',
   key: '3asdl'
+};
+
+const photo2 = {
+  type: 'photo',
+  title: 'Iceland #10',
+  src: displacementFilterImg,
+  css_class: '',
+  key: 'd'
 };
 
 const emptyContainer = {
@@ -16,8 +27,13 @@ const emptyContainer = {
 }
 
 export const photographyGridData = [
-  photo,
+  photo1,
+  photo2,
   emptyContainer,
+  photo1,
+  photo1,
+  photo1,
+  emptyContainer
   // photo,
   // emptyContainer,
   // photo,

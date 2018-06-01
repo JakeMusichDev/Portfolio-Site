@@ -11,7 +11,7 @@ export default class ScrollInstruction extends Component {
     const { currentItem } = this.props
     return (
 			<div className={css(styles.scrollInstructionContainer)}>
-				<span>{currentItem}. / 03</span>
+				<span>{currentItem + 1}. / 03</span>
 			</div>
 		)
   }
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     height: '50px',
     width: '50px',
 		position: 'absolute',
-		top: '90vh',
+    top: '90vh',
+    fontFamily: ['Vollkorn', 'sans-serif'],
 		left: '10vw'
   },
 })

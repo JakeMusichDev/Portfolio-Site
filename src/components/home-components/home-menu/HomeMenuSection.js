@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
     color: 'black',
     opacity: '1',
-    fontSize: '4em',
+    fontSize: '5em',
     fontFamily: ['Vollkorn', 'sans-serif'],
     // letterSpacing: "6px",
     transition:'0.2s all',
