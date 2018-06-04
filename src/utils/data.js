@@ -29,11 +29,15 @@ const emptyContainer = {
 export const photographyGridData = [
   photo1,
   photo2,
-  emptyContainer,
   photo1,
   photo1,
   photo1,
-  emptyContainer
+  photo1,
+  photo1,
+  photo1,
+  photo1,
+  photo1,
+  
   // photo,
   // emptyContainer,
   // photo,

@@ -22,15 +22,14 @@ export default class HomeMenuSection extends Component {
   componentWillUnmount() {
     const { index, direction } = this.props
     const tl = Anime.timeline()
-    tl
-      .add({
-        targets: `#menu-section-${index}`,
-        translateY: '100%',
-        opacity:[0,1],
-        duration: 1000,
-        easing: 'easeInOutQuint',
-        elasticity: 100,
-      })
+    tl.add({
+      targets: `#menu-section-${index}`,
+      // translateY: '100px',
+      opacity:[0,1],
+      duration: 2000,
+      easing: 'easeInOutQuint',
+      elasticity: 100,
+    })
   }
 
   render() {

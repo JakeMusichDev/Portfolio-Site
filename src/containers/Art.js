@@ -1,15 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
-
-// import Socials from '../components/contact-components/Socials'
-
-// import backgroundImg from '../../assets/home/home_bk.jpeg'
 import PhotoGrid from '../components/art-components/PhotoGrid'
+import PhotoHeader from '../components/art-components/PhotoHeader'
 
 export default class Art extends Component {
   render() {
     return (
-      <div className={css(styles.artContainer)}>
+      <div id='art-container' className={css(styles.artContainer)}>
+        <PhotoHeader />
         <PhotoGrid />
       </div>
     )
@@ -19,6 +17,7 @@ export default class Art extends Component {
 const styles = StyleSheet.create({
   artContainer: {
     height: 'calc(100vh - 5vh)',
-    width: '100vw'
+    width: '100vw',
+    overflowY: 'scroll'
   }
 })

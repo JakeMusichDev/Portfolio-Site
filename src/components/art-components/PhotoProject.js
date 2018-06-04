@@ -1,20 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 
-export default class PhotoGridRow extends Component {
+export default class PhotoProject extends Component {
   render() {
     const {content} = this.props
     return (
       <div className={css(styles.gridRowContainer)}>
         <div className={css(styles.gridRow)}>
           <div className={css(styles.photoWrapper)}>
-          { content.src && 
+            {content.src && (
               <img
                 className={css(styles.photo)}
                 src={`${content.src}`}
                 alt="photo"
               />
-          }
+            )}
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   gridRowContainer: {
     height: 'auto',
     width: 'auto',
-    // border: '1px solid red',
+    border: '1px solid red',
   },
   // gridRow: {
   //   height: '100%',
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
   // }, 
   photo: {
     height: 'auto',
-    width: '200px',
+    width: '40vw',
     margin:'20px',
-    border: '1px solid yellow',
+    // border: '1px solid yellow',
   }
 })
