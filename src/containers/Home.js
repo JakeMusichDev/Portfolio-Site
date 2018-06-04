@@ -1,57 +1,100 @@
 import React, { Component, ImageBackground } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import Anime from 'animejs'
+import _ from 'underscore'
 
-import Scroller from '../components/home-components/Scroller'
-import TitleHeader from '../components/general-components/TitleHeader'
-
-import backgroundImg from '../../assets/home/home_bk.jpeg'
-import * as PIXI from 'pixi.js'
+import HomeMenu from '../components/home-components/home-menu/HomeMenu'
+import HomeMenuSlider from '../components/home-components/home-menu/HomeMenuSlider'
+import ScrollInstruction from '../components/home-components/ScrollInstruction'
+import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
 
 export default class Home extends Component {
-  app: PIXI.Application;
-  gameCanvas: HTMLDivElement;
+  constructor(props) {
+    super(props)
 
-  componentDidMount() {
-    this.initPixi()
+    this.state = { currentItem: 0, direction: null }
+
+    this.handleScroll = _.throttle(this.scrollMonitor, 1500, {
+      trailing: false,
+    })
+    window.addEventListener('wheel', this.handleScroll)
   }
+
+
   render() {
-    let component = this;
+    const { currentItem, direction } = this.state
+
     return (
-      <div id='home' className={css(styles.homeContainer)}>
-        <div ref={(thisDiv) => {component.gameCanvas = thisDiv}} />
-        <Scroller />
+      <div id="home" className={css(styles.homeContainer)}>
+        <PixiDisplacementImage />
+        <HomeMenuSlider 
+          currentItem={currentItem} 
+          direction={direction}
+        />
+        <HomeMenu
+          onSectionClick={this.onSectionClick}
+          currentItem={currentItem}
+          direction={direction}
+        />
+        <ScrollInstruction 
+          currentItem={currentItem} 
+          direction={direction}
+        />
       </div>
     )
   }
 
-  initPixi = () => {
-          // Create a new application
-      this.app = new PIXI.Application(window.innerWidth, window.innerHeight);
+  onSectionClick = (event, section) => {
+    const _this = this
+    const tl = Anime.timeline()
+    console.log('hit')
 
-      this.gameCanvas.appendChild(this.app.view);
-      // this.app.start();
-      // Draw a green rectangle
-      const rect = new PIXI.Graphics()
-          .beginFill(0x00ff00)
-          .drawRect(40, 40, 200, 200);
+    tl.add({
+      targets: '#line',
+      width: '800px',
+      duration: 2000,
+      complete: () => {
+        _this.props.history.push(`${section.route}`)
+      },
+    })
+  }
 
-      // Add a blur filter
-      rect.filters = [new PIXI.filters.BlurFilter()];
+  scrollMonitor = wheelEvent => {
+    const direction = wheelEvent.deltaY > 0 ? '+' : '-'
+    const { currentItem } = this.state
+    let nextItem
 
-      // Display rectangle
-      const home = document.getElementById('home')
-      // app.stage.addChild(rect);
-      // home.appendChild(app.view);
+    if (direction === '+' && currentItem === 2) {
+      nextItem = 0
+    } else if (direction === '+' && currentItem >= 0) {
+      nextItem = currentItem + 1
+    } else if (direction === '-' && currentItem !== 0) {
+      nextItem = currentItem - 1
+    } else if (direction === '-' && currentItem === 0) {
+      nextItem = 2
+    } else {
+      return
+    }
+
+    this.setState({ currentItem: nextItem, direction })
   }
 }
 
 const styles = StyleSheet.create({
   homeContainer: {
-    height: '100vh',
-    background: `url(${backgroundImg}) no-repeat center center`,
-    backgroundSize: 'cover',
+    height: 'calc(100vh - 5vh)',
+    width: '100vw',
+    border: '1px solid red',
+    display: 'block',
+    background: 'none',
   },
-  cont: {
-    height: '200vh',
+  homeMenu: {
+    height: '60vh',
+    width: '1px',
+    position: 'absolute',
+    top: '20vh',
+    right: '5vw',
+    // marginLeft:'100',
+    border: '0.25px solid white',
   },
 })

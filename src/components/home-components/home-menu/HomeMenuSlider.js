@@ -20,6 +20,10 @@ export default class HomeMenu extends Component {
       })
   }
 
+  animateSliderCircle = () => {
+    
+  }
+
   render() {
     return (
       <div className={css(styles.homeMenuSliderContainer)}>
@@ -37,7 +41,9 @@ export default class HomeMenu extends Component {
             />
           </svg>
         </div>
-
+        <svg width="3" height="679" viewBox="0 0 3 679" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect id="Rectangle" x="0.5" y="0.5" width="2" height="678" transform="translate(3) scale(-1 1)" stroke="#F2F2F2"/>
+        </svg>
         <div className={css(styles.sliderLine)}>
           <svg id="slider-line" width="200">
             <rect
@@ -58,7 +64,7 @@ export default class HomeMenu extends Component {
 const styles = StyleSheet.create({
   homeMenuSliderContainer: {
     border:'1px solid orange',
-    height: '10%',
+    height: '10vh',
   },
   slderRect: {
     height: '575.5px',

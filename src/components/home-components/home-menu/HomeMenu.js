@@ -6,64 +6,75 @@ import { breakPoints } from '../../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = ["a   rt", "c     n ct", 'd   vlp   m nt'];
+const items = [
+  { name: 'art', route: '/art' },
+  { name: 'about', route: '/contact' },
+  { name: 'work', route: '/work' },
+]
 
 export default class HomeMenu extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+
+    }
+  }
   componentDidMount() {
-    // this.introAnimation()
+    this.animateSection()
   }
 
-  componentWillReceiveProps(nextProps, prevState) {
-    this.animateSection(nextProps)
-  }
-
-  animateSection = (nextProps) => {
-    let currentSection = document.getElementById(`menu-section-${nextProps.currentItem}`)
-    let bounding = currentSection.getBoundingClientRect()
-    let top = bounding.top + bounding.height
-    console.log(top);
+  animateSection = () => {
     Anime({
       targets: this.container,
-      scrollTop:top,
-      duration:100
+      opacity: [0,1],
+      duration: 2000
     })
   }
 
   render() {
+    const {currentItem, direction, onSectionClick} = this.props
     return (
       <div className={css(styles.homeMenuContainer)}>
-        <div ref={el => {this.container = el}}className={css(styles.menuTagContainer)}>
-          {
-            items.map( (item, index) =>
-              <HomeMenuSection key={index} item={item} index={index} />
-            )
-          }
+        <div
+          ref={el => {
+            this.container = el
+          }}
+          className={css(styles.menuTagContainer)}>
+            {items.map(
+              (item, index) =>
+                currentItem === index && (
+                <HomeMenuSection
+                key={`menu-section-${index}`}
+                item={item}
+                index={index}
+                active={currentItem}
+                direction={direction}
+                onSectionClick={onSectionClick}
+              />
+            ))}
         </div>
+        
       </div>
     )
   }
 }
-{/*  <HomeMenuSlider /> */}
 
 const styles = StyleSheet.create({
   homeMenuContainer: {
     position: 'absolute',
-    height: '80vh',
-    width: '30vw',
-    top: '10vh',
-    left: '55vw',
+    height: 'auto',
+    width: 'auto',
+    top: '40vh',
+    left: '60vw',
+    // border: '1px solid green',
     color: 'white',
-    [breakPoints.tablet]: {
-      left: '10vw',
-      height: '80vh',
-      width: '80vw',
-    },
   },
   menuTagContainer: {
-    height: '90%',
-    fontFamily:"sans-serif",
-    letterSpacing:"3px",
-    overflowY:'hidden'
-    // border:'1px solid pink'
+    height: '100%',
+    fontFamily: 'sans-serif',
+    // letterSpacing: '3px',
+    // overflowY: 'hidden',
+    // border: '1px solid pink',
   },
 })

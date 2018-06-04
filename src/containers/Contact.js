@@ -21,7 +21,7 @@ export default class Contact extends Component {
           <Socials />
         </div>
         <div className={css(styles.flickerImgContainer)}>
-          <img src={`/assets/home${backgroundImg}`} alt=""/>
+          <img className={css(styles.img)} src={`${backgroundImg}`} alt=""/>
         </div>
       </div>
     )
@@ -41,14 +41,19 @@ const styles = StyleSheet.create({
     height: '30vh',
     color:"white",
     fontSize:"50px",
-    marginTop:'100px',
+    marginTop:'40px',
+    zIndex:"2"
   },
   flickerImgContainer: {
     position:'absolute',
     height:"200px",
     width:"400px",
-    top:"40vh",
-    left:"50vw",
-    border:"1px solid white"
+    top:"60vh",
+    left:"50vw"
+  },
+  img: {
+    height:"200px",
+    width:"400px",
+    zIndex:"1"
   }
 })
