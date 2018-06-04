@@ -4,7 +4,7 @@ import { Routes } from '../routes/Routes'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import '../styles/index.css'
 
-import Header from '../components/general-components/Header'
+import Header from '../components/header-components/Header'
 
 export default class App extends Component {
   render() {

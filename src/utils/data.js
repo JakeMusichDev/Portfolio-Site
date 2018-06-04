@@ -28,5 +28,7 @@ const emptyContainer = {
 }
 
 const photoProject = [photo1, photo2, photo1, photo2, photo1]
+const photoProject2 = [photo1, photo2, photo1, photo2, photo1, photo1,photo1,photo2]
+const photoProject3 = [photo2, photo1, photo2, photo1]
 
-export const photographyGridData = [photoProject, photoProject, photoProject]
+export const photographyGridData = [photoProject2, photoProject, photoProject3, photoProject, photoProject2]

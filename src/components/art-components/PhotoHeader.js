@@ -7,10 +7,19 @@ import { relative } from 'path'
 
 export default class PhotoGridRow extends Component {
   componentDidMount() {
-    Anime({
+    const tl = Anime.timeline()
+    tl
+    .add({
       targets: this.header,
-      opacity: [0,1],
+      opacity: 0,
+      duration: 0,
+      translateX: '-100%',
+    }).add({
+      targets: this.header,
+      opacity: [1],
       duration: 2000,
+      translateX: '0%',
+
       complete: () => this.attachRellax()
     })
   }
@@ -18,7 +27,7 @@ export default class PhotoGridRow extends Component {
   attachRellax = () => {
     const rellax = new Rellax(this.header, {
       wrapper: '#art-container',
-      speed: -2,
+      speed: -5,
     })
   }
 
@@ -32,6 +41,9 @@ export default class PhotoGridRow extends Component {
         className={css(styles.photoHeaderContainer)}>
         <div className={css(styles.photoHeaderWrapper)}>
           <div className={css(styles.photoHeader)}>PHOTOGRAPHY</div>
+        </div>
+        <div>
+          <div className={css(styles.photoHeader)}>I take photographs. People, places, things.</div>          
         </div>
       </div>
     )

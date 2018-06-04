@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Anime from 'animejs'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import { breakPoints } from '../../../utils/styles'
-import '../../../styles/index.css'
+import { breakPoints } from '../../utils/styles'
+import '../../styles/index.css'
 import VanillaTilt from 'vanilla-tilt'
 
 export default class HomeMenuSection extends Component {

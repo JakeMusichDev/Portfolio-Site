@@ -3,8 +3,8 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
 import _ from 'underscore'
 
-import HomeMenu from '../components/home-components/home-menu/HomeMenu'
-import HomeMenuSlider from '../components/home-components/home-menu/HomeMenuSlider'
+import HomeMenu from '../components/home-components/HomeMenu'
+import HomeMenuSlider from '../components/home-components/HomeMenuSlider'
 import ScrollInstruction from '../components/home-components/ScrollInstruction'
 import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
 

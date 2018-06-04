@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Anime from 'animejs'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import { breakPoints } from '../../../utils/styles'
+import { breakPoints } from '../../utils/styles'
 
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
