@@ -22,11 +22,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '90%',
     marginLeft: '10%',
-    display: 'flex',
-    // background: 'lightblue',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent:'space-evenly',
-    
+    display: 'block',
+    // border: '1px solid blue',
   }
 })

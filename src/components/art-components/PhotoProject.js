@@ -1,51 +1,35 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
+import Photo from '../art-components/Photo'
 
 export default class PhotoProject extends Component {
   render() {
     const {content} = this.props
     return (
-      <div className={css(styles.gridRowContainer)}>
-        <div className={css(styles.gridRow)}>
-          <div className={css(styles.photoWrapper)}>
-            {content.src && (
-              <img
-                className={css(styles.photo)}
-                src={`${content.src}`}
-                alt="photo"
-              />
-            )}
-          </div>
+      <div className={css(styles.photoProjectContainer)}>
+        <div className={css(styles.photoProject)}>
+          {content.map( (content) => (
+            <Photo key={`${content.key}`} content={content} />
+          ))}
         </div>
       </div>
     )
   }
 }
 
-
-{/* <div className={css(styles.photoDetail)}>
-{content.title.toUpperCase()}
-</div> */}
-
 const styles = StyleSheet.create({
-  gridRowContainer: {
+  photoProjectContainer: {
     height: 'auto',
-    width: 'auto',
-    border: '1px solid red',
+    width: '100%',
   },
-  // gridRow: {
-  //   height: '100%',
-  //   width: '100%',
-  // },
-  // photoWrapper: {
-  //   height: '100%',
-  //   width: '100%',
-  //   // border: '1px solid yellow',
-  // }, 
-  photo: {
+  photoProject: {
     height: 'auto',
-    width: '40vw',
-    margin:'20px',
-    // border: '1px solid yellow',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    // border: '1px solid red',
+    marginBottom: '10vh',
+    justifyContent: 'space-evenly',
   }
 })
