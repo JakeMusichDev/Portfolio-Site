@@ -13,12 +13,12 @@ export default class PhotoGridRow extends Component {
       targets: this.header,
       opacity: 0,
       duration: 0,
-      translateX: '-100%',
+      translateY: '-100%',
     }).add({
       targets: this.header,
       opacity: [1],
-      duration: 2000,
-      translateX: '0%',
+      duration: 3000,
+      translateY: '0%',
 
       complete: () => this.attachRellax()
     })
@@ -43,12 +43,13 @@ export default class PhotoGridRow extends Component {
           <div className={css(styles.photoHeader)}>PHOTOGRAPHY</div>
         </div>
         <div>
-          <div className={css(styles.photoHeader)}>I take photographs. People, places, things.</div>          
         </div>
       </div>
     )
   }
 }
+
+{/* <div className={css(styles.photoHeader)}>I take photographs. People, places, things.</div>           */}
 
 const styles = StyleSheet.create({
   photoHeaderContainer: {
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignContent: 'center',
+    justifyContent: 'flex-end',
+    // alignContent: 'c',
+    border: '1px solid blue',
   },
   photoHeaderWrapper: {
     height: 'auto',
-    width: 'auto',
     // border: '1px solid blue',
     fontSize: 80,
     fontFamily: ['Vollkorn', 'sans-serif'],

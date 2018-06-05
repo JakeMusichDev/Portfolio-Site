@@ -20,15 +20,19 @@ const photo2 = {
   key: 'd',
 }
 
-const emptyContainer = {
-  type: 'empty',
-  css_class: '',
-  key: '12309asdf',
-  title: 'Empty 2',
+const photoProject3 = {
+  name: 'Brooklyn',
+  content: [
+    photo1,
+    photo2,
+  ],
 }
 
-const photoProject = [photo1, photo2, photo1, photo2, photo1]
-const photoProject2 = [photo1, photo2, photo1, photo2, photo1, photo1,photo1,photo2]
-const photoProject3 = [photo2, photo1, photo2, photo1]
-
-export const photographyGridData = [photoProject2, photoProject, photoProject3, photoProject, photoProject2]
+export const photographyGridData = [
+  photoProject3,
+  photoProject3,
+  photoProject3,
+  photoProject3,
+  photoProject3,
+  photoProject3,
+]

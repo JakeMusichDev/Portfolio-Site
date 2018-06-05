@@ -7,20 +7,12 @@ import { relative } from 'path'
 
 export default class Photo extends Component {
   componentDidMount() {
-    // Anime({
-    //   targets: this.header,
-    //   opacity: [0,1],
-    //   duration: 2000,
-    //   complete: () => this.attachRellax()
-    // })
+    Anime({
+      targets: this.header,
+      opacity: [0,1],
+      duration: 2000,
+    })
   }
-
-  // attachRellax = () => {
-  //   const rellax = new Rellax(this.header, {
-  //     wrapper: '#art-container',
-  //     speed: -2,
-  //   })
-  // }
 
   render() {
     const { content } = this.props
@@ -29,7 +21,9 @@ export default class Photo extends Component {
         ref={ref => {
           this.header = ref
         }}
+        data-aos="fade-left"
         className={css(styles.photoContainer)}>
+        {content.title}
         {content.src && (
           <img
             className={css(styles.photo)}
@@ -44,12 +38,12 @@ export default class Photo extends Component {
 
 const styles = StyleSheet.create({
   photoContainer: {
-    height: '200px',
-    width: 'auto',
+    height: 'auto',
+    width: '70vw',
     margin: '2%',
   },
   photo: {
     height: '100%',
-    width: 'auto',
+    width: '100%',
   }
 })

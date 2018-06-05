@@ -17,7 +17,11 @@ export default class Home extends Component {
     this.handleScroll = _.throttle(this.scrollMonitor, 1500, {
       trailing: false,
     })
-    window.addEventListener('wheel', this.handleScroll)
+    const wheel = window.addEventListener('wheel', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('wheel', wheel)
   }
 
 
@@ -47,11 +51,12 @@ export default class Home extends Component {
   onSectionClick = (event, section) => {
     const _this = this
     const tl = Anime.timeline()
-    console.log('hit')
 
     tl.add({
-      targets: '#line',
-      width: '800px',
+      targets: '#home-pixi',
+      width: '100vw',
+      height: '100vh',
+      elasticity: 0,
       duration: 2000,
       complete: () => {
         _this.props.history.push(`${section.route}`)

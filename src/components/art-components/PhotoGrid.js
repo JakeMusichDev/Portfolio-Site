@@ -8,8 +8,8 @@ export default class PhotoGrid extends Component {
   render() {
     return (
       <div className={css(styles.artContainer)}>
-      { photographyGridData.map( (content) => (
-          <PhotoProject key={`${content.key}`} content={content} />
+      { photographyGridData.map( (project) => (
+          <PhotoProject key={`${project.name}`} project={project} />
       ))}
       </div>
     )
@@ -19,9 +19,10 @@ export default class PhotoGrid extends Component {
 
 const styles = StyleSheet.create({
   artContainer: {
-    height: '100%',
-    width: '90%',
-    marginLeft: '10%',
-    display: 'block'
+    height: 'auto',
+    width: '80%',
+    marginLeft: '20%',
+    display: 'block',
+    border: '1px solid blue'
   }
 })

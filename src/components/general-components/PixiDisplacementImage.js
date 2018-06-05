@@ -27,17 +27,13 @@ export default class Home extends Component {
     .add({
       targets: this.canvasAnchor,
       height: '0%',
-      duration: 1000,
+      duration: 0,
     })
     .add({
       targets: this.canvasAnchor,
       height:'50%',
-      duration: 1000,
-    })
-    .add({
-      targets: this.canvasAnchor,
       opacity:[0,1],
-      duration: 1000,
+      duration: 2000,
       complete:() => this.initPixi()
     })
   }
@@ -48,6 +44,7 @@ export default class Home extends Component {
       <div
         className={css(styles.homeContainer)}>
         <div
+          id='home-pixi'
           onClick={this.changePhoto}
           className={css(styles.home)}
           ref={thisDiv => {

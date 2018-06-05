@@ -4,14 +4,17 @@ import Photo from '../art-components/Photo'
 
 export default class PhotoProject extends Component {
   render() {
-    const {content} = this.props
+    const {project} = this.props
+    console.log(project);
+    
     return (
       <div className={css(styles.photoProjectContainer)}>
         <div className={css(styles.photoProject)}>
-          {content.map( (content) => (
+          {project.content.map( (content) => (
             <Photo key={`${content.key}`} content={content} />
           ))}
         </div>
+        {project.name}
       </div>
     )
   }
@@ -26,10 +29,10 @@ const styles = StyleSheet.create({
     height: 'auto',
     width: '100%',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
-    // border: '1px solid red',
+    border: '1px solid red',
     marginBottom: '10vh',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   }
 })
