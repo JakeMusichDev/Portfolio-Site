@@ -23,7 +23,7 @@ export default class Photo extends Component {
         }}
         data-aos="fade-left"
         className={css(styles.photoContainer)}>
-        {content.title}
+        {/* {content.title} */}
         {content.src && (
           <img
             className={css(styles.photo)}
@@ -39,7 +39,7 @@ export default class Photo extends Component {
 const styles = StyleSheet.create({
   photoContainer: {
     height: 'auto',
-    width: '70vw',
+    width: '20vw',
     margin: '2%',
   },
   photo: {

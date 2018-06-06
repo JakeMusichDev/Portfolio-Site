@@ -5,7 +5,7 @@ import Anime from 'animejs'
 
 import backgroundImg from '../../../assets/home/home_bk.jpeg'
 import backgroundImg2 from '../../../assets/home/home_bk_2.jpeg'
-
+import drum from '../../../assets/photography/drum.JPG'
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
 import { request } from 'http';
 
@@ -21,21 +21,16 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const tl = Anime.timeline()
-    
-    tl
-    .add({
+    this.initPixi()
+    Anime({
       targets: this.canvasAnchor,
-      height: '0%',
-      duration: 0,
-    })
-    .add({
-      targets: this.canvasAnchor,
-      height:'50%',
       opacity:[0,1],
       duration: 2000,
-      complete:() => this.initPixi()
     })
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    this.nextBackgroundImage(nextProps)
   }
 
   render() {
@@ -45,7 +40,6 @@ export default class Home extends Component {
         className={css(styles.homeContainer)}>
         <div
           id='home-pixi'
-          onClick={this.changePhoto}
           className={css(styles.home)}
           ref={thisDiv => {
             component.canvasAnchor = thisDiv
@@ -56,7 +50,7 @@ export default class Home extends Component {
   }
 
   initPixi = () => {
-    if (!PIXI.loader.resources['background']) {
+    if (!PIXI.loader.resources['background-2']) {
       this.loaderConfig()
     } else {
       this.buildApp()
@@ -65,15 +59,16 @@ export default class Home extends Component {
 
   loaderConfig = () => {
     PIXI.loader
-      .add('background', `${backgroundImg}`)
-      .add('background_2', `${backgroundImg2}`)
+      .add('background-0', `${backgroundImg}`)
+      .add('background-1', `${backgroundImg2}`)
       .add('filter', `${displacementFilterImg}`)
+      .add('background-2', `${drum}`)
+      
       .load(this.buildApp);
   }
 
   buildApp = () => {
     const anchorBounds = this.canvasAnchor.getBoundingClientRect()
-    // this.app = PIXI.autoDetectRenderer(256, 256);
     this.app = new PIXI.Application({
       width:  anchorBounds.width,
       height: anchorBounds.height,
@@ -96,7 +91,7 @@ export default class Home extends Component {
     this.app.stage.addChild(this.stageContainer)
     
     // Create Image itself
-    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background'].texture)
+    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background-0'].texture)
     imageSprite.autoFit = true
     imageSprite.scale.set(0.3, 0.3)
     imageSprite.anchor.set(0.2,0.2)
@@ -130,9 +125,10 @@ export default class Home extends Component {
   }
 
   
-  changePhoto = () => {
-    // Create Image itself
-    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background_2'].texture)
+  nextBackgroundImage = (nextProps) => {
+    const {currentItem} = nextProps
+    
+    const imageSprite = new PIXI.Sprite(PIXI.loader.resources[`background-${currentItem}`].texture)
     imageSprite.autoFit = true
     imageSprite.scale.set(0.3, 0.3)
     imageSprite.anchor.set(0.2,0.2)
@@ -158,7 +154,7 @@ const styles = StyleSheet.create({
   },
   home: {
     height: '50%',
-    width: '30%',
+    width: '40%',
     border: '1px solid black',
     overflow: 'hidden'
   },

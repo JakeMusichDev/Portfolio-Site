@@ -17,9 +17,10 @@ export default class PhotoGridRow extends Component {
     }).add({
       targets: this.header,
       opacity: [1],
-      duration: 3000,
+      duration: 1500,
+      elasticity: 0,
       translateY: '0%',
-
+      easing: 'easeInSine',
       complete: () => this.attachRellax()
     })
   }
@@ -53,14 +54,14 @@ export default class PhotoGridRow extends Component {
 
 const styles = StyleSheet.create({
   photoHeaderContainer: {
-    height: '80%',
+    height: '90%',
     width: '90%',
     marginLeft: '10%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    // alignContent: 'c',
-    border: '1px solid blue',
+    // border: '1px solid blue',
+    marginBottom: '30%'
   },
   photoHeaderWrapper: {
     height: 'auto',

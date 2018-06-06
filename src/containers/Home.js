@@ -7,6 +7,7 @@ import HomeMenu from '../components/home-components/HomeMenu'
 import HomeMenuSlider from '../components/home-components/HomeMenuSlider'
 import ScrollInstruction from '../components/home-components/ScrollInstruction'
 import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
+import SectionCounter from '../components/home-components/SectionCounter'
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,11 +18,15 @@ export default class Home extends Component {
     this.handleScroll = _.throttle(this.scrollMonitor, 1500, {
       trailing: false,
     })
-    const wheel = window.addEventListener('wheel', this.handleScroll)
   }
 
+  componentDidMount() {
+    this.wheelEvent = window.addEventListener('wheel', this.handleScroll)
+  }
+ 
   componentWillUnmount() {
-    window.removeEventListener('wheel', wheel)
+    console.log(this.wheelEvent);
+    window.removeEventListener('wheel', this.wheelEvent)
   }
 
 
@@ -30,20 +35,15 @@ export default class Home extends Component {
 
     return (
       <div id="home" className={css(styles.homeContainer)}>
-        <PixiDisplacementImage />
-        <HomeMenuSlider 
-          currentItem={currentItem} 
-          direction={direction}
-        />
+        <PixiDisplacementImage currentItem={currentItem}  />
+        <HomeMenuSlider currentItem={currentItem} direction={direction} />
         <HomeMenu
           onSectionClick={this.onSectionClick}
           currentItem={currentItem}
           direction={direction}
         />
-        <ScrollInstruction 
-          currentItem={currentItem} 
-          direction={direction}
-        />
+        <ScrollInstruction />
+        <SectionCounter currentItem={currentItem} />
       </div>
     )
   }
@@ -53,11 +53,11 @@ export default class Home extends Component {
     const tl = Anime.timeline()
 
     tl.add({
-      targets: '#home-pixi',
-      width: '100vw',
-      height: '100vh',
+      targets: '#home',
+      opacity: 0,
       elasticity: 0,
-      duration: 2000,
+      easing: 'easeOutQuart',
+      duration: 1000,
       complete: () => {
         _this.props.history.push(`${section.route}`)
       },

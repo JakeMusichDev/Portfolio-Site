@@ -16,7 +16,7 @@ export default class Art extends Component {
 
 const styles = StyleSheet.create({
   artContainer: {
-    height: 'calc(100vh - 5vh)',
+    height: 'calc(100vh)',
     width: '100vw',
     overflowY: 'scroll'
   }

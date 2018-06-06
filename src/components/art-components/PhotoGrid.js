@@ -20,9 +20,9 @@ export default class PhotoGrid extends Component {
 const styles = StyleSheet.create({
   artContainer: {
     height: 'auto',
-    width: '80%',
-    marginLeft: '20%',
+    width: '85%',
+    marginLeft: '15%',
+    marginRight: '5%',
     display: 'block',
-    border: '1px solid blue'
   }
 })

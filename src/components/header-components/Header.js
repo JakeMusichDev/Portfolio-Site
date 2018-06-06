@@ -24,9 +24,13 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   headerWrapper: {
-    height: '5vh',
-    width: '100vw',
-    display: 'inline-block'
+    height: '10vh',
+    width: '90vw',
+    display: 'inline-block',
+    position: 'absolute',
+    marginLeft: '5vw',
+    top:0,
+    left:0,
   },
   titleHeader: {
     height: '100%',
