@@ -76,7 +76,7 @@ export default class Home extends Component {
       transparent: false,
       resolution: 1,
       autoResize: true,
-      interactive:true
+      interactive:true,
     })
 
     // this.app.renderer.resize(anchorBounds.height, anchorBounds.width)
@@ -127,7 +127,6 @@ export default class Home extends Component {
   
   nextBackgroundImage = (nextProps) => {
     const {currentItem} = nextProps
-    
     const imageSprite = new PIXI.Sprite(PIXI.loader.resources[`background-${currentItem}`].texture)
     imageSprite.autoFit = true
     imageSprite.scale.set(0.3, 0.3)
@@ -144,18 +143,21 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    height: '100vh',
-    width: '100vw',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background:'white',
+    height: '100%',
+    width: '100%',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // background:'#F2F2F2',
+    background: 'rgb(15,15,15)',
+    // border:'1px solid red'
   },
   home: {
-    height: '50%',
-    width: '40%',
-    border: '1px solid black',
-    overflow: 'hidden'
+    height: '100%',
+    width: '100%',
+    // border: '1px solid white',/
+    overflow: 'hidden',
+    // boxShadow: '1px 1px 1px 1px 3px #F2F2F2'
   },
 })

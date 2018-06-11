@@ -4,6 +4,7 @@ import Anime from 'animejs'
 import '../../styles/index.css'
 import Rellax from 'rellax'
 import { relative } from 'path'
+import WOW from 'wowjs'
 
 export default class Photo extends Component {
   componentDidMount() {
@@ -21,11 +22,13 @@ export default class Photo extends Component {
         ref={ref => {
           this.header = ref
         }}
-        data-aos="fade-left"
         className={css(styles.photoContainer)}>
         {/* {content.title} */}
         {content.src && (
-          <img
+          <img  
+          className="wow bounceIn"
+            data-wow-duration="2s" 
+            data-wow-delay="5s"
             className={css(styles.photo)}
             src={`${content.src}`}
             alt="photo"
@@ -39,8 +42,8 @@ export default class Photo extends Component {
 const styles = StyleSheet.create({
   photoContainer: {
     height: 'auto',
-    width: '20vw',
-    margin: '2%',
+    width: '100%',
+    // margin: '2%',
   },
   photo: {
     height: '100%',

@@ -62,19 +62,8 @@ export default class HomeMenu extends Component {
 
 const styles = StyleSheet.create({
   homeMenuContainer: {
-    position: 'absolute',
-    height: 'auto',
-    width: 'auto',
-    top: '40vh',
-    left: '60vw',
-    // border: '1px solid green',
-    color: 'white',
-  },
-  menuTagContainer: {
     height: '100%',
-    fontFamily: 'sans-serif',
-    // letterSpacing: '3px',
-    // overflowY: 'hidden',
-    // border: '1px solid pink',
+    width: '100%',
+    color: 'white',
   },
 })

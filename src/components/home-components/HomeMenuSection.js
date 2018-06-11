@@ -22,13 +22,12 @@ export default class HomeMenuSection extends Component {
   componentWillUnmount() {
     const { index, direction } = this.props
     const tl = Anime.timeline()
-    tl.add({
+    Anime({
       targets: `#menu-section-${index}`,
-      // translateY: '100px',
+      translateY: '100px',
       opacity:[0,1],
       duration: 2000,
       easing: 'easeInOutQuint',
-      elasticity: 100,
     })
   }
 
@@ -57,7 +56,7 @@ export default class HomeMenuSection extends Component {
     tl
       .add({
         targets: `#menu-section-${index}`,
-        translateY: `${direction}100%`,
+        translateY: `${direction}150%`,
         duration: 0,
       })
       .add({
@@ -114,29 +113,29 @@ export default class HomeMenuSection extends Component {
 
 const styles = StyleSheet.create({
   sectionWrapper: {
-    // overflow:'hidden',
     height: '100%',
     width: '100%',
   },
   sectionContainer: {
     height: '100%',
     width: '100%',
-    // border: '1px solid red',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     display: 'none',
-    padding: '20px'
   },
   section: {
     textDecoration: 'none',
-    color: 'black',
-    opacity: '1',
-    fontSize: '5em',
+    color: '#F2F2F2',
+    webkitTextStrokeWidth: '1px',
+    webkitTextStrokeColor: 'white',
+    fontSize: '7em',
     fontFamily: ['Vollkorn', 'sans-serif'],
-    // letterSpacing: "6px",
-    transition:'0.2s all',
-    fontWeight:900,
+    letterSpacing: "10px",
+    opacity:'0.8',
+    transition: '0.4s opacity',
+    height: 'auto',
+    width: 'auto',
     ":hover" : {
       opacity:0.9
     }

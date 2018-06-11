@@ -4,70 +4,119 @@ import Anime from 'animejs'
 import '../../styles/index.css'
 import Rellax from 'rellax'
 import { relative } from 'path'
+import noguchi from '../../../assets/photography/noguchi_1.JPG'
 
 export default class PhotoGridRow extends Component {
   componentDidMount() {
+    this.attachRellax() 
     const tl = Anime.timeline()
     tl
     .add({
       targets: this.header,
       opacity: 0,
       duration: 0,
-      translateY: '-100%',
+      translateX: '10%',
     }).add({
       targets: this.header,
       opacity: [1],
-      duration: 1500,
+      duration: 800,
       elasticity: 0,
-      translateY: '0%',
+      translateX: '0%',
       easing: 'easeInSine',
-      complete: () => this.attachRellax()
     })
+        // Anime({
+    //   targets: '#photo-overlay',
+    //   translateX: '100%',
+    //   duration: 400,
+    //   easing: 'easeOutSine',
+    //   delay: 1000
+    // })
   }
 
   attachRellax = () => {
-    const rellax = new Rellax(this.header, {
+    const rellax_header = new Rellax(this.header, {
       wrapper: '#art-container',
-      speed: -5,
+      speed: -5.5,
+    })
+    const rellax_img = new Rellax(this.img, {
+      wrapper: '#art-container',
+      speed: -3.5,
     })
   }
 
   render() {
     const { content } = this.props
     return (
-      <div
-        ref={ref => {
-          this.header = ref
-        }}
-        className={css(styles.photoHeaderContainer)}>
-        <div className={css(styles.photoHeaderWrapper)}>
-          <div className={css(styles.photoHeader)}>PHOTOGRAPHY</div>
+      <div  className={css(styles.photoHeaderContainer)}>
+        <div ref={ref => {this.header = ref}}  className={css(styles.photoHeaderTitle)}>
+          PHOTOGRAPHY
         </div>
-        <div>
+        <div ref={ref => {this.img = ref}} className={css(styles.photoHeaderImg)}>
+          {/* <div id='photo-overlay' className={css(styles.overlay)}/> */}
+          <img src={noguchi} className={css(styles.photo)} alt="photo"/>
+        </div>
+        <div className={css(styles.photoHeaderArtistContainer)}>
+          - Artist
         </div>
       </div>
     )
   }
 }
 
-{/* <div className={css(styles.photoHeader)}>I take photographs. People, places, things.</div>           */}
-
 const styles = StyleSheet.create({
   photoHeaderContainer: {
-    height: '90%',
-    width: '90%',
-    marginLeft: '10%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    // border: '1px solid blue',
-    marginBottom: '30%'
+    height: '100%',
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 20%)',
+    gridTemplateRows: 'repeat(4, 25%)',
   },
-  photoHeaderWrapper: {
+  photoHeaderImg: {
     height: 'auto',
-    // border: '1px solid blue',
+    gridColumnStart: '3',
+    gridColumnEnd: '6',
+    gridRow: '2/5',
+    // border:'1px solid red',
+    position: 'relative',
+    zIndex: '10'
+  },
+  photoHeaderTitle: {
+    gridColumn: '2/5',
+    gridRow: '3/4',
+    // zIndex: 10,
+    // border:'1px solid green',
     fontSize: 80,
     fontFamily: ['Vollkorn', 'sans-serif'],
+    letterSpacing: "6px",
+    color: '#F2f2F2',
+    zIndex: '12',
+    textAlign: 'center'
   },
-  photoHeader: {},
+  overlay: {
+    height: '100%',
+    width:'100%',
+    // border:'1px solid green',
+    position:'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 8,
+    background: 'rgb(15,15,15)'
+  },
+  photoHeaderArtistContainer: {
+    gridColumn: '3/4',
+    gridRow: '1/2',
+    color: '#F2f2F2',
+    textAlign: 'right',
+    fontFamily: ['Inconsolata', 'sans-serif'],
+    fontSize: '10px',
+    // border:'1px solid green',
+    paddingTop: '10%'
+  },
+  photo: {
+    position:'absolute',
+    height: '100%',
+    width:'100%',
+    top: 0,
+    left: 0
+  },
 })

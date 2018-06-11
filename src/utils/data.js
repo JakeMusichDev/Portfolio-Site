@@ -20,7 +20,7 @@ const photoPath = '../../assets/photography/'
 const _photo1 = {
   type: 'photo',
   title: 'Iceland #12',
-  src: bk_2,
+  src: troy,
   css_class: '',
   key: '3asdl',
 }
@@ -57,15 +57,42 @@ const _cole2 = {
   key: 'd',
 }
 
-const photoProject1 = {
-  name: 'Galgo',
+const highEater = {
+  name: 'High Eaters',
   content: [_photo1, _photo2, _alec, _photo2, _photo2, _cole1],
 }
 
-const photoProject2 = {
+const steez = {
   name: 'Brooklyn Steez',
   content: [
+    _alec,
+    _photo2,
+    _photo2,
+    _cole2,
     _photo1,
+    _photo2,
+    _photo1,
+    _photo2,
+    _photo1,
+    _alec,
+    _photo2,
+    _photo2,
+    _cole2,
+    _photo1,
+    _photo2,
+    _photo1,
+    _photo2,
+    _photo1,
+    _alec,
+    _photo2,
+    _photo2,
+    _cole2,
+    _photo1,
+    _photo2,
+    _photo1,
+    _photo2,
+    _photo1,
+    _alec,
     _photo2,
     _photo2,
     _cole2,
@@ -77,8 +104,26 @@ const photoProject2 = {
 
   ],
 }
-const photoProject3 = {
-  name: 'Beautiful People',
+const freshNet = {
+  name: "Zoro Depth Fres",
+  content: [
+    _photo1,
+    _photo2,
+    _photo1,
+    _photo2,
+  ],
+}
+const el = {
+  name: 'El Sonata',
+  content: [
+    _alec,
+    _photo2,
+    _photo1,
+    _photo2,
+  ],
+}
+const pruse = {
+  name: 'Beautiful Pruse',
   content: [
     _photo1,
     _photo2,
@@ -87,14 +132,15 @@ const photoProject3 = {
   ],
 }
 export const photographyGridData = [
-  photoProject3,
-  photoProject3,
-  photoProject2,
-  photoProject3,
-  photoProject3,
-  photoProject3,
-  photoProject1,
-  photoProject1,
-  photoProject1,
-  photoProject2
+  pruse,
+  steez,
+  steez,
+  highEater,
+  pruse,
+  freshNet,
+  highEater,
+  el,
+  highEater,
+  steez,
+  freshNet
 ]
