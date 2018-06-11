@@ -4,23 +4,16 @@ import Anime from 'animejs'
 import '../../styles/index.css'
 import Rellax from 'rellax'
 import { relative } from 'path'
+import WOW from 'wowjs'
 
 export default class Photo extends Component {
   componentDidMount() {
-    // Anime({
-    //   targets: this.header,
-    //   opacity: [0,1],
-    //   duration: 2000,
-    //   complete: () => this.attachRellax()
-    // })
+    Anime({
+      targets: this.header,
+      opacity: [0,1],
+      duration: 2000,
+    })
   }
-
-  // attachRellax = () => {
-  //   const rellax = new Rellax(this.header, {
-  //     wrapper: '#art-container',
-  //     speed: -2,
-  //   })
-  // }
 
   render() {
     const { content } = this.props
@@ -30,8 +23,12 @@ export default class Photo extends Component {
           this.header = ref
         }}
         className={css(styles.photoContainer)}>
+        {/* {content.title} */}
         {content.src && (
-          <img
+          <img  
+          className="wow bounceIn"
+            data-wow-duration="2s" 
+            data-wow-delay="5s"
             className={css(styles.photo)}
             src={`${content.src}`}
             alt="photo"
@@ -44,12 +41,12 @@ export default class Photo extends Component {
 
 const styles = StyleSheet.create({
   photoContainer: {
-    height: '200px',
-    width: 'auto',
-    margin: '2%',
+    height: 'auto',
+    width: '100%',
+    // margin: '2%',
   },
   photo: {
     height: '100%',
-    width: 'auto',
+    width: '100%',
   }
 })

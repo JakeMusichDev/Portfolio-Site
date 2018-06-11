@@ -3,15 +3,26 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { Routes } from '../routes/Routes'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import '../styles/index.css'
+import Wow from 'wowjs'
 
-import Header from '../components/general-components/Header'
+import cursorDot from '../../assets/app/Ellipse2.png'
+
+import Header from '../components/header-components/Header'
+
 
 export default class App extends Component {
+  componentDidMount() {
+    console.log(Wow);
+    const wow = new Wow.WOW({
+      live: false
+    }).init();
+  }
+
   render() {
     return (
       <Router>
         <div className={css(styles.app)}>
-          <Header />
+          {/* <Header /> */}
           <Routes />
         </div>
       </Router>
@@ -23,6 +34,7 @@ const styles = StyleSheet.create({
   app: {
     display:'block',
     height:'100vh',
-    width: '100vw'
+    width: '100vw',
+    cursor: `url(${cursorDot}) 2 2, pointer`
   }
 })

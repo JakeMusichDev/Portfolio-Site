@@ -5,7 +5,7 @@ import Anime from 'animejs'
 
 import backgroundImg from '../../../assets/home/home_bk.jpeg'
 import backgroundImg2 from '../../../assets/home/home_bk_2.jpeg'
-
+import drum from '../../../assets/photography/drum.JPG'
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
 import { request } from 'http';
 
@@ -21,25 +21,16 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const tl = Anime.timeline()
-    
-    tl
-    .add({
-      targets: this.canvasAnchor,
-      height: '0%',
-      duration: 1000,
-    })
-    .add({
-      targets: this.canvasAnchor,
-      height:'50%',
-      duration: 1000,
-    })
-    .add({
+    this.initPixi()
+    Anime({
       targets: this.canvasAnchor,
       opacity:[0,1],
-      duration: 1000,
-      complete:() => this.initPixi()
+      duration: 2000,
     })
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    this.nextBackgroundImage(nextProps)
   }
 
   render() {
@@ -48,7 +39,7 @@ export default class Home extends Component {
       <div
         className={css(styles.homeContainer)}>
         <div
-          onClick={this.changePhoto}
+          id='home-pixi'
           className={css(styles.home)}
           ref={thisDiv => {
             component.canvasAnchor = thisDiv
@@ -59,7 +50,7 @@ export default class Home extends Component {
   }
 
   initPixi = () => {
-    if (!PIXI.loader.resources['background']) {
+    if (!PIXI.loader.resources['background-2']) {
       this.loaderConfig()
     } else {
       this.buildApp()
@@ -68,15 +59,16 @@ export default class Home extends Component {
 
   loaderConfig = () => {
     PIXI.loader
-      .add('background', `${backgroundImg}`)
-      .add('background_2', `${backgroundImg2}`)
+      .add('background-0', `${backgroundImg}`)
+      .add('background-1', `${backgroundImg2}`)
       .add('filter', `${displacementFilterImg}`)
+      .add('background-2', `${drum}`)
+      
       .load(this.buildApp);
   }
 
   buildApp = () => {
     const anchorBounds = this.canvasAnchor.getBoundingClientRect()
-    // this.app = PIXI.autoDetectRenderer(256, 256);
     this.app = new PIXI.Application({
       width:  anchorBounds.width,
       height: anchorBounds.height,
@@ -84,7 +76,7 @@ export default class Home extends Component {
       transparent: false,
       resolution: 1,
       autoResize: true,
-      interactive:true
+      interactive:true,
     })
 
     // this.app.renderer.resize(anchorBounds.height, anchorBounds.width)
@@ -99,7 +91,7 @@ export default class Home extends Component {
     this.app.stage.addChild(this.stageContainer)
     
     // Create Image itself
-    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background'].texture)
+    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background-0'].texture)
     imageSprite.autoFit = true
     imageSprite.scale.set(0.3, 0.3)
     imageSprite.anchor.set(0.2,0.2)
@@ -133,9 +125,9 @@ export default class Home extends Component {
   }
 
   
-  changePhoto = () => {
-    // Create Image itself
-    const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background_2'].texture)
+  nextBackgroundImage = (nextProps) => {
+    const {currentItem} = nextProps
+    const imageSprite = new PIXI.Sprite(PIXI.loader.resources[`background-${currentItem}`].texture)
     imageSprite.autoFit = true
     imageSprite.scale.set(0.3, 0.3)
     imageSprite.anchor.set(0.2,0.2)
@@ -151,18 +143,21 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    height: '100vh',
-    width: '100vw',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background:'white',
+    height: '100%',
+    width: '100%',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // background:'#F2F2F2',
+    background: 'rgb(15,15,15)',
+    // border:'1px solid red'
   },
   home: {
-    height: '50%',
-    width: '30%',
-    border: '1px solid black',
-    overflow: 'hidden'
+    height: '100%',
+    width: '100%',
+    // border: '1px solid white',/
+    overflow: 'hidden',
+    // boxShadow: '1px 1px 1px 1px 3px #F2F2F2'
   },
 })
