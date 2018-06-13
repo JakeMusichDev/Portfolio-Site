@@ -25,8 +25,8 @@ export default class Photo extends Component {
         className={css(styles.photoContainer)}>
         {/* {content.title} */}
         {content.src && (
-          <img  
-          className="wow bounceIn"
+          <img
+            className="wow bounceIn"
             data-wow-duration="2s" 
             data-wow-delay="5s"
             className={css(styles.photo)}

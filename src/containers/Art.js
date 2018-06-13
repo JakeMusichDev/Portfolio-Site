@@ -8,6 +8,7 @@ export default class Art extends Component {
   render() {
     return (
       <div id='art-container' className={css(styles.artContainer)}>
+        <div className={css(styles.line)}></div>
         <PhotoHeader />
         <PhotoGrid />
       </div>
@@ -22,5 +23,14 @@ const styles = StyleSheet.create({
     overflowY: 'scroll',
     display: 'block',
     background: 'rgb(15,15,15)',
+  },
+  line: {
+    height: '100vh',
+    width: '1px',
+    position: 'absolute',
+    opacity: 0.4,
+    // borderRight: '1px solid white',
+    marginLeft: '15vw',
+    background: 'white'
   }
 })

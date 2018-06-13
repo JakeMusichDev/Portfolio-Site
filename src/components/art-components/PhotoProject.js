@@ -4,45 +4,55 @@ import Photo from '../art-components/Photo'
 import Waypoint from 'react-waypoint'
 import '../../styles/index.css'
 import WOW from 'wowjs'
+import Rellax from 'rellax'
 
 export default class PhotoProject extends Component {
+  constructor(props) {
+    super(props)
+
+    this._openProject = this.openProject.bind(this)
+  }
+
+  componentDidMount() {
+    const rellax_img = new Rellax(this.project, {
+      wrapper: '#art-container',
+      speed: 1.5,
+    })
+    const rellax_title = new Rellax(this.projectHeader, {
+      wrapper: '#art-container',
+      speed: -0.5,
+    })
+  }
+
+  openProject = () => {
+    const { project, index } = this.props
+    
+  }
+
   render() {
     const { project, index } = this.props
     const coverImage = project.content[0]
-
-      
-    // const renderList = {
-    //   return (
-        
-    //   )
-    // }
-
     return (
-      <div className={css(styles.photoProjectContainer)}>
+      <div ref={thisDiv => {this.project = thisDiv}}  className={css(styles.photoProjectContainer)}>
         <Waypoint
           key={`${project.name} + ${index} + waypoint`}
           onEnter={this.handleProjectVisibility}
           onLeave={this.handleProjectVisibility}
         />
-        <div className={css(styles.photoProject)}>
+        <div className={css(styles.photoProject)} onClick={this._openProject}>
           {project.content.map(
             (content, i) =>
               i === 0 ? (
                 <div className={css(styles.headerImg)}>
-                  {content.title}
+                  <div ref={thisDiv => {this.projectHeader = thisDiv}} >
+                    {index+1}
+                  </div>
                   <Photo
                     key={`${project.name} + ${content.key} + ${i}`}
                     content={content}
                   />
                 </div>
-              ) : (
-                <div className={css(styles.listImg)}>
-                  <Photo
-                    key={`${project.name} + ${content.key} + ${i}`}
-                    content={content}
-                  />
-                </div>
-              )
+              ) : null
           )}
         </div>
       </div>
@@ -80,7 +90,8 @@ const styles = StyleSheet.create({
     color: 'white',
     gridColumn: '1/5',
     gridRow: '1/4',
-    // border: '1px solid red',
+    cursor: 'crosshair',
+    border: '1px solid red',
   },
   listImg: {
     margin: '2%',

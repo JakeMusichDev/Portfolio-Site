@@ -44,7 +44,7 @@ const _alec = {
 const _cole1 = {
   type: 'photo',
   title: 'Iceland #10',
-  src: cole1,
+  src: jenny,
   css_class: '',
   key: 'd',
 }
@@ -116,7 +116,7 @@ const freshNet = {
 const el = {
   name: 'El Sonata',
   content: [
-    _alec,
+    _cole1,
     _photo2,
     _photo1,
     _photo2,
@@ -125,7 +125,7 @@ const el = {
 const pruse = {
   name: 'Beautiful Pruse',
   content: [
-    _photo1,
+    _cole2,
     _photo2,
     _photo1,
     _photo2,

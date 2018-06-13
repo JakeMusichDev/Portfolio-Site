@@ -56,7 +56,7 @@ export default class PhotoGridRow extends Component {
           <img src={noguchi} className={css(styles.photo)} alt="photo"/>
         </div>
         <div className={css(styles.photoHeaderArtistContainer)}>
-          - Artist
+          - JAKE MUSICH
         </div>
       </div>
     )

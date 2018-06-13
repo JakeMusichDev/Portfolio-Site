@@ -17,6 +17,7 @@ export default class PhotoGrid extends Component {
 
   render() {
     const { menuVisible, currentProject } = this.state
+    
     const menuStyle = menuVisible
       ? [styles.photoGrid__projectMenu, styles.active]
       : [styles.photoGrid__projectMenu, styles.inactive]
