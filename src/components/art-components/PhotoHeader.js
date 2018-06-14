@@ -36,7 +36,7 @@ export default class PhotoGridRow extends Component {
   attachRellax = () => {
     const rellax_header = new Rellax(this.header, {
       wrapper: '#art-container',
-      speed: -5.5,
+      speed: -4.5,
     })
     const rellax_img = new Rellax(this.img, {
       wrapper: '#art-container',
