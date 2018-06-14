@@ -11,9 +11,12 @@ export default class PhotoProjectView extends Component {
   constructor(props) {
     super(props)
   }
+  componentWillMount() {
+    this.grid = this.generateGridPosition()
+
+  }
 
   componentDidMount() {
-    this.setGridPosition()
     this.animeSetup()
   }
 
@@ -27,11 +30,13 @@ export default class PhotoProjectView extends Component {
         </div>
 
         <div className={css(styles.photoView_GridContainer)} >
-          {project.content.map((content, index) => (
-            <Photo
-              key={`${project.name} + ${index}`}
-              content={content}
-            />
+          {this.grid.map((content, index) => (
+            <div style={content.gridPosition}>
+              <Photo
+                key={`${project.name} + ${index}`}
+                content={content}
+              />
+            </div>
           ))}
         </div>
 
@@ -39,17 +44,16 @@ export default class PhotoProjectView extends Component {
     )
   }
 
-  setGridPosition = () => {
+  generateGridPosition = () => {
     const {project, index} = this.props
-    // const gridPosition = {gridRow:'', gridColumn:""}
-    // const randColumn = Math.floor(Math.random() * 11)
-    console.log(randColumn);
-    project.content.map( photoObj => {
-      let gridPosition = {gridRow:'', gridColumn:""}
+    let griddedImages = project.content.map( photoObj => {
       let randColumn = Math.floor(Math.random() * 11)
-      
+      let randRow = Math.floor(Math.random() * 11)
+      let gridPosition = {gridRow:randRow, gridColumn: randColumn }
+      photoObj.gridPosition = gridPosition
+      return photoObj
     })
-    
+    return griddedImages
   }
 
   animeSetup = () => {
