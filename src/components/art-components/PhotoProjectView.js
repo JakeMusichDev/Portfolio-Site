@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   photoView__MainContainer: {
     height: '100vh',
     width: '100vw',
-    backgroundColor: '#F2F2F2',
+    backgroundColor: 'black',
     position: 'absolute',
     top: 0, 
     left: 0,

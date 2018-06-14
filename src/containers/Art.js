@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import PhotoProjectsContainer from '../components/art-components/PhotoProjectsContainer'
 import PhotoHeader from '../components/art-components/PhotoHeader'
+import noise from '../../assets/broken-noise.png'
+
 import Anime from 'animejs'
 
 export default class Art extends Component {
@@ -41,7 +43,8 @@ const styles = StyleSheet.create({
     width: '100vw',
     overflowY: 'scroll',
     display: 'block',
-    background: 'rgb(15,15,15)',
+    backgroundColor: 'rgb(15,15,15)',
+    background: `url${noise}`,
   },
   line1: {
     height: '100vh',
