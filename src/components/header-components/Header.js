@@ -1,4 +1,5 @@
 import React, { Component, ImageBackground } from 'react'
+import { withRouter } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
 import "./../../styles/index.css"
@@ -6,17 +7,27 @@ import "./../../styles/index.css"
 import HeaderName from './HeaderName'
 import HeaderMenu from './HeaderMenu'
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
-    return (
-      <div className={css(styles.headerWrapper)}>
+    return this.renderHeader()
+  }
+  
+  //-----------------------------
+  // If current route isn't home page, render menu 
+  //-----------------------------
+  renderHeader = () => {
+    const { location } = this.props
+    if(location.pathname !== '/') {
+      return (
+        <div className={css(styles.headerWrapper)}>
         <HeaderName />
         <HeaderMenu />
       </div>
-    );
+    )} else {
+      return null
+    }
   }
 }
-
 
 const styles = StyleSheet.create({
   headerWrapper: {
@@ -26,9 +37,10 @@ const styles = StyleSheet.create({
     gridTemplateRows: 'repeat(1, 1fr)',
     gridTemplateColumns: 'repeat(10, auto)',
     position: 'absolute',
-    // background: 'red',
     top:0,
     left:0,
-    // background: 'none'
   }
 })
+
+const HeaderWithRouter = withRouter(Header)
+export default HeaderWithRouter

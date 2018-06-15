@@ -3,61 +3,88 @@ import { Link } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
 import './../../styles/index.css'
-import circleSvg from '../../../assets/home/Ellipse.svg'
+import circleSvg from '../../../assets/header-menu-circle.svg'
 
 export default class HeaderMenu extends Component {
+  constructor(props) {
+    super(props)
+
+    // this._handleHover = this.handleHover.bind(this)
+  }
+
   componentDidMount() {
-    // Anime({
-    //   targets: this.header,
-    //   translateY: ['-100%'],
-    //   duration: 0,
-    //   opacity: 0
-    // })
-    // Anime({
-    //   targets: this.header,
-    //   translateY: ['0%'],
-    //   opacity: 1,
-    //   duration: 1500,
-    // })
+    Anime({
+      targets: this.header,
+      duration: 1000,
+      opacity: [0, 1],
+      easing: 'easeInExpo'
+    })
   }
 
   render() {
     return (
-      <div  ref={el => {this.header = el}}  className={css(styles.titleWrapper)}>
-        <div className={css(styles.titleHeader)} >
-          <img src={circleSvg} alt=""/>
+      <div 
+        ref={el => {this.header = el}} 
+        className={css(styles.titleWrapper)}
+        onMouseEnter={this.handleEnter}
+        onMouseMove={this.handleMove}
+        onMouseLeave={this.handleExit}
+      >
+        <div 
+          onClick={this.handleMenuClick}
+          className={css(styles.titleHeader)} >
+          <img id='header--menu-circle' src={circleSvg} alt=""/>
         </div>
       </div>
     )
   }
+
+  handleEnter = e => {
+    Anime({
+      targets: ["#header--menu-circle"],
+      easing: 'easeInSine',
+      duration: 1000
+    })
+  }
+
+  handleMove = e => {
+    const mouseX = e.screenX / 10
+    const mouseY = e.screenY / 10
+    // Anime({
+    //   targets: ["#header--menu-circle"],
+    //   easing: 'easeInSine',
+    //   translateX: mouseX,
+    //   translateY: mouseY,
+    //   duration: 1000
+    // })
+  }
+
+  handleExit = e => {
+
+  }
+  
+  handleMenuClick = e => {
+    // this.props.openMenu()
+  }
 }
+
+
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    // width:"20%",
-    overflow:"hidden",
-    // border:'1px solid blue',
     height:'100%',
-    gridColumn: '10/11',
+    gridColumn: '11',
     display:'flex',
     flexDirection: 'column',
     alignContent: 'center',
     justifyContent: 'center'
   },
   titleHeader: {
-    color: 'black',
-    fontFamily: ["Lato", "sans-serif"],
-    width: "auto",
-    height: '100%',
-    fontSize:16,
-    fontWeight:300,
-    textDecoration:"none",
-    outline:"none",
+    margin: '0 auto',
     transition:'0.3s all',
-    // border:'1px solid green',
-    color: '#F2F2F2',
     ':hover': {
-      color:'blue'
+      // transform: 'translateX(-5px)',
+      transform: 'scale(1.1)'
     }
   }
 })

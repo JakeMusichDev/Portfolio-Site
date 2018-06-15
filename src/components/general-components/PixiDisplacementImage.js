@@ -7,6 +7,8 @@ import backgroundImg from '../../../assets/home/home_bk.jpeg'
 import backgroundImg2 from '../../../assets/home/home_bk_2.jpeg'
 import drum from '../../../assets/photography/drum.JPG'
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
+import blueShmear from '../../../assets/painting/blue_shmear.png'
+
 import { request } from 'http';
 
 export default class Home extends Component {
@@ -60,7 +62,7 @@ export default class Home extends Component {
   loaderConfig = () => {
     PIXI.loader
       .add('background-0', `${backgroundImg}`)
-      .add('background-1', `${backgroundImg2}`)
+      .add('background-1', `${blueShmear}`)
       .add('filter', `${displacementFilterImg}`)
       .add('background-2', `${drum}`)
       
