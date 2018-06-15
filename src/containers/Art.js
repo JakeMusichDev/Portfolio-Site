@@ -29,9 +29,11 @@ export default class Art extends Component {
     }
   }
 
+  
   openSection = (activeSection) => {
     this.setState({ activeSection })
   }
+
 
   render() {
     return (
