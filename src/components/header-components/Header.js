@@ -3,19 +3,15 @@ import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
 import "./../../styles/index.css"
 
-import TitleHeader from './TitleHeader'
-import Menu from './Menu'
+import HeaderName from './HeaderName'
+import HeaderMenu from './HeaderMenu'
 
 export default class Header extends Component {
   render() {
     return (
       <div className={css(styles.headerWrapper)}>
-        <div className={css(styles.titleHeader)}>
-          <TitleHeader />
-        </div>
-        <div className={css(styles.menu)}>
-          <Menu />
-        </div>
+        <HeaderName />
+        <HeaderMenu />
       </div>
     );
   }
@@ -25,21 +21,14 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
   headerWrapper: {
     height: '10vh',
-    width: '90vw',
-    display: 'inline-block',
+    width: '100vw',
+    display: 'grid',
+    gridTemplateRows: 'repeat(1, 1fr)',
+    gridTemplateColumns: 'repeat(10, auto)',
     position: 'absolute',
-    marginLeft: '5vw',
+    // background: 'red',
     top:0,
     left:0,
-  },
-  titleHeader: {
-    height: '100%',
-    width: 'auto',
-    float: 'left'
-  },
-  menu: {
-    height: '100%',
-    width: 'auto',
-    float: 'right'
+    // background: 'none'
   }
 })

@@ -12,7 +12,6 @@ import Header from '../components/header-components/Header'
 
 export default class App extends Component {
   componentDidMount() {
-    console.log(Wow);
     const wow = new Wow.WOW({
       live: false
     }).init();
@@ -22,7 +21,7 @@ export default class App extends Component {
     return (
       <Router>
         <div className={css(styles.app)}>
-          {/* <Header /> */}
+          <Header />
           <Routes />
         </div>
       </Router>
