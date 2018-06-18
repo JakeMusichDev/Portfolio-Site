@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto, 10)',
     gridTemplateRows: 'repeat(auto, 10)',
-    border: '1px dotted lightblue',
+    // border: '1px dotted lightblue',
     // background: 'lightpink'
     // marginBottom: '10vh',
     // justifyContent: 'flex-start',

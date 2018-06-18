@@ -12,7 +12,7 @@ export default class Art extends Component {
 
     this.state = {
       childViewOpen: false,
-      currentChildView: null
+      currentChildView: 'photo'
     }
   }
 
@@ -38,20 +38,7 @@ export default class Art extends Component {
   render() {
     return (
       <div className={css(styles.artContainer)}>
-        <div className={css(styles.photoButton)}>
-          <div>PHOTOS</div>
-        </div>
-        <div className={css(styles.paintingbutton)}>
-          paintings
-        </div>
-        <div className={css(styles.centerImage)}>
-          {/* <img src="" alt=""/> */}
-          img
-        </div>
-        <div className={css(styles.lowerMenu)}>
-          
-        </div>
-
+        {this.renderSection()}
       </div>
     )
   }
@@ -73,7 +60,7 @@ const styles = StyleSheet.create({
     width: '100vw',
     overflowY: 'scroll',
     display: 'block',
-    backgroundColor: 'rgb(15,15,15)',
+    backgroundColor: '#333333',
     background: `url${noise}`,
   },
   photoButton: {  

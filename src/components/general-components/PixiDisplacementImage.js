@@ -7,7 +7,7 @@ import backgroundImg from '../../../assets/home/home_bk.jpeg'
 import backgroundImg2 from '../../../assets/home/home_bk_2.jpeg'
 import drum from '../../../assets/photography/drum.JPG'
 import displacementFilterImg from '../../../assets/home/displacementFilterHome.jpeg'
-import blueShmear from '../../../assets/painting/blue_shmear.png'
+import blueShmear from '../../../assets/painting/blue-schmear.png'
 
 import { request } from 'http';
 

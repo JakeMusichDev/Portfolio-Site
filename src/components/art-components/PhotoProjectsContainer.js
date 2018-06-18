@@ -40,7 +40,7 @@ export default class PhotoProjectsContainer extends Component {
           onEnter={this._handleMenuEnter}
           onLeave={this._handleMenuLeave}
         />
-        {this.renderCoverImageList()}
+        { this.renderCoverImageList() }
       </div>
     )
   }
@@ -129,9 +129,9 @@ const styles = StyleSheet.create({
   photoGrid__mainContainer: {
     height: '100%',
     width: '100%',
-    display: 'grid',
-    // border:'1px solid green',
-    marginTop: '80vh',
+    // display: 'grid',
+    border:'1px solid green',
+    // marginTop: '80vh',
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(5, 20%)',
     background: 'rgb(15,15,15)',
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     gridRow: '1/6',
     // overflowY: 'scroll',
     // border: '1px solid blue',
-    // background:'yellow'
+    // background:'yellow',
     // height:'100%',
     // width:'100%'
     background: 'rgb(15,15,15)',
@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     position: 'fixed',
     height: '10vh',
     width: '20%',
-    // border:'1px solid pink',
-    top: '40vh',
+    border:'1px solid pink',
+    // top: '40vh',
     // background: 'rgb(15,15,15)',
     color: '#F2f2F2',
     textAlign: 'center',

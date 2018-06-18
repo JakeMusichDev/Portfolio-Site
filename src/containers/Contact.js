@@ -17,15 +17,20 @@ export default class Contact extends Component {
   // }
 
   componentDidMount() {
-    const anim = Anime({
-      targets: ['#c--img #contact-name-lg path'],
-      strokeDashoffset: [Anime.setDashoffset, 0],
+    const tl = Anime.timeline({loop:false})
+    tl.add({
+      targets: ['#c--img'],
+      // strokeDashoffset: [Anime.setDashoffset, 0],
+      translateY: ['100%'],
       easing: 'easeInOutSine',
-      duration: 1500,
-      backgrounColor: 'red',
+      duration: 0,
       delay: function(el, i) { return i * 250 },
+    }).add({
+      targets: ['#c--img'],
+      translateY: ['0%'],
+      duration: 1000,
+      easing: 'easeInOutSine',
     })
-    console.log(anim);
     
   }
 
@@ -41,7 +46,7 @@ export default class Contact extends Component {
           {contactCopy.welcomeMsg}
         </div>
         <div>
-          <button>Lil Resume</button>
+          {/* <button>Lil Resume</button>  */}
         </div>
       </div>
     )
@@ -65,11 +70,11 @@ const styles = StyleSheet.create({
     fontSize:"10px",
     fontFamily: ['Inconsolata', 'serif'],
     // marginTop:'40px',
-    border: '1px solid white',
+    // border: '1px solid white',
     zIndex: "2"
   },
   flickerImgContainer: {
-    gridRow: '2/5',
+    gridRow: '1/6',
     gridColumn: '2/3',
     height: '100%',
     // border: '1px solid blue'

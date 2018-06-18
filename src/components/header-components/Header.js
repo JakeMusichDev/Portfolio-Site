@@ -16,12 +16,12 @@ class Header extends Component {
   // If current route isn't home page, render menu 
   //-----------------------------
   renderHeader = () => {
-    const { location } = this.props
+    const { location, handleMenuActiveState } = this.props
     if(location.pathname !== '/') {
       return (
         <div className={css(styles.headerWrapper)}>
         <HeaderName />
-        <HeaderMenu />
+        <HeaderMenu handleMenuActiveState={handleMenuActiveState} />
       </div>
     )} else {
       return null

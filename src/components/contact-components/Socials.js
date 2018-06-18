@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height:"auto",
     fontSize:10,
     // letterSpacing:"3px",
-    // border:'1px solid green'
+    border:'1px solid green'
   },
   item: {
     marginBottom:'3px'

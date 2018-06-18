@@ -6,12 +6,6 @@ import './../../styles/index.css'
 import circleSvg from '../../../assets/header-menu-circle.svg'
 
 export default class HeaderMenu extends Component {
-  constructor(props) {
-    super(props)
-
-    // this._handleHover = this.handleHover.bind(this)
-  }
-
   componentDidMount() {
     Anime({
       targets: this.header,
@@ -39,6 +33,10 @@ export default class HeaderMenu extends Component {
     )
   }
 
+  handleMenuClick = e => {
+    this.props.handleMenuActiveState()
+  }
+
   handleEnter = e => {
     Anime({
       targets: ["#header--menu-circle"],
@@ -58,17 +56,7 @@ export default class HeaderMenu extends Component {
     //   duration: 1000
     // })
   }
-
-  handleExit = e => {
-
-  }
-  
-  handleMenuClick = e => {
-    // this.props.openMenu()
-  }
 }
-
-
 
 const styles = StyleSheet.create({
   titleWrapper: {

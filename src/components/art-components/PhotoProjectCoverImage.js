@@ -15,7 +15,7 @@ export default class PhotoProjectCoverImage extends Component {
   }
 
   componentDidMount() {
-    this.attachRelax()
+    // this.attachRelax()
     console.log("I've mounted ", this.props.project.content[0].title);
   }
 
@@ -88,13 +88,13 @@ const styles = StyleSheet.create({
     // border: '1px solid red',
   },
   photoProjectContainerWrapper: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 8,
-    background: 'rgb(15,15,15)',
-    height: '100%',
-    width: '100%',
+    // position: 'absolute',
+    // top: 0,
+    // left: 0,
+    // zIndex: 8,
+    // background: 'rgb(15,15,15)',
+    // height: '100%',
+    // width: '100%',
     // border: '1px solid lightblue',
   },
   photoProject: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(auto-fill, 20%)',
-    border: '1px dotted lightblue',
+    // border: '1px dotted lightblue',
     // background: 'lightpink'
     // marginBottom: '10vh',
     // justifyContent: 'flex-start',
