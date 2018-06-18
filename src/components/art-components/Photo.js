@@ -23,14 +23,12 @@ export default class Photo extends Component {
 
   render() {
     const { content } = this.props
+    const style = {height: '100%', width: '100%'}
     return (
       <div ref={ref => { this.photographDiv = ref }} className={css(styles.photoContainer)}>
           {content.src && (
             <img
-              className="wow bounceIn"
-              data-wow-duration="2s" 
-              data-wow-delay="5s"
-              className={css(styles.photo)}
+              style={style}
               src={`${content.src}`}
               alt="photo"
             />

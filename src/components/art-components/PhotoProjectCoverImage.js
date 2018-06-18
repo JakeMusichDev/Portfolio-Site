@@ -34,7 +34,13 @@ export default class PhotoProjectCoverImage extends Component {
           onEnter={this.handleProjectVisibility}
           onLeave={this.handleProjectVisibility}
         />
-        <div className={css(styles.photoProject)} onClick={this._openProject}>
+        <div 
+          data-wow-duration="2s" 
+          // data-wow-delay="5s"
+          className='wow fadeInUp'
+          className={css(styles.photoProject)} 
+          onClick={this._openProject}
+        >
           <div
             ref={thisDiv => {
               this.projectWrapper = thisDiv

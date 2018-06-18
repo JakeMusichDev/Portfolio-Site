@@ -20,7 +20,7 @@ export default class App extends Component {
   }
   componentDidMount() {
     const wow = new Wow.WOW({
-      live: false
+      live: true
     }).init();
   }
 
