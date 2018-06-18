@@ -15,7 +15,7 @@ export default class HeaderName extends Component {
     Anime({
       targets: ['#header--name-text'],
       duration: 1000,
-      opacity: [0, 1],
+      opacity: [0, 0.7],
       easing: 'easeInExpo'
     })
   }
@@ -66,7 +66,9 @@ const styles = StyleSheet.create({
     outline:"none",
     transition:'0.3s all',
     // border:'1px solid green',
+    opacity: '0.7',
     ':hover': {
+      opacity: '1', 
       transform: 'translateX(5px)'
     }
   }

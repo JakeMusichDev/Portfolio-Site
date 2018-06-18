@@ -20,7 +20,7 @@ export default class App extends Component {
   }
   componentDidMount() {
     const wow = new Wow.WOW({
-      live: true
+      live: false
     }).init();
   }
 
@@ -38,6 +38,7 @@ export default class App extends Component {
   }
 
   handleMenuActiveState = e => {
+    console.log(this.state.menuActive)
     this.setState({menuActive: !this.state.menuActive})
   }
 }

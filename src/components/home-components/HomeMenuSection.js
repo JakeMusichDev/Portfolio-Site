@@ -81,7 +81,7 @@ export default class HomeMenuSection extends Component {
         VanillaTilt.init(elements[i], {
           reverse: false,
           max: 50,
-          perspective: 1000,
+          perspective: 800,
           scale: 1,
           speed: 700,
           transition: true,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     color: '#F2F2F2',
     webkitTextStrokeWidth: '1px',
     webkitTextStrokeColor: 'white',
-    fontSize: '7em',
+    fontSize: '6em',
     fontFamily: ['Vollkorn', 'sans-serif'],
     letterSpacing: "10px",
     opacity:'0.8',

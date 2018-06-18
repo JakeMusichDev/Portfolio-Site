@@ -7,8 +7,9 @@ import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
 const items = [
-  { name: 'art', route: '/art' },
-  { name: 'about', route: '/contact' },
+  { name: 'photography', route: '/photography' },
+  { name: 'painting', route: '/painting' },
+  { name: 'contact', route: '/contact' },
   { name: 'work', route: '/work' },
 ]
 

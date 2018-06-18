@@ -43,10 +43,10 @@ export default class Contact extends Component {
           <img id='c--img' className={css(styles.img)} src={`${nameSvg}`} alt=""/>
         </div>
         <div className={css(styles.msgContainer)}>
-          {contactCopy.welcomeMsg}
+          { contactCopy.welcomeMsg }
         </div>
         <div>
-          {/* <button>Lil Resume</button>  */}
+          {/* { contactCopy.welcomeMsg }   */}
         </div>
       </div>
     )

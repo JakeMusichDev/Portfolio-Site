@@ -25,7 +25,11 @@ export default class Art extends Component {
         </div>
       )
     } else {
-      return 'Painting'
+      return (
+        <div>
+
+        </div>
+      )
     }
   }
 
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
   centerImage: {
     gridRow: '3/4',
     gridColumn: '3/4',
-    background: 'lightblue',
+    // background: 'lightblue',
   },
   lowerMenu: {
 

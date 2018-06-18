@@ -10,7 +10,7 @@ export default class HeaderMenu extends Component {
     Anime({
       targets: this.header,
       duration: 1000,
-      opacity: [0, 1],
+      opacity: [0, 0.7],
       easing: 'easeInExpo'
     })
   }
@@ -70,8 +70,9 @@ const styles = StyleSheet.create({
   titleHeader: {
     margin: '0 auto',
     transition:'0.3s all',
+    opacity: '0.7',
     ':hover': {
-      // transform: 'translateX(-5px)',
+      opacity: '1',
       transform: 'scale(1.1)'
     }
   }
