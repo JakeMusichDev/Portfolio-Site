@@ -15,6 +15,13 @@ import pioneer1 from '../../assets/photography/pioneer-1.JPG'
 import pioneer2 from '../../assets/photography/pioneer-2.JPG'
 import snowRailroad from '../../assets/photography/snow-railroad.JPG'
 import troy from '../../assets/photography/troy.jpg'
+
+import delver from '../../assets/painting/delver.png'
+import blueSchmear from '../../assets/painting/blue-schmear.png'
+import theFulcrum from '../../assets/painting/the-fulcrum.png'
+import windWhisper from '../../assets/painting/a-wind-a-whisper.png'
+import wispWhimper from '../../assets/painting/a-wisp-a-whimper.png'
+
 const photoPath = '../../assets/photography/'
 
 const _photo1 = {
@@ -44,7 +51,7 @@ const _alec = {
 const _cole1 = {
   type: 'photo',
   title: 'Iceland #10',
-  src: cole1,
+  src: jenny,
   css_class: '',
   key: 'd',
 }
@@ -56,6 +63,51 @@ const _cole2 = {
   css_class: '',
   key: 'd',
 }
+
+//------------------------------------------------------------------------------------
+const _blueSchmear = {
+  type: 'painting',
+  title: 'Blue Schmear',
+  src: blueSchmear,
+  css_class: '',
+  key: 'blue-schmear',
+}
+
+
+const _delver = {
+  type: 'painting',
+  title: 'Delver',
+  src: delver,
+  css_class: '',
+  key: 'delver',
+}
+
+
+const _theFulcrum = {
+  type: 'painting',
+  title: 'The Fulcrum',
+  src: theFulcrum,
+  css_class: '',
+  key: 'the-fulcrum',
+}
+
+const _windWhisper = {
+  type: 'painting',
+  title: 'a wind a whisper',
+  src: windWhisper,
+  css_class: '',
+  key: 'a-wind-a-whisper',
+}
+
+
+const _wispWhimper = {
+  type: 'painting',
+  title: 'a wisp a whimper',
+  src: wispWhimper,
+  css_class: '',
+  key: 'a-wisp-a-whimper',
+}
+
 
 const highEater = {
   name: 'High Eaters',
@@ -104,6 +156,7 @@ const steez = {
 
   ],
 }
+
 const freshNet = {
   name: "Zoro Depth Fres",
   content: [
@@ -116,7 +169,7 @@ const freshNet = {
 const el = {
   name: 'El Sonata',
   content: [
-    _alec,
+    _cole1,
     _photo2,
     _photo1,
     _photo2,
@@ -125,7 +178,7 @@ const el = {
 const pruse = {
   name: 'Beautiful Pruse',
   content: [
-    _photo1,
+    _cole2,
     _photo2,
     _photo1,
     _photo2,
@@ -143,4 +196,13 @@ export const photographyGridData = [
   highEater,
   steez,
   freshNet
+]
+
+
+export const paintingData = [
+  _blueSchmear,
+  _delver,
+  _theFulcrum,
+  _windWhisper,
+  _wispWhimper
 ]

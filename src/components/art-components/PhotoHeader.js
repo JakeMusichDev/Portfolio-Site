@@ -8,7 +8,7 @@ import noguchi from '../../../assets/photography/noguchi_1.JPG'
 
 export default class PhotoGridRow extends Component {
   componentDidMount() {
-    this.attachRellax() 
+    // this.attachRellax() 
     const tl = Anime.timeline()
     tl
     .add({
@@ -36,7 +36,7 @@ export default class PhotoGridRow extends Component {
   attachRellax = () => {
     const rellax_header = new Rellax(this.header, {
       wrapper: '#art-container',
-      speed: -5.5,
+      speed: -4.5,
     })
     const rellax_img = new Rellax(this.img, {
       wrapper: '#art-container',
@@ -49,14 +49,11 @@ export default class PhotoGridRow extends Component {
     return (
       <div  className={css(styles.photoHeaderContainer)}>
         <div ref={ref => {this.header = ref}}  className={css(styles.photoHeaderTitle)}>
-          PHOTOGRAPHY
+          - projects 
         </div>
         <div ref={ref => {this.img = ref}} className={css(styles.photoHeaderImg)}>
           {/* <div id='photo-overlay' className={css(styles.overlay)}/> */}
-          <img src={noguchi} className={css(styles.photo)} alt="photo"/>
-        </div>
-        <div className={css(styles.photoHeaderArtistContainer)}>
-          - Artist
+          {/* <img src={noguchi} className={css(styles.photo)} alt="photo"/> */}
         </div>
       </div>
     )
@@ -68,8 +65,12 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     display: 'grid',
+    gridRow: '1/6',
+    gridColumn: '1/2',
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(4, 25%)',
+    // background: 'pink',
+    border: '1px solid blue'
   },
   photoHeaderImg: {
     height: 'auto',
@@ -84,10 +85,11 @@ const styles = StyleSheet.create({
     gridColumn: '2/5',
     gridRow: '3/4',
     // zIndex: 10,
-    // border:'1px solid green',
-    fontSize: 80,
+    border:'1px solid green',
+    fontSize: 12,
     fontFamily: ['Vollkorn', 'sans-serif'],
-    letterSpacing: "6px",
+    letterSpacing: "3px",
+    fontDecoration: 'italic',
     color: '#F2f2F2',
     zIndex: '12',
     textAlign: 'center'

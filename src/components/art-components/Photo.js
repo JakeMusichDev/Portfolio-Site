@@ -8,32 +8,33 @@ import WOW from 'wowjs'
 
 export default class Photo extends Component {
   componentDidMount() {
-    Anime({
-      targets: this.header,
-      opacity: [0,1],
-      duration: 2000,
-    })
+    // const tl = Anime.timeline()
+    // tl.add({
+    //   targets: this.photographDiv,
+    //   translateY: '-1000%',
+    //   duration: 0,
+    // }).add({
+    //   targets: this.photographDiv,
+    //   translateY: '0%',
+    //   duration: 3000,
+    //   opacity: [0,1],
+    // })
   }
 
   render() {
     const { content } = this.props
     return (
-      <div
-        ref={ref => {
-          this.header = ref
-        }}
-        className={css(styles.photoContainer)}>
-        {/* {content.title} */}
-        {content.src && (
-          <img  
-          className="wow bounceIn"
-            data-wow-duration="2s" 
-            data-wow-delay="5s"
-            className={css(styles.photo)}
-            src={`${content.src}`}
-            alt="photo"
-          />
-        )}
+      <div ref={ref => { this.photographDiv = ref }} className={css(styles.photoContainer)}>
+          {content.src && (
+            <img
+              className="wow bounceIn"
+              data-wow-duration="2s" 
+              data-wow-delay="5s"
+              className={css(styles.photo)}
+              src={`${content.src}`}
+              alt="photo"
+            />
+          )}
       </div>
     )
   }

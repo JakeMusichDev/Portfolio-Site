@@ -1,15 +1,44 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
-import PhotoGrid from '../components/art-components/PhotoGrid'
+import PhotoProjectsContainer from '../components/art-components/PhotoProjectsContainer'
 import PhotoHeader from '../components/art-components/PhotoHeader'
+import noise from '../../assets/broken-noise.png'
+
 import Anime from 'animejs'
 
 export default class Art extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      childViewOpen: false,
+      currentChildView: 'photo'
+    }
+  }
+
+  renderSection = () => {
+    if (this.state.currentChildView === 'photo') {
+      return (
+        <div id="art-container" className={css(styles.photoViewContainer)}>
+          <PhotoHeader />
+          <PhotoProjectsContainer />
+        </div>
+      )
+    } else {
+      return 'Painting'
+    }
+  }
+
+  
+  openSection = (activeSection) => {
+    this.setState({ activeSection })
+  }
+
+
   render() {
     return (
-      <div id='art-container' className={css(styles.artContainer)}>
-        <PhotoHeader />
-        <PhotoGrid />
+      <div className={css(styles.artContainer)}>
+        {this.renderSection()}
       </div>
     )
   }
@@ -19,8 +48,40 @@ const styles = StyleSheet.create({
   artContainer: {
     height: 'calc(100vh)',
     width: '100vw',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 20%)',
+    gridTemplateRows: 'repeat(5, 20%)',
+    backgroundColor: 'rgb(15,15,15)',
+    background: `url${noise}`,
+    color: 'white'
+  },
+  photoViewContainer: {
+    height: 'calc(100vh)',
+    width: '100vw',
     overflowY: 'scroll',
     display: 'block',
-    background: 'rgb(15,15,15)',
+    backgroundColor: '#333333',
+    background: `url${noise}`,
+  },
+  photoButton: {  
+    gridRow: '2/3',
+    gridColumn: '4/6',
+    // background: 'white',
+    display: 'flex',
+    flexDirection:'column',
+    justifyContent: 'center',
+    alignContent: 'center'
+  },
+  paintingbutton: {
+    gridRow: '4/5',
+    gridColumn: '1/3',
+  },
+  centerImage: {
+    gridRow: '3/4',
+    gridColumn: '3/4',
+    background: 'lightblue',
+  },
+  lowerMenu: {
+
   }
 })

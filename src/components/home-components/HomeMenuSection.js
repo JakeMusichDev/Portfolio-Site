@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     opacity:'0.8',
     transition: '0.4s opacity',
     height: 'auto',
+    border: '1px solid green',
     width: 'auto',
     ":hover" : {
       opacity:0.9

@@ -28,12 +28,14 @@ export default class Socials extends Component {
 
 const styles = StyleSheet.create({
   socialContainer: {
+    gridRow: '5/6',
+    gridColumn: '4/5',
     color:"white",
     fontFamily:["Source Code Pro","sans-serif"],
     height:"auto",
-    fontSize:10
+    fontSize:10,
     // letterSpacing:"3px",
-    // border:'1px solid green'
+    border:'1px solid green'
   },
   item: {
     marginBottom:'3px'
