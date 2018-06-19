@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   paintingViewContainer: {
     height: '100%',
     width: '100%',
-    gridRow: '2/5',
+    gridRow: '1/6',
     gridColumn: '2/5',
     // border:'1px solid red',
     color: 'white',

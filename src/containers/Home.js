@@ -111,14 +111,13 @@ const styles = StyleSheet.create({
     gridTemplateRows: 'repeat(5, 20%)',
   },
   imageCell: {
-    gridColumnStart: '2',
-    gridColumnEnd: '4',
-    gridRowStart: '3',
-    gridRowEnd: '5',
+    gridRow: '2/5',
+    gridColumn: '2/4',
     background: '#F115',
+    // border: "1px solid pink"
   },
   menuCell: {
-    gridColumnStart: '3',
+    gridColumnStart: '2',
     gridColumnEnd: '5',
     gridRowStart: '3',
     gridRowEnd: '4',

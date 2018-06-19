@@ -10,13 +10,18 @@ export default class PaintingsList extends Component {
       <div id="paintingView--mainContainer" className={css(styles.paintingListContainer)}>
         {paintingData.map(
           (item, index) => (
-            <div onClick={handleOpenPainting} className={css(styles.listItemWrapper)}>
+            <div onClick={() => this.handleClick(index)} className={css(styles.listItemWrapper)}>
               {item.title}
             </div>
           )
         )}
       </div>
     )
+  }
+
+  handleClick = (e) => {
+    const { handleOpenPainting } = this.props
+    handleOpenPainting(e)
   }
 }
 
@@ -25,7 +30,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     gridRow: '3/5',
-    gridColumn: '1/2',
+    gridColumn: '2/3',
     // border:'1px solid red',
     color: 'white',
     // display: 'flex',
@@ -37,8 +42,8 @@ const styles = StyleSheet.create({
     // border:'1px solid white',
     textAlign:'right',
     fontFamily: 'Inconsolata',
-    fontSize: "10px",
-    lineHeight: "20px",
+    fontSize: "12px",
+    lineHeight: "25px",
     align: "Right",
     letterSpacing: '5px',
     opacity: '0.7',

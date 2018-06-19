@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     color:"white",
     fontSize:"11px",
     fontFamily: ['Inconsolata', 'serif'],
-    border: '1px solid white'
+    // border: '1px solid white',
+    textAlign: 'right'
   },
   title: {
 

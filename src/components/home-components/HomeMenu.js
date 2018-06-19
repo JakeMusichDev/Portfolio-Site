@@ -6,12 +6,7 @@ import { breakPoints } from '../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = [
-  { name: 'photography', route: '/photography' },
-  { name: 'painting', route: '/painting' },
-  { name: 'contact', route: '/contact' },
-  { name: 'work', route: '/work' },
-]
+import {items} from '../../data/home-route-data.js'
 
 export default class HomeMenu extends Component {
   constructor(props) {

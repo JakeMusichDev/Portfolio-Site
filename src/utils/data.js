@@ -21,6 +21,7 @@ import blueSchmear from '../../assets/painting/blue-schmear.png'
 import theFulcrum from '../../assets/painting/the-fulcrum.png'
 import windWhisper from '../../assets/painting/a-wind-a-whisper.png'
 import wispWhimper from '../../assets/painting/a-wisp-a-whimper.png'
+import mothersWish from '../../assets/painting/mothers-wish.png'
 
 const photoPath = '../../assets/photography/'
 
@@ -107,7 +108,13 @@ const _wispWhimper = {
   css_class: '',
   key: 'a-wisp-a-whimper',
 }
-
+const _mothersWish = {
+  type: 'painting',
+  title: "a mother's wish",
+  src: mothersWish,
+  css_class: '',
+  key: 'a-mothers-wish',
+}
 
 const highEater = {
   name: 'High Eaters',
@@ -204,5 +211,6 @@ export const paintingData = [
   _delver,
   _theFulcrum,
   _windWhisper,
-  _wispWhimper
+  _wispWhimper,
+  _mothersWish
 ]

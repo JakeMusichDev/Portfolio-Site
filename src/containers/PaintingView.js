@@ -22,9 +22,6 @@ export default class PaintingView extends Component {
 
   render() {
     return this.renderPaintingViewChildren()
-      // <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
-      // </div>
-    // )
   }
 
   renderPaintingViewChildren = () => {
@@ -35,9 +32,9 @@ export default class PaintingView extends Component {
         <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
           <ActivePaintingContainer activeIndex={activeIndex} paintingData={paintingData} />
           <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
+          <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
           <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'+'} />
           <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'-'} />
-          <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
         </div>
       )
     } else {
@@ -50,13 +47,18 @@ export default class PaintingView extends Component {
   }
 
   handleOpenPainting = e => {
-    this.setState({childFocusViewActive: true})
+    this.setState({
+      childFocusViewActive: true, 
+      activeIndex: e
+    })
   }
 
   handleNextActiveItem = e => {  
     const nextIndex = e === '+' ? 
-      this.state.activeIndex += 1 : 
-      this.state.activeIndex -= 1
+    this.state.activeIndex += 1 :
+    this.state.activeIndex -= 1
+    
+    
 
     this.setState({activeIndex: nextIndex})
   }
