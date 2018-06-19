@@ -27,9 +27,7 @@ export default class Menu extends Component {
       return (
         <div id='appMenu--mainContainer' className={css(styles.menuMainContainer)}>
           <div className={css(styles.expandingBackground)}></div>
-          <div className={css(styles.menuList)}>
-            MENU
-          </div>
+          <div className={css(styles.menuList)}>MENU</div>
         </div>
       )
     } else {

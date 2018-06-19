@@ -12,13 +12,15 @@ export default class Socials extends Component {
   }
 
   componentDidMount() {
-    this.typeBio()
+    // this.typeBio()
   }
 
   render() {
     return (
       <div className={css(styles.socialContainer)}>
-        <div id="contact-bio-container" className={css(styles.greeting)}></div>
+        <div id="contact-bio-container" className={css(styles.greeting)}>
+          {contactCopy.contactBio}
+        </div>
       </div>
     )
   }
@@ -42,22 +44,13 @@ export default class Socials extends Component {
 
 const styles = StyleSheet.create({
   socialContainer: {
-    gridRow: '3/4',
-    gridColumn: '3/5',
-    fontFamily:["Source Code Pro","sans-serif"],
     height:"auto",
-    color:"white",
-    fontSize:"10px",
-    fontFamily: ['Inconsolata', 'serif'],
-    // border: '1px solid white',
+    border: '1px solid white',
   },
   greeting: {
-    height: '30vh',
     color:"white",
     fontSize:"11px",
     alignText: 'block',
     fontFamily: ['Inconsolata', 'serif'],
-    // marginTop:'40px',
-    zIndex: "2"
   },
 })

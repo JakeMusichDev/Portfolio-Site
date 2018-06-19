@@ -129,22 +129,16 @@ const styles = StyleSheet.create({
   photoGrid__mainContainer: {
     height: '100%',
     width: '100%',
-    // display: 'grid',
-    border:'1px solid green',
-    // marginTop: '80vh',
-    gridTemplateColumns: 'repeat(5, 20%)',
-    gridTemplateRows: 'repeat(5, 20%)',
+    display: 'block',
     background: 'rgb(15,15,15)',
   },
   photoGrid__projectCoverImageContainer: {
-    gridColumn: '2/6',
-    gridRow: '1/6',
     // overflowY: 'scroll',
-    // border: '1px solid blue',
+    border: '1px solid blue',
     // background:'yellow',
     // height:'100%',
     // width:'100%'
-    background: 'rgb(15,15,15)',
+    background: 'rgb(15,15,150)',
   },
   photoGrid__projectViewContainer: {
     color: '#F2f2F2',

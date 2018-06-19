@@ -2,89 +2,83 @@ import React, {
   Component, PropTypes
 } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important'
+import Anime from 'animejs'
+import Name from '../components/contact-components/Name'
 import Socials from '../components/contact-components/Socials'
 import ContactBio from '../components/contact-components/ContactBio'
-import Anime from 'animejs'
-
+import ContactSection from '../components/contact-components/ContactSection'
+import Rellax from 'rellax'
 import nameSvg from '../../assets/name_lg.svg'
 import {contactCopy} from '../utils/copy.js'
 
 export default class Contact extends Component {
-  // constructor(props) {
-  //   super(props)
-    
-  //   this.i = 0;
-  // }
-
   componentDidMount() {
-    const tl = Anime.timeline({loop:false})
-    tl.add({
-      targets: ['#c--img'],
-      // strokeDashoffset: [Anime.setDashoffset, 0],
-      translateY: ['100%'],
-      easing: 'easeInOutSine',
-      duration: 0,
-      delay: function(el, i) { return i * 250 },
-    }).add({
-      targets: ['#c--img'],
-      translateY: ['0%'],
-      duration: 1000,
-      easing: 'easeInOutSine',
-    })
-    
+    this.attachRellax()    
+    // const tl = Anime.timeline({loop:false})
+    // tl.add({
+    //   targets: ['#c--img'],
+    //   // strokeDashoffset: [Anime.setDashoffset, 0],
+    //   // translateY: ['100%'],
+    //   opacity: 0,
+    //   easing: 'easeInOutSine',
+    //   duration: 0,
+    //   delay: function(el, i) { return i * 250 },
+    // }).add({
+    //   targets: ['#c--img'],
+    //   translateY: ['0%'],
+    //   opacity: 0.7,
+    //   duration: 1000,
+    //   easing: 'easeInQuart',
+    // })
   }
 
   render() {
     return (
-      <div className={css(styles.contactContainer)}>
-        <ContactBio />
-        <Socials />
-        <div className={css(styles.flickerImgContainer)}>
-          <img id='c--img' className={css(styles.img)} src={`${nameSvg}`} alt=""/>
+      <div id="contact--mainContainer" className={css(styles.contactContainer)}>
+        <div ref={ el => this.leftSection = el } className={css(styles.leftSide)}>
+          <Name />
         </div>
-        <div className={css(styles.msgContainer)}>
-          { contactCopy.welcomeMsg }
-        </div>
-        <div>
-          {/* { contactCopy.welcomeMsg }   */}
+        <div ref={ el => this.rightSection = el } className={css(styles.rightSide)}>
+          <ContactSection />
         </div>
       </div>
     )
+  } 
+
+  attachRellax = () => {
+    const rellaxLeft = new Rellax(this.leftSection, {
+      wrapper: '#contact--mainContainer',
+      speed: 5.5,
+    })
+
+    const rellaxRight = new Rellax(this.rightSection, {
+      wrapper: '#contact--mainContainer',
+      speed: -9.5,
+    })
   }
 }
 
 const styles = StyleSheet.create({
   contactContainer: {
     height: '100vh',
+    width: '100vw',
     background: 'rgb(15,15,15)',
-    // padding:"10%",
+    display: 'block',
+    overflowY: 'scroll'
+  },
+  leftSide: {
+    height: '100%',
+    width: '35%',
+    background: 'rgb(15,15,15)',
+    float: 'left',
+  },
+  rightSide: {
+    height: '100%',
+    width: '65%',
+    float: 'right',
+    // display: 'block',
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(5, 20%)',
-  },
-  msgContainer: {
-    gridRow: '4/5',
-    gridColumn: '3/4',
-    height: '100%',
-    color:"white",
-    fontSize:"10px",
-    fontFamily: ['Inconsolata', 'serif'],
-    // marginTop:'40px',
-    // border: '1px solid white',
-    zIndex: "2"
-  },
-  flickerImgContainer: {
-    gridRow: '1/6',
-    gridColumn: '2/3',
-    height: '100%',
-    // border: '1px solid blue'
-  },
-  img: {
-    height:"100%",
-    width:"auto",
-    zIndex:"1",
-    margin: 'auto 0',
-    opacity: '00.6'
-  },
-  
+  }
 })

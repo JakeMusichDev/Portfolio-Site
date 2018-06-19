@@ -20,7 +20,7 @@ export default class PhotoView extends Component {
   render() {
     return (
       <div id="photoView--mainContainer" className={css(styles.photoViewContainer)}>
-        <PhotoHeader />
+        {/* <PhotoHeader /> */}
         <div className={css(styles.mainScroller)}>
           <PhotoProjectsContainer />
         </div>
@@ -37,12 +37,14 @@ const styles = StyleSheet.create({
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(5, 20%)',
     backgroundColor: 'rgb(15,15,15)',
-    background: `url${noise}`,
-    color: 'white'
+    backgroundImage: `url${noise}`,
+    color: 'white',
+
   },
   mainScroller: {
     gridRow: '1/6',
     gridColumn: '2/5',
-    overflowY: 'scroll'
+    overflowY: 'scroll',
+    border:'1px solid red'
   }
 })

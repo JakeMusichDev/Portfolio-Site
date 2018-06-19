@@ -49,7 +49,7 @@ export default class PhotoProjectView extends Component {
     let griddedImages = project.content.map( photoObj => {
       let randColumn = Math.floor(Math.random() * 11)
       let randRow = Math.floor(Math.random() * 11)
-      let gridPosition = {gridRow:randRow, gridColumn: randColumn }
+      let gridPosition = { gridRow:randRow, gridColumn: randColumn }
       photoObj.gridPosition = gridPosition
       return photoObj
     })

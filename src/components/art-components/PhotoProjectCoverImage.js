@@ -16,7 +16,6 @@ export default class PhotoProjectCoverImage extends Component {
 
   componentDidMount() {
     // this.attachRelax()
-    console.log("I've mounted ", this.props.project.content[0].title);
   }
 
   render() {
@@ -24,29 +23,14 @@ export default class PhotoProjectCoverImage extends Component {
     const coverImage = project.content[0]
 
     return (
-      <div
-        ref={thisDiv => {
-          this.project = thisDiv
-        }}
-        className={css(styles.photoProjectContainer)}>
+      <div ref={thisDiv => { this.project = thisDiv}} className={css(styles.photoProjectContainer)} >
         <Waypoint
           key={`${project.name} + ${index} + waypoint`}
           onEnter={this.handleProjectVisibility}
           onLeave={this.handleProjectVisibility}
         />
-        <div 
-          data-wow-duration="2s" 
-          // data-wow-delay="5s"
-          className='wow fadeInUp'
-          className={css(styles.photoProject)} 
-          onClick={this._openProject}
-        >
-          <div
-            ref={thisDiv => {
-              this.projectWrapper = thisDiv
-            }}
-            className={css(styles.photoProjectContainerWrapper)}
-          />
+        <div  onClick={this._openProject}>
+          <div ref={thisDiv => { this.projectWrapper = thisDiv }} className={css(styles.photoProjectContainerWrapper)}/>
           <div className={css(styles.headerImg)}>
             {/* <div className={css(styles.headerImgTitle)}>{index + 1}</div> */}
             <Photo
@@ -90,8 +74,8 @@ const styles = StyleSheet.create({
   photoProjectContainer: {
     height: 'auto',
     width: '100%',
-    marginBottom: '40vh',
-    // border: '1px solid red',
+    // marginBottom: '40vh',
+    border: '1px solid red',
   },
   photoProjectContainerWrapper: {
     // position: 'absolute',
