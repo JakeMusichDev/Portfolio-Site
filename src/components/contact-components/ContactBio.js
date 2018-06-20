@@ -45,11 +45,14 @@ export default class Socials extends Component {
 const styles = StyleSheet.create({
   socialContainer: {
     height:"auto",
+    width: '100%',
     border: '1px solid white',
+    marginBottom: '100px'
   },
   greeting: {
     color:"white",
-    fontSize:"11px",
+    fontSize:"12px",
+    lineHeight: '120%',
     alignText: 'block',
     fontFamily: ['Inconsolata', 'serif'],
   },

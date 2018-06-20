@@ -7,14 +7,21 @@ export default class Socials extends Component {
 
   render() {
     return (
-      <div className={css(styles.socialContainer)}>        
-        {socialsIconsData.map( (item, index) =>
-          <div key={index} className={css(styles.item)}>
-            <a href={item.url} > 
-              <img src={`${item.icon}`} className={css(styles.item)} />
-            </a>
-          </div>
-        )}
+      <div className={css(styles.socialContainer)}>
+
+        <h3 className={css(styles.socialTagline)}>
+          Connections are cool. <br/>
+          Find me at the links below.
+        </h3>
+        <div className={css(styles.socialIconsWrapper)}>
+          {socialsIconsData.map( (item, index) =>
+            <div key={index} className={css(styles.itemWrapper)}>
+              <a href={item.url} > 
+                <img src={`${item.icon}`} className={css(styles.itemImg)} />
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     )
   }
@@ -29,14 +36,30 @@ const styles = StyleSheet.create({
     color:"white",
     fontFamily:["Source Code Pro","sans-serif"],
     height:"auto",
-    fontSize:10,
-    // letterSpacing:"3px",
-    display: 'flex',
-    border:'1px solid green'
+    fontSize:12,
+    display: 'block',
+    // border:'1px solid green',
+    
   },
-  item: {
+  socialTagline: {
+    height: '100%',
+    width: '100%'
+  },
+  socialIconsWrapper: {
+    height: '100%',
+    width: '100%',
+    display:'flex',
+    flexDirection: 'row'
+  },
+  itemWrapper: {
+    height: '100%',
+    width: '100%',
+    // border:'1px solid red',
+  },
+  itemImg: {
     margin:'10px',
-    height:'40px',
-    width: '40px'
+    height:'30px',
+    width: '30px',
+    margin: 'auto 0'
   }
 })

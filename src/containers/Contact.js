@@ -13,7 +13,7 @@ import {contactCopy} from '../utils/copy.js'
 
 export default class Contact extends Component {
   componentDidMount() {
-    this.attachRellax()    
+    this.attachRellax()
     // const tl = Anime.timeline({loop:false})
     // tl.add({
     //   targets: ['#c--img'],
@@ -48,12 +48,12 @@ export default class Contact extends Component {
   attachRellax = () => {
     const rellaxLeft = new Rellax(this.leftSection, {
       wrapper: '#contact--mainContainer',
-      speed: 5.5,
+      speed: 3.5,
     })
 
     const rellaxRight = new Rellax(this.rightSection, {
       wrapper: '#contact--mainContainer',
-      speed: -9.5,
+      speed: -8.5,
     })
   }
 }
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     width: '65%',
     float: 'right',
     // display: 'block',
+    // border:"1px solid pink",
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(5, 20%)',
