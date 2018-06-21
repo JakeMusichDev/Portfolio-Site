@@ -51,10 +51,10 @@ export default class Contact extends Component {
       speed: 3.5,
     })
 
-    const rellaxRight = new Rellax(this.rightSection, {
-      wrapper: '#contact--mainContainer',
-      speed: -8.5,
-    })
+    // const rellaxRight = new Rellax(this.rightSection, {
+    //   wrapper: '#contact--mainContainer',
+    //   speed: -8.5,
+    // })
   }
 }
 
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     width: '35%',
     background: 'rgb(15,15,15)',
     float: 'left',
+    willChange: 'transform'
   },
   rightSide: {
     height: '100%',
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     float: 'right',
     // display: 'block',
     // border:"1px solid pink",
-    display: 'grid',
+    display: 'grid', 
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(5, 20%)',
   }
