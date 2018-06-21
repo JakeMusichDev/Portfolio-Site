@@ -51,10 +51,10 @@ export default class Contact extends Component {
       speed: 3.5,
     })
 
-    // const rellaxRight = new Rellax(this.rightSection, {
-    //   wrapper: '#contact--mainContainer',
-    //   speed: -8.5,
-    // })
+    const rellaxRight = new Rellax(this.rightSection, {
+      wrapper: '#contact--mainContainer',
+      speed: -8.5,
+    })
   }
 }
 

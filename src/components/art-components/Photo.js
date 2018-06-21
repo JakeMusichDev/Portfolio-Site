@@ -5,9 +5,11 @@ import '../../styles/index.css'
 import Rellax from 'rellax'
 import { relative } from 'path'
 import WOW from 'wowjs'
+import AOS from 'aos'
 
 export default class Photo extends Component {
   componentDidMount() {
+
     // const tl = Anime.timeline()
     // tl.add({
     //   targets: this.photographDiv,
@@ -28,6 +30,7 @@ export default class Photo extends Component {
       <div ref={ref => { this.photographDiv = ref }} className={css(styles.photoContainer)}>
           {content.src && (
             <img
+              data-aos="fade-up"
               style={style}
               src={`${content.src}`}
               alt="photo"

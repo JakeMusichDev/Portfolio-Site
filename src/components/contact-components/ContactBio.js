@@ -17,8 +17,11 @@ export default class Socials extends Component {
 
   render() {
     return (
-      <div className={css(styles.socialContainer)}>
-        <div id="contact-bio-container" className={css(styles.greeting)}>
+      <div className={css(styles.bioContainer)}>
+        <h3 className={css(styles.bioHeader)}>
+        Hello!
+        </h3>
+        <div id="contact-bio-container" className={css(styles.bioBody)}>
           {contactCopy.contactBio}
         </div>
       </div>
@@ -43,17 +46,22 @@ export default class Socials extends Component {
 }
 
 const styles = StyleSheet.create({
-  socialContainer: {
+  bioContainer: {
     height:"auto",
     width: '100%',
-    border: '1px solid white',
-    marginBottom: '100px'
+    // border: '1px solid white',
+    marginBottom: '100px',
+    fontFamily: ['Inconsolata', 'serif'],
   },
-  greeting: {
+  bioHeader: {
     color:"white",
-    fontSize:"12px",
+    fontSize:"20px",
+    marginBottom: '5px'
+  },
+  bioBody: {
+    color:"white",
+    fontSize:"16px",
     lineHeight: '120%',
     alignText: 'block',
-    fontFamily: ['Inconsolata', 'serif'],
   },
 })

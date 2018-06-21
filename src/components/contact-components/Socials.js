@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     gridRow: '5/6',
     gridColumn: '4/5',
     color:"white",
-    fontFamily:["Source Code Pro","sans-serif"],
+    fontFamily: ['Inconsolata', 'serif'],
     height:"auto",
     fontSize:12,
     display: 'block',
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
   },
   socialTagline: {
     height: '100%',
-    width: '100%'
+    width: '100%',
+    fontSize:14,
   },
   socialIconsWrapper: {
     height: '100%',
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
   itemWrapper: {
     height: '100%',
     width: '100%',
-    // border:'1px solid red',
   },
   itemImg: {
     margin:'10px',

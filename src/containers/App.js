@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import '../styles/index.css'
 import Wow from 'wowjs'
+import AOS from 'aos'
 import cursorDot from '../../assets/app/Ellipse2.png'
 
 import Menu from './Menu'
@@ -19,9 +20,10 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    const wow = new Wow.WOW({
-      live: false
-    }).init();
+    AOS.init({
+      duration: 1000,
+      once: true
+    })
   }
 
   render() {

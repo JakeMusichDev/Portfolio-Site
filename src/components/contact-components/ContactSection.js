@@ -6,6 +6,7 @@ import Anime from 'animejs'
 
 import Socials from './Socials'
 import ContactBio from './ContactBio'
+import SkillSection from './SkillSection'
 
 export default class ContactSection extends Component {
   componentDidMount() {
@@ -27,10 +28,12 @@ export default class ContactSection extends Component {
 
   render() {
     return (
-      <div 
+      <div
         id='contact-section'
-        className={css(styles.contactContainer)}>
+        className={css(styles.contactContainer)}
+      >
         <ContactBio />
+        <SkillSection />
         <Socials />
       </div>
     )
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
     gridRowStart: '2',
     gridColumn: '1/5',
     background: 'rgb(15,15,15)',
-    border: '1px solid blue',
+    // border: '1px solid blue',
     display: 'block',
   },
 })

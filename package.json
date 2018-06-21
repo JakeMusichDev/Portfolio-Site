@@ -16,7 +16,7 @@
   "dependencies": {
     "anime": "^0.1.2",
     "animejs": "^2.2.0",
-    "aos": "^2.3.0",
+    "aos": "^2.3.1",
     "aphrodite": "^2.2.0",
     "express": "^4.16.3",
     "npm": "^6.1.0",

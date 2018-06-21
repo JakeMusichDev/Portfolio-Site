@@ -35,6 +35,22 @@ import vueIcon from '../../assets/tech-icons/vuejs.svg'
 //   name: 'LinkedIn'
 // }
 
-// export const techSkillIcons = [
-//   angularIcon
-// ]
+export const techSkillIcons = [
+  angularIcon,
+  css3Icon,
+  gitIcon,
+  herokuIcon,
+  html5Icon,
+  javascriptIcon,
+  mongodbIcon,
+  mysqlIcon,
+  nodeIcon,
+  npmIcon,
+  pythonIcon,
+  railsIcon,
+  piIcon,
+  reactIcon,
+  sassIcon,
+  vscodeIcon,
+  vueIcon
+]
