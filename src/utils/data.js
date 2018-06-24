@@ -194,7 +194,6 @@ const pruse = {
 export const photographyGridData = [
   pruse,
   steez,
-  steez,
   highEater,
   pruse,
   freshNet,

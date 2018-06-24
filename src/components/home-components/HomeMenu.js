@@ -61,5 +61,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     color: 'white',
+    gridRow: '3/4',
+    gridColumn: '2/5'
   },
 })

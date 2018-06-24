@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   infoContainer: {
     height: '100%',
     width: '100%',
-    color: 'white',
+    color: 'black',
     gridRow: '4/5',
     gridColumn: '4/5',
     color:"white",

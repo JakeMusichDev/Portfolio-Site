@@ -53,23 +53,23 @@ export default class Painting extends Component {
     //     complete: () => _this.attachTilt()
     //   })
 
-       // Fire off intro animation
-    Anime.timeline().add({
-        targets: this.image,
-        opacity: [0, 1],
-        translateX: ['100%', '0%'],
-        elasticity: 0,
-        easing: 'easeOutSine',
-        duration: 1000,
-    }).add({
-        targets: this.imageWrapper,
-        offset: '-=1000',
-        opacity: [0, 1],
-        translateX: ['-100%', '0%'],
-        elasticity: 0,
-        easing: 'easeOutSine',
-        duration: 1000
-    })
+      // Fire off intro animation
+    // Anime.timeline().add({
+    //     targets: this.image,
+    //     opacity: [0, 1],
+    //     translateX: ['100%', '0%'],
+    //     elasticity: 0,
+    //     easing: 'easeOutSine',
+    //     duration: 1000,
+    // }).add({
+    //     targets: this.imageWrapper,
+    //     offset: '-=1000',
+    //     opacity: [0, 1],
+    //     translateX: ['-100%', '0%'],
+    //     elasticity: 0,
+    //     easing: 'easeOutSine',
+    //     duration: 1000
+    // })
 
     //   image: {
     //     maxHeight: 550,
@@ -161,8 +161,9 @@ const styles = StyleSheet.create({
   image: {
     maxHeight: 550,
     objectFit: 'scale-down',
-    objectPosition: 'right',
+    objectPosition: 'center',
     width: '100%',
+    border: '1px solid black',
     flex: 1,
     // [breakPoints.tablet]: {
     //     maxHeight: 'unset'

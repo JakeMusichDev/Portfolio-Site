@@ -4,10 +4,27 @@ import Anime from 'animejs'
 import Painting from './Painting'
 
 export default class PaintingsList extends Component {
+  componentDidMount() {
+    Anime({
+      targets: this.container.children,
+      opacity: [
+        0, 1
+      ],
+      translateY: [
+        150, 0
+      ],
+      duration: 1000,
+      easing: 'easeOutSine',
+      elasticity : 30,
+      delay: (e, i) => {
+        return (i + 1) * 2;
+      },
+  })
+}
   render() {
     const { handleOpenPainting, paintingData } = this.props
     return (
-      <div id="paintingView--mainContainer" className={css(styles.paintingListContainer)}>
+      <div id="paintingView--mainContainer" ref={el => (this.container = el)} className={css(styles.paintingListContainer)}>
         {paintingData.map(
           (item, index) => (
             <div onClick={() => this.handleClick(index)} className={css(styles.listItemWrapper)}>
@@ -29,18 +46,19 @@ const styles = StyleSheet.create({
   paintingListContainer: {
     height: '100%',
     width: '100%',
-    gridRow: '3/5',
-    gridColumn: '2/3',
+    gridRow: '3/4',
+    gridColumn: '2/5',
     // border:'1px solid red',
-    color: 'white',
+    color: 'black',
     // display: 'flex',
-    // overflowX: 'scroll'
+    // overflowX: 'scroll'\
+    cursor: 'pointer'
   },
   listItemWrapper: {
     height: 'auto',
     width: '100%',
     // border:'1px solid white',
-    textAlign:'right',
+    textAlign:'left',
     fontFamily: 'Inconsolata',
     fontSize: "12px",
     lineHeight: "25px",

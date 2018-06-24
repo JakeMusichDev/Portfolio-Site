@@ -72,6 +72,8 @@ const styles = StyleSheet.create({
     gridTemplateColumns: 'repeat(5, 20%)',
     gridTemplateRows: 'repeat(5, 20%)',
     color: 'white',
-    background: 'rgb(15, 15, 15)',
+    // background: 'rgb(15, 15, 15)',
+    background: '#F2F2F2',
+
   },
 })

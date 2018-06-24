@@ -4,38 +4,39 @@ import Anime from 'animejs'
 import '../../styles/index.css'
 import Rellax from 'rellax'
 import { relative } from 'path'
-import WOW from 'wowjs'
-import AOS from 'aos'
+import Reveal from 'react-reveal/Reveal'
 
 export default class Photo extends Component {
   componentDidMount() {
-
-    // const tl = Anime.timeline()
+    const tl = Anime.timeline()
     // tl.add({
     //   targets: this.photographDiv,
-    //   translateY: '-1000%',
+    //   translateY: '-100%',
     //   duration: 0,
     // }).add({
     //   targets: this.photographDiv,
     //   translateY: '0%',
-    //   duration: 3000,
+    //   duration: 1000,
     //   opacity: [0,1],
+    //   easing: 'easeInExpo',
     // })
   }
 
   render() {
-    const { content } = this.props
-    const style = {height: '100%', width: '100%'}
+    const { content, handleOpenProject } = this.props
     return (
-      <div ref={ref => { this.photographDiv = ref }} className={css(styles.photoContainer)}>
-          {content.src && (
+      <div ref={ref => { this.photographDiv = ref }} onClick={handleOpenProject}className={css(styles.photoContainer)}>
+        {content.src && (
+          // <Reveal effect='fadeIn'>
             <img
-              data-aos="fade-up"
-              style={style}
+              id='photograph'
+              className={css(styles.img)}
               src={`${content.src}`}
               alt="photo"
             />
+          // </Reveal>
           )}
+
       </div>
     )
   }
@@ -44,11 +45,12 @@ export default class Photo extends Component {
 const styles = StyleSheet.create({
   photoContainer: {
     height: 'auto',
-    width: '100%',
-    // margin: '2%',
+    width: '30vw',
+    overflow: 'hidden',
+    border: '1px solid blue'
   },
-  photo: {
-    height: '100%',
+  img: {
+    height: '100%', 
     width: '100%',
   }
 })

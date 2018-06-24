@@ -8,6 +8,7 @@ import HomeMenuSlider from '../components/home-components/HomeMenuSlider'
 import ScrollInstruction from '../components/home-components/ScrollInstruction'
 import PixiDisplacementImage from '../components/general-components/PixiDisplacementImage'
 import SectionCounter from '../components/home-components/SectionCounter'
+import Zoom from 'react-reveal'
 
 export default class Home extends Component {
   constructor(props) {
@@ -37,28 +38,33 @@ export default class Home extends Component {
         <div className={css(styles.imageCell)}>
           <PixiDisplacementImage currentItem={currentItem} />
         </div>
-        <div className={css(styles.menuCell)}>
-          <HomeMenu
-            onSectionClick={this.onSectionClick}
-            currentItem={currentItem}
-            direction={direction}
-          />
-        </div>
+        <HomeMenu
+          onSectionClick={this.onSectionClick}
+          currentItem={currentItem}
+          direction={direction}
+        />
         <div className={css(styles.scrollCell, styles.flex)}>
           {/* <ScrollInstruction /> */}
         </div>
-          <SectionCounter currentItem={currentItem} />
+        <SectionCounter 
+          currentItem={currentItem} 
+        />
         <div className={css(styles.nameCell, styles.flex)}>
           <div className={css(styles.name)}>JAKE MUSICH</div>
         </div>
         <div className={css(styles.circleCell, styles.flex)}>
           <HomeMenuSlider currentItem={currentItem} />
         </div>
+ 
         <div className={css(styles.artistCell)}>
+          <Zoom>
           <div className={css(styles.artistText)}>- Artist</div>
+          </Zoom>
         </div>
         <div className={css(styles.developerCell)}>
-          <div className={css(styles.developerText)}>- Developer</div>
+          <Zoom duration={2000} delay={1000}>
+            <div className={css(styles.developerText)}>- Developer</div>
+          </Zoom>
         </div>
       </div>
     )
@@ -70,10 +76,9 @@ export default class Home extends Component {
 
     tl.add({
       targets: '#home',
-      opacity: 0,
-      elasticity: 0,
+      opacity: 0.5,
       easing: 'easeOutQuart',
-      duration: 100,
+      duration: 400,
       complete: () => {
         _this.props.history.push(`${section.route}`)
       },
@@ -115,12 +120,6 @@ const styles = StyleSheet.create({
     gridColumn: '2/4',
     background: '#F115',
     // border: "1px solid pink"
-  },
-  menuCell: {
-    gridColumnStart: '2',
-    gridColumnEnd: '5',
-    gridRowStart: '3',
-    gridRowEnd: '4',
   },
   scrollCell: {
     gridColumnStart: '3',
