@@ -211,5 +211,11 @@ export const paintingData = [
   _theFulcrum,
   _windWhisper,
   _wispWhimper,
+  _mothersWish,
+  _blueSchmear,
+  _delver,
+  _theFulcrum,
+  _windWhisper,
+  _wispWhimper,
   _mothersWish
 ]

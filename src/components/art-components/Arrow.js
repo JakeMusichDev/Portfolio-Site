@@ -49,13 +49,13 @@ export default class Arrow extends Component {
         targets: `#directionArrow-${dirClass}`,
         duration: 0,
         opacity:[0],
+        scale: '0.2'
       })
       .add({
         targets: `#directionArrow-${dirClass}`,
         opacity:[1],
         duration: 1000,
         easing: 'easeInQuint',
-        scale: '0.2'
         // elasticity: 100,
       })
       // .add({

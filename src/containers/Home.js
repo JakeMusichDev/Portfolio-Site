@@ -43,18 +43,16 @@ export default class Home extends Component {
           currentItem={currentItem}
           direction={direction}
         />
-        <div className={css(styles.scrollCell, styles.flex)}>
-          {/* <ScrollInstruction /> */}
-        </div>
+        
+
         <SectionCounter 
           currentItem={currentItem} 
         />
         <div className={css(styles.nameCell, styles.flex)}>
           <div className={css(styles.name)}>JAKE MUSICH</div>
         </div>
-        <div className={css(styles.circleCell, styles.flex)}>
-          <HomeMenuSlider currentItem={currentItem} />
-        </div>
+
+        <HomeMenuSlider currentItem={currentItem} />
  
         <div className={css(styles.artistCell)}>
           <Zoom>
@@ -76,7 +74,6 @@ export default class Home extends Component {
 
     tl.add({
       targets: '#home',
-      opacity: 0.5,
       easing: 'easeOutQuart',
       duration: 400,
       complete: () => {

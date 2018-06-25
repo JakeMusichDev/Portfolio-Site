@@ -17,12 +17,18 @@ class Header extends Component {
   //-----------------------------
   renderHeader = () => {
     const { location, handleMenuActiveState } = this.props
-    if(location.pathname !== '/') {
+    if(location.pathname !== '/' && location.pathname !== '/painting') {
       return (
         <div className={css(styles.headerWrapper)}>
-        <HeaderName />
-        <HeaderMenu handleMenuActiveState={handleMenuActiveState} />
+          <HeaderName />
+          <HeaderMenu handleMenuActiveState={handleMenuActiveState} />
       </div>
+    )} else if (location.pathname === '/painting') {
+      return (
+        <div className={css([styles.headerWrapper, styles.black])}>
+          <HeaderName />
+          <HeaderMenu handleMenuActiveState={handleMenuActiveState} />
+        </div>
     )} else {
       return null
     }
@@ -39,7 +45,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top:0,
     left:0,
-    zIndex: 100
+    zIndex: 120
+  },
+  black: {
+    color: 'black'
   }
 })
 

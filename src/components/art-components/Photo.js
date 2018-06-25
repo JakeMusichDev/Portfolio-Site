@@ -45,7 +45,7 @@ export default class Photo extends Component {
 const styles = StyleSheet.create({
   photoContainer: {
     height: 'auto',
-    width: '30vw',
+    // width: '30vw',
     overflow: 'hidden',
     border: '1px solid blue'
   },

@@ -32,14 +32,17 @@ export default class PhotoProjectView extends Component {
         </div>
 
         <div className={css(styles.photoView_GridContainer)} >
-          {this.grid.map((content, index) => (
-            <div style={content.gridPosition}>
-              <img
-                className={css(styles.img)}
-                src={`${content.src}`}
-                key={`${content.name} + ${index}`}
-                alt="photo"
-              />
+          {project.content.map((content, index) => (
+            <div className='row'>
+            <div className="col-sm-offset-2" >
+                <img
+                  className={css(styles.img)}
+                  src={`${content.src}`}
+                  key={`${content.name} + ${index}`}
+                  alt="photo"
+                />
+            </div>
+
             </div>
           ))}
         </div>
@@ -106,9 +109,9 @@ const styles = StyleSheet.create({
   photoView_GridContainer: {
     height: '100%',
     width: 'auto ',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto, 10)',
-    gridTemplateRows: 'repeat(auto, 10)',
+    // display: 'grid',
+    // gridTemplateColumns: 'repeat(auto, 10)',
+    // gridTemplateRows: 'repeat(auto, 10)',
     border: '1px dotted lightblue',
     // background: 'lightpink'
     // marginBottom: '10vh',
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
     color: 'black'
   },
   img: {
-    height: '50vh',
+    height: 'auto',
     width: 'auto',
     border: '1px dotted red',
     marginBottom: '10vh'
