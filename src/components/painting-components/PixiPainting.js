@@ -91,7 +91,7 @@ export default class PixiPainting extends Component {
 
   buildApp = () => {
     const anchorBounds = this.canvasAnchor.getBoundingClientRect()
-    this.app = new PIXI.Application({
+    this.app = new PIXI.autoDetectRenderer({
       width:  anchorBounds.width,
       height: anchorBounds.height,
       antialias: true,
@@ -110,8 +110,11 @@ export default class PixiPainting extends Component {
   attachFilteredImage = () => {
     // Create stage
     this.stageContainer = new PIXI.Container()
-    this.app.stage.addChild(this.stageContainer)
-    this.app.stage.interactive = true
+    console.log('====================================');
+    console.log(this.app);
+    console.log('====================================');
+    // this.app.render(this.stageContainer)
+    // this.app.stage.interactive = true
 
     // Create Image itself
     const imageSprite = new PIXI.Sprite(PIXI.loader.resources['background-0'].texture)
@@ -120,7 +123,7 @@ export default class PixiPainting extends Component {
     imageSprite.scale.set(0.3, 0.3)
     imageSprite.anchor.set(0.2,0.2)
     
-    this.app.stage.on('click', (event) => {
+    this.app.on('click', (event) => {
       this.changeAlpha(imageSprite)
     })
 
@@ -139,19 +142,29 @@ export default class PixiPainting extends Component {
     // Add sprites and filter to container
     this.stageContainer.addChild(filterSprite)
 
-    // this.stageContainer.addChild(imageSprite)
+    this.stageContainer.addChild(imageSprite)
     this.stageContainer.filters = [displacementFilter]
-    this.setState({pixiInitComplete:true}, () => this.animateCanvas(filterSprite) )
+    this.app.render(this.stageContainer)
+    // console.log(this.app);
+    // let interactionManager = PIXI.interaction.InteractionManager(this.app);
+    
+    // this.setState({pixiInitComplete:true}, () => this.animateCanvas(filterSprite) )
   }
 
   animateCanvas = (filterSprite) => {
     let count = 0
-    
-    this.app.ticker.add((delta) => {
+    let ticker = PIXI.ticker.shared
+    ticker.start();
+    ticker.add(function(time) {
       filterSprite.x = count*30
       filterSprite.y = count*30
       count += 0.05
     })
+    // this.app.ticker.add((delta) => {
+    //   filterSprite.x = count*30
+    //   filterSprite.y = count*30
+    //   count += 0.05
+    // })
   }
 
   changeAlpha = (sprite) => {

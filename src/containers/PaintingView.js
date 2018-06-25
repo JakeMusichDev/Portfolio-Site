@@ -9,6 +9,7 @@ import ActivePaintingContainer from '../components/painting-components/ActivePai
 import PaintingProgressIndication from '../components/painting-components/PaintingProgressIndication'
 import PaintingsList from '../components/painting-components/PaintingsList'
 import PixiPainting from '../components/painting-components/PixiPainting'
+import PaintingCarousel from '../components/painting-components/PaintingCarousel'
 
 export default class PaintingView extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class PaintingView extends Component {
     if(childFocusViewActive) {
       return(
         <div id="paintingView--mainContainer" className={css(styles.paintingChildContainer)}>
-          <ActivePaintingContainer activeIndex={activeIndex} paintingData={paintingData} />
+          <PaintingCarousel activeIndex={activeIndex} paintingData={paintingData} />
           {/* <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
           <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
           <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'+'} />
