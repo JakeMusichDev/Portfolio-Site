@@ -10,6 +10,11 @@ export default class PaintingCarousel extends Component {
 
   }
 
+  componentDidMount() {
+    console.log(this.slider);
+    
+  }
+
   next = () => {
     this.slider.slickNext();
   }
@@ -20,35 +25,27 @@ export default class PaintingCarousel extends Component {
 
   render() {
     const { activeIndex, paintingData } = this.props
-    const slickOptions = { initialSlide: activeIndex }
-
+    const slickOptions = { initialSlide: activeIndex, centerMode: true }
     const list = paintingData.map((item, index) => <Painting key={`${item.key} + '-' + ${index}`} item={item} />)
+    
     return (
-      <div>
+      <div className={css(styles.paintingViewContainer)} >
         <Slider ref={c => (this.slider = c)} {...slickOptions}>
-          {list}
+          { list }
         </Slider>
       </div>
     )
   }
-
-// <button className="button" onClick={this.previous}>
-// Previous
-// </button>
-// <button className="button" onClick={this.next}>
-// Next
-// </button>
-  
 }
 
 const styles = StyleSheet.create({
   paintingViewContainer: {
-    height: '100vh',
-    width: '100vw',
-    // gridRow: '2/5',
-    // gridColumn: '2/4',
-    border:'1px solid red',
-    color: 'white',
+    // height: '100vh',
+    // width: '10v',
+    border: '1px solid blue',
+    background: 'rgb(15, 15, 15)',
+    gridRow: '2/5',
+    gridColumn: '2/5',
     // display: 'flex'
   }
 })

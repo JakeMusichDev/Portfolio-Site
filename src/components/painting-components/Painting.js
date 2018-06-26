@@ -9,7 +9,7 @@ export default class Painting extends Component {
     this.state = {tiltArray:[]}
   }
   componentDidMount() {
-    this.animateIn()
+    // this.animateIn()
   }
 
   componentWillUnmount() {
@@ -19,18 +19,13 @@ export default class Painting extends Component {
   render() {
     const { item } = this.props
     return (
-      <div 
-        ref={ el => this.imageWrapper = el } 
-        className={css(styles.imageWrapper)}
-      >
-        <img 
-          id={`paintingView--painting-${item.key}`} 
-          ref={ el => this.image = el } 
-          className={css(styles.image)} 
-          src={`${item.src}`} 
-          alt="" 
-        />
-      </div>
+      <img 
+        id={`paintingView--painting-${item.key}`} 
+        ref={ el => this.image = el } 
+        className={css(styles.image)} 
+        src={`${item.src}`} 
+        alt="" 
+      />
     )
   }
 
@@ -70,35 +65,6 @@ export default class Painting extends Component {
     //     easing: 'easeOutSine',
     //     duration: 1000
     // })
-
-    //   image: {
-    //     maxHeight: 550,
-    //     objectFit: 'scale-down',
-    //     objectPosition: 'right',
-    //     width: '100%',
-    //     flex: 1,
-    //     [breakPoints.tablet]: {
-    //         maxHeight: 'unset'
-    //     },
-    //     [breakPoints.mobile]: {
-    //         maxHeight: 'unset'
-    //     }
-    // },
-    // imageWrapper: {
-    //     overflow: 'hidden',
-    //     width: 'calc(50vw + 1px)',
-    //     display: 'flex',
-    //     justifyContent: 'flex-end',
-    //     alignItems: 'flex-start',
-    //     [breakPoints.tablet]: {
-    //         width: '100vw',
-    //         marginBottom: 25
-    //     },
-    //     [breakPoints.mobile]: {
-    //         width: '100vw',
-    //         marginBottom: 25
-    //     }
-    // },
   }
 
   attachTilt = () => {
@@ -147,46 +113,10 @@ export default class Painting extends Component {
 }
 
 const styles = StyleSheet.create({
-  // paintingWrapper: {
-  //   height: '100%',
-  //   width: 'auto',
-  //   color: 'white',
-  //   // overflow: 'hidden',
-  //   // border: '1px solid white'
-  // },
-  // paintingImg: {
-  //   height: '100%',
-  //   width: 'auto',
-  // },
   image: {
-    maxHeight: 550,
-    objectFit: 'scale-down',
-    objectPosition: 'center',
-    width: '100%',
-    border: '1px solid black',
-    flex: 1,
-    // [breakPoints.tablet]: {
-    //     maxHeight: 'unset'
-    // },
-    // [breakPoints.mobile]: {
-    //     maxHeight: 'unset'
-    // }
-  },
-  imageWrapper: {
-    overflow: 'hidden',
-    width: 'calc(100% + 1px)',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-    // border: '1px solid white'
-    // [breakPoints.tablet]: {
-    //     width: '100vw',
-    //     marginBottom: 25
-    // },
-    // [breakPoints.mobile]: {
-    //     width: '100vw',
-    //     marginBottom: 25
-    // }
-  },
+    // marginTop: '10vh',
+    height: '90vh',
+    // width: 'auto',
+  }
 })
 

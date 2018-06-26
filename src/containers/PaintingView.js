@@ -31,12 +31,15 @@ export default class PaintingView extends Component {
 
     if(childFocusViewActive) {
       return(
+        // <div className={css(styles.paintingViewContainer)}>
+        //   <PaintingCarousel activeIndex={activeIndex} paintingData={paintingData} />
+        // </div>
+
         <div id="paintingView--mainContainer" className={css(styles.paintingChildContainer)}>
-          <PaintingCarousel activeIndex={activeIndex} paintingData={paintingData} />
-          {/* <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
+          <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
           <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
           <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'+'} />
-          <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'-'} /> */}
+          <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'-'} />
         </div>
       )
     } else {
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
 
   },
   paintingChildContainer: {
-    height: '100vh',
-    width: '100vw',
+    // height: '100vh',
+    // width: '100vw',
   }
 })
