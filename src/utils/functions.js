@@ -1,24 +1,22 @@
 function Utils() {}
 
 Utils.prototype = {
-  constructor: Utils,
-  isElementInView: function (element, fullyInView) {
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-      const pageTop = window.scrollTop()
-      const el = document.getElementById(`work--project-${index}`)
-      const projectBounding = document.getElementById(`work--project-${index}`).getBoundingClientRect()
+    constructor: Utils,
+    isElementInView: function (element, fullyInView) {
+        let windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        let windowWidth = window.innerWidth || document.documentElement.clientWidth;
+        let pageTop = window.scrollTop || document.documentElement.scrollTop
+        let elementHeight = element.getBoundingClientRect().height
+        let pageBottom = pageTop + windowHeight
+        let elementTop = element.offsetTop
+        let elementBottom = elementTop + pageTop
 
-      var pageBottom = pageTop + $(window).height();
-      var elementTop = $(element).offset().top;
-      var elementBottom = elementTop + $(element).height();
-
-      if (fullyInView === true) {
-          return ((pageTop < elementTop) && (pageBottom > elementBottom));
-      } else {
-          return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
-      }
-  }
+        if (fullyInView === true) {
+            return ((pageTop < elementTop) && (pageBottom > elementBottom));
+        } else {
+            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+        }
+    }
 };
 
-export default Utils 
+export default Utils

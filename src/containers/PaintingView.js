@@ -31,11 +31,8 @@ export default class PaintingView extends Component {
 
     if(childFocusViewActive) {
       return(
-        // <div className={css(styles.paintingViewContainer)}>
-        //   <PaintingCarousel activeIndex={activeIndex} paintingData={paintingData} />
-        // </div>
-
-        <div id="paintingView--mainContainer" className={css(styles.paintingChildContainer)}>
+        <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
+          <ActivePaintingContainer activeIndex={activeIndex} paintingData={paintingData} />
           <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
           <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
           <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'+'} />

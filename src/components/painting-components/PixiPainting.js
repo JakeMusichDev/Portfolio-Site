@@ -27,15 +27,15 @@ export default class PixiPainting extends Component {
   componentDidMount() {
     Anime.timeline().add({
       targets: this.canvasContainer,
-      height: '0%',
+      // height: '0%',
       duration: 0,
-      // translateY: '100%'
+      translateY: '100%'
     }).add({
       targets: this.canvasContainer,
-      height: '100%',
+      // height: '100%',
       translateY: '0%',
       opacity: [0, 1],
-      easing: 'easeInSine',
+      easing: 'easeInQuad',
       duration: 2000,
       complete: () => this.initPixi()
     })
@@ -43,6 +43,8 @@ export default class PixiPainting extends Component {
 
   componentWillReceiveProps(nextProps, nextState) {
     if(this.state.pixiInitComplete) {
+      console.log(nextProps);
+      
       this.nextBackgroundImage(nextProps)
     }
   }
@@ -110,9 +112,6 @@ export default class PixiPainting extends Component {
   attachFilteredImage = () => {
     // Create stage
     this.stageContainer = new PIXI.Container()
-    console.log('====================================');
-    console.log(this.app);
-    console.log('====================================');
     // this.app.render(this.stageContainer)
     // this.app.stage.interactive = true
 
@@ -148,12 +147,13 @@ export default class PixiPainting extends Component {
     // console.log(this.app);
     // let interactionManager = PIXI.interaction.InteractionManager(this.app);
     
-    // this.setState({pixiInitComplete:true}, () => this.animateCanvas(filterSprite) )
+    this.setState({pixiInitComplete:true}, () => this.animateCanvas(filterSprite) )
   }
 
   animateCanvas = (filterSprite) => {
     let count = 0
-    let ticker = PIXI.ticker.shared
+    let ticker = new PIXI.ticker.Ticker()
+    ticker.add(this.update, this);
     ticker.start();
     ticker.add(function(time) {
       filterSprite.x = count*30
@@ -165,6 +165,10 @@ export default class PixiPainting extends Component {
     //   filterSprite.y = count*30
     //   count += 0.05
     // })
+  }
+
+  update() {
+    this.app.render(this.stageContainer);
   }
 
   changeAlpha = (sprite) => {
@@ -180,7 +184,7 @@ export default class PixiPainting extends Component {
     const {activePixiImage} = nextProps
     const assetPath =     '../../../assets/painting'
     const imageSprite = new PIXI.Sprite.fromImage(`${activePixiImage.src}`);
-    // console.log(imageSprite);
+    console.log(imageSprite);
     
     imageSprite.autoFit = true
     imageSprite.scale.set(1, 1)

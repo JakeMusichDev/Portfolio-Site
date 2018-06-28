@@ -7,14 +7,14 @@ export default class PaintingsList extends Component {
   componentDidMount() {
     Anime.timeline().add({
       targets: this.container.children,
-      height: '0%',
+      // height: '0%',
       duration: 0,
       opacity: 0,
       translateY: '200%'
     }).add({
       targets: this.container.children,
       translateY: '0%',
-      opacity: [0.4],
+      opacity: [0, 1],
       easing: 'easeInSine',
       duration: 1000,
       delay: function(target, index) {
@@ -56,12 +56,12 @@ export default class PaintingsList extends Component {
 
 const styles = StyleSheet.create({
   paintingListContainer: {
-    height: 'auto',
+    height: '90%',
     width: '100%',
-    gridRow: '1/6',
+    // marginTop: '10vh',
+    gridRow: '2/6',
     gridColumn: '1/6',
     color: '#F2F2F2',
-    // display: 'flex',
     overflowX: 'scroll',
     // border:'1px solid green',
     cursor: 'pointer',
@@ -74,15 +74,15 @@ const styles = StyleSheet.create({
   },
   listItemWrapper: {
     height: 'auto',
-    // width: '100%',
+    width: 'auto',
     // border:'1px solid blue',
     textAlign:'left',
     fontFamily: 'Vollkorn',
-    fontSize: "30px",
+    fontSize: "70px",
     // align: "left",
     letterSpacing: '5px',
-    padding: '5%',
-    opacity: '0.4',
+    padding: '3%',
+    // opacity: '0.5',
     // transition: '0.5s all',
     ":hover": {
       opacity: '1',

@@ -13,7 +13,11 @@ export default class ActivePaintingContainer extends Component {
     const list = paintingData.map((item, index) => <Painting key={`${item.key} + '-' + ${index}`} item={item} />)
     return (
       <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
-        {list}
+        {paintingData.map((item, index) =>
+          activeIndex === index && (
+            <Painting key={item.key} item={item} />
+          )
+        )}
       </div>
     )
   }
@@ -31,8 +35,8 @@ const styles = StyleSheet.create({
   paintingViewContainer: {
     height: '100vh',
     width: '100vw',
-    // gridRow: '2/5',
-    // gridColumn: '2/4',
+    gridRow: '2/5',
+    gridColumn: '2/4',
     border:'1px solid red',
     color: 'white',
     // display: 'flex'

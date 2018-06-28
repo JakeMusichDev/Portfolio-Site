@@ -19,6 +19,7 @@ export default class Painting extends Component {
   render() {
     const { item } = this.props
     return (
+
       <img 
         id={`paintingView--painting-${item.key}`} 
         ref={ el => this.image = el } 
@@ -49,22 +50,22 @@ export default class Painting extends Component {
     //   })
 
       // Fire off intro animation
-    // Anime.timeline().add({
-    //     targets: this.image,
-    //     opacity: [0, 1],
-    //     translateX: ['100%', '0%'],
-    //     elasticity: 0,
-    //     easing: 'easeOutSine',
-    //     duration: 1000,
-    // }).add({
-    //     targets: this.imageWrapper,
-    //     offset: '-=1000',
-    //     opacity: [0, 1],
-    //     translateX: ['-100%', '0%'],
-    //     elasticity: 0,
-    //     easing: 'easeOutSine',
-    //     duration: 1000
-    // })
+    Anime.timeline().add({
+        targets: this.image,
+        opacity: [0, 1],
+        translateX: ['100%', '0%'],
+        elasticity: 0,
+        easing: 'easeOutSine',
+        duration: 1000,
+    }).add({
+        targets: this.imageWrapper,
+        offset: '-=1000',
+        opacity: [0, 1],
+        translateX: ['-100%', '0%'],
+        elasticity: 0,
+        easing: 'easeOutSine',
+        duration: 1000
+    })
   }
 
   attachTilt = () => {

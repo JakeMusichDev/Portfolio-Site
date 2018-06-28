@@ -6,6 +6,7 @@ import airswap_name from '../../assets/work/Airswap.svg'
 import stockpile_name from '../../assets/work/Stockpile.png'
 
 import artery_name from '../../assets/work/The-Artery.svg'
+import artery_desktop from '../../assets/work/artery-desktop.png'
 // Template
 // { 
 //   projectName: "string",
@@ -45,7 +46,7 @@ const artery = {
   description: "Building the portfolio for the creative studio The-Artery",
   images: {
     nameSvg: artery_name,
-    // desktop: airswap_desktop,
+    desktop: artery_desktop,
     // tablet: airswap_tablet,
     // mobile: airswap_mobile
   }
