@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
+import Zoom from 'react-reveal/Reveal'
 
 export default class WorkProjectDescription extends Component {
   componentDidMount () {
@@ -15,10 +16,10 @@ export default class WorkProjectDescription extends Component {
   
 
   render() {
-    const { svg } = this.props
+    const { svg, onOpen } = this.props
     return (
       <div id={`project-name`} className={css(styles.projectName)}>
-        <img className={css(styles.nameSvg)} src={`${svg}`} />
+        <img onClick={onOpen} className={css(styles.nameSvg)} src={`${svg}`} />
       </div>
     )
   }
@@ -31,6 +32,9 @@ const styles = StyleSheet.create({
     gridRow: '6/7',
     gridColumn: '2/4',
     zIndex: 4,
+    ":hover": {
+      cursor: 'pointer'
+    }
   },
   nameSvg: {
     height: '100%',

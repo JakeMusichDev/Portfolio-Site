@@ -7,6 +7,7 @@ import Utils from '../../utils/functions.js'
 import WorkProjectDescription from './WorkProjectDescription'
 import WorkProjectName from './WorkProjectName'
 import WorkProjectImage from './WorkProjectImage'
+import WorkProjectRole from './WorkProjectRole'
 
 export default class WorkProject extends Component {
   constructor(props) {
@@ -19,16 +20,11 @@ export default class WorkProject extends Component {
   }
   
   componentWillMount () {
-    this.wheelEvent = window.addEventListener('wheel', this.isInViewport_throttled.bind(this), false)
-  }
-
-  componentDidMount() {
-
+    // this.wheelEvent = window.addEventListener('wheel', this.isInViewport_throttled.bind(this), false)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('wheel', this.isInViewport_throttled, false)
-    
+    // window.removeEventListener('wheel', this.isInViewport_throttled, false)
   }
   
 
@@ -40,12 +36,17 @@ export default class WorkProject extends Component {
         ref={ el => this.projectElement = el } 
         className={css(styles.workProject)}
       >
-        <WorkProjectName svg={project.images.nameSvg} />
+        <WorkProjectImage image={project.images.desktop} onOpen={this.onOpenProject} />
+        <WorkProjectName svg={project.images.nameSvg} onOpen={this.onOpenProject} />
         <WorkProjectDescription description={project.description} />
-        {/* [web developer] */}
-        <WorkProjectImage image={project.images.desktop} />
+        <WorkProjectRole role={'developer'} />
       </div>
     )
+  }
+
+  onOpenProject = (e) => {
+    const { handleActiveProject, project } = this.props
+    handleActiveProject(project)
   }
 
 
@@ -53,9 +54,7 @@ export default class WorkProject extends Component {
     const { index } = this.props
     const el = document.getElementById(`work--project-${index}`)
     var util = new Utils()
-    let projectVisibleInViewport = util.isElementInView(el, true)
-
-    console.log(projectVisibleInViewport)
+    let projectVisibleInViewport = util.isElementInView(el, false)
     
     if(projectVisibleInViewport && !this.state.visible) {
       // this.animateIn()
@@ -88,6 +87,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     gridTemplateColumns: 'repeat(6, 15%)',
     gridTemplateRows: 'repeat(6, 15%)',
-    marginBottom: '100px',
+    // marginBottom: '100px',
   }
 })

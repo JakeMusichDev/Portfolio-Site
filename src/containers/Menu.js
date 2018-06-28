@@ -11,12 +11,12 @@ export default class Menu extends Component {
     Anime.timeline().add({
       targets: '#appMenu--mainContainer',
       duration: 0,
-      translateY: '-10vh'
+      translateY: '-100%'
     }).add({
       targets: '#appMenu--mainContainer',
-      duration: 1000,
+      duration: 500,
       easing: 'easeInQuad',
-      translateY: '10vh'
+      translateY: '0%'
     })
   }
 
@@ -29,23 +29,24 @@ export default class Menu extends Component {
       </div>
     )
   }
+
+  onMenuClick = (e) => {
+    
+  } 
 }
 
 const styles = StyleSheet.create({
   menuMainContainer: {
-    height:'10vh',
-    width: '10vw',
+    height: '100vh',
+    width: '100vw',
     color: 'white',
     position: 'absolute',
-    background: 'rbga(10, 10, 10, 0.3)',
-    top: 0, 
+    background: '#2b061e',
+    opacity: 0.5,
+    top: 0,
     right: 0,
-    // border:"1px solid  green",
+    border:"1px solid green",
     zIndex: 100,
-    display: 'grid',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 20%)',
-    gridTemplateRows: 'repeat(5, 20%)',
   },
   menuList: {
     gridRow: '2/4',

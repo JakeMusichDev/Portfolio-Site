@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:400');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 @import "../../node_modules/slick-carousel/slick/slick.css";
 @import "../../node_modules/slick-carousel/slick/slick-theme.css";
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
-@import url('https://fonts.googleapis.com/css?family=Vollkorn:400');
-@import url('https://fonts.googleapis.com/css?family=Spectral:400,400i,600');
-@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
+:root {
+  --main-white: #F2F2F2;
+  --main-black: #0F0F0F;
+  --main-light-black: #211a1d;
+  --main-dark-purple: #2B061e;
+  --main-light-purple: #847996;
+}
 
 html, body {
   margin: 0;

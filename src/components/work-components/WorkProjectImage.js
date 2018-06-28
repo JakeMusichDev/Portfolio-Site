@@ -10,9 +10,9 @@ export default class WorkProjectImage extends Component {
   
 
   render() {
-    const { image } = this.props
+    const { image, onOpen } = this.props
     return (
-      <div className={css(styles.projectImage)}>
+      <div onClick={onOpen} className={css(styles.projectImage)}>
         <Reveal effect="fadeInUp" duration={1500}>
           <img className={css(styles.img)} src={`${image}`} />    
         </Reveal>
@@ -24,16 +24,18 @@ export default class WorkProjectImage extends Component {
 const styles = StyleSheet.create({
   projectImage: {
     width: '100%',
-    // border: '1px solid pink',
     width: '100%',
     gridRow: '2/5',
     gridColumn: '3/7',
-    zIndex: 2,
     objectFit: 'contain',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    zIndex: 2,
+    ":hover": {
+      cursor: 'pointer'
+    }
   },
   img: {
     height: '100%',
-    width: 'auto'
+    width: 'auto',
   }
 })

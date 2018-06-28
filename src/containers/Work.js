@@ -4,7 +4,7 @@ import Anime from 'animejs'
 
 import { workProjectData } from '../data/work-projects.js'
 
-import WorkProjectContainer from '../components/work-components/WorkProjectContainer'
+import WorkProjectFocusView from '../components/work-components/WorkProjectFocusView'
 import WorkProject from '../components/work-components/WorkProject'
 
 export default class Work extends Component {
@@ -12,18 +12,35 @@ export default class Work extends Component {
     super(props)
 
     this.state = {
+      activeProject: null,
       childFocusViewActive: false,
-      activeIndex: 0
+      activeIndex: 0,
     }
   }
 
   render() {
-    const projectList = workProjectData.map( (project, index) => <WorkProject key={`${project.projectName}-container`} project={project} index={index} /> )
+    const { childFocusViewActive } = this.state
+    const projectList = workProjectData.map( (project, index) => <WorkProject key={`${project.projectName}-container`} handleActiveProject={this.handleActiveProject} project={project} index={index} /> )
     return (
       <div id="work--main-container" className={css(styles.workViewContainer)}>
+        {
+          childFocusViewActive ? (
+            <WorkProjectFocusView />
+          ) : (
+            null
+          )
+        }
         {projectList}
+
       </div>
     )
+  }
+
+  handleActiveProject = e => {
+    this.setState({
+      activeProject: e,
+      childFocusViewActive:true
+    })
   }
 }
 
@@ -33,6 +50,6 @@ const styles = StyleSheet.create({
     width: '100vw',
     display: 'block',
     overflowY: 'scroll',
-    background: 'rgb(15, 15, 15)',
+    background: '#211a1d',
   }
 })

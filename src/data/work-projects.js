@@ -4,6 +4,7 @@ import airswap_mobile from "../../assets/work/airswap-mobile.png"
 import airswap_name from '../../assets/work/Airswap.svg'
 
 import stockpile_name from '../../assets/work/Stockpile.png'
+import stockpile_index from '../../assets/work/stockpile-index.png'
 
 import artery_name from '../../assets/work/The-Artery.svg'
 import artery_desktop from '../../assets/work/artery-desktop.png'
@@ -35,7 +36,7 @@ const stockpile = {
   description: "Built an internal FTP system with with Angular and Electron",
   images: {
     nameSvg: stockpile_name,
-    desktop: airswap_desktop,
+    desktop: stockpile_index,
     tablet: airswap_tablet,
     mobile: airswap_mobile
   }
