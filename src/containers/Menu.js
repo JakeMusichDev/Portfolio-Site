@@ -11,10 +11,12 @@ export default class Menu extends Component {
     Anime.timeline().add({
       targets: '#appMenu--mainContainer',
       duration: 0,
+      opacity: 0,
       translateY: '-100%'
     }).add({
       targets: '#appMenu--mainContainer',
       duration: 500,
+      opacity: 0.8,
       easing: 'easeInQuad',
       translateY: '0%'
     })
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
     color: 'white',
     position: 'absolute',
     background: '#2b061e',
-    opacity: 0.5,
+    opacity: 0.8,
     top: 0,
     right: 0,
     border:"1px solid green",

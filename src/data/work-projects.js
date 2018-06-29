@@ -2,6 +2,7 @@ import airswap_desktop from "../../assets/work/airswap-desktop.png"
 import airswap_tablet from "../../assets/work/airswap-tablet.png"
 import airswap_mobile from "../../assets/work/airswap-mobile.png"
 import airswap_name from '../../assets/work/Airswap.svg'
+import airswap_mov from '../../assets/work/airswap_mov.mov'
 
 import stockpile_name from '../../assets/work/Stockpile.png'
 import stockpile_index from '../../assets/work/stockpile-index.png'
@@ -23,11 +24,12 @@ import artery_desktop from '../../assets/work/artery-desktop.png'
 const airswap = {
   projectName: 'Airswap Redesign',
   description: "Redesigning the cryptocurrency Airswap's website prior to the release of their trading platform.",
+  movie: airswap_mov,
   images: {
     nameSvg: airswap_name,
     desktop: airswap_desktop,
     tablet: airswap_tablet,
-    mobile: airswap_mobile
+    mobile: airswap_mobile,
   }
 }
 

@@ -36,7 +36,7 @@ export default class WorkProject extends Component {
         ref={ el => this.projectElement = el } 
         className={css(styles.workProject)}
       >
-        <WorkProjectImage image={project.images.desktop} onOpen={this.onOpenProject} />
+        <WorkProjectImage image={project.images.desktop} movie={project.movie} onOpen={this.onOpenProject} />
         <WorkProjectName svg={project.images.nameSvg} onOpen={this.onOpenProject} />
         <WorkProjectDescription description={project.description} />
         <WorkProjectRole role={'developer'} />
