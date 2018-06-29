@@ -7,10 +7,9 @@ import PhotoProjectCoverImage from '../components/art-components/PhotoProjectCov
 import PhotoHeader from '../components/art-components/PhotoHeader'
 import PhotoProjectMenu from '../components/art-components/PhotoProjectMenu'
 import Arrow from '../components/art-components/Arrow'
-import PhotoProjectView from '../components/art-components/PhotoProjectView'
+import PhotoProjectModal from '../components/art-components/PhotoProjectModal'
 
 import { photographyGridData } from '../utils/data'
-import { BADHINTS } from 'dns';
 
 
 export default class PhotoView extends Component {
@@ -27,19 +26,19 @@ export default class PhotoView extends Component {
     this.handleScroll = _.throttle(this.scrollMonitor, 1000, {
       trailing: false,
     })
-
-    this.wheel = window.addEventListener('wheel', this.handleScroll)
-
   }
 
   componentDidMount() {
-    // Anime({
-
-    // })
+    this.attachListeners()
   }
 
   componentWillUnmount() {
-    window.removeEventListener('wheel', this.wheelEvent)
+    this.removeListeners()
+  }
+
+  renderIndividualProjectView = () => {
+    const {currentProject, childViewOpen, currentIndex} = this.state
+    return childViewOpen ? <PhotoProjectModal index={currentIndex} project={currentProject} close={this.closeProject} /> : null
   }
 
   render() {
@@ -52,8 +51,7 @@ export default class PhotoView extends Component {
           project={currentProject}
           direction={direction}
         />
-
-        <PhotoProjectMenu 
+        <PhotoProjectMenu
           currentProject={currentProject}
           currentIndex={currentIndex}
           handleOpenProject={this.handleOpenProject}
@@ -78,48 +76,59 @@ export default class PhotoView extends Component {
 
   setNextProject = (direction) => {
     const { currentIndex } = this.state
+    const dataLen = photographyGridData.length
     let nextItem
-
-    if (direction === '+' && currentIndex === 11) {
+    if (direction === '+' && currentIndex === dataLen) {
       nextItem = 0
     } else if (direction === '+' && currentIndex >= 0) {
       nextItem = currentIndex + 1
     } else if (direction === '-' && currentIndex !== 0) {
       nextItem = currentIndex - 1
     } else if (direction === '-' && currentIndex === 0) {
-      nextItem = 11
+      nextItem = dataLen
     } else {
       return
     }
-    const currentProject = photographyGridData[currentIndex]
 
+    const currentProject = photographyGridData[currentIndex]
     this.setState({ currentIndex: nextItem, direction, currentProject })
   }
 
+  attachListeners = () => {
+    window.addEventListener('wheel', this.handleScroll)
+  }
+
+  removeListeners = () => {
+    window.removeEventListener('wheel', this.handleScroll)
+  }
+
   handleOpenProject = (project, projectDiv, projectWrapper) => {
-    console.log(project, projectDiv, projectWrapper)
-    // this.setState({childViewOpen:true})
-    const tl = Anime.timeline()
-    tl
-    .add({
+    Anime({
       targets: ["#photograph"],
       opacity: 0,
       easing: 'easeOutQuart',
       duration: 300,
-      complete: () =>  this.setState({childViewOpen:true})
+      complete: () =>  {
+        this.setState({childViewOpen:true})
+        this.removeListeners()
+      }
     })
-    // .add({
-    //   // targets: projectDiv,
-    //   // easing: 'easeOutQuart',
-    //   // duration: 500,
-    //   // complete: () =>  this.setState({childViewOpen:true})
-    // })
   }
 
-  renderIndividualProjectView = () => {
-    const {currentProject, childViewOpen, currentIndex} = this.state
-    return childViewOpen ? <PhotoProjectView index={currentIndex} project={currentProject} /> : null
+  closeProject = () => {
+    Anime({
+      targets: ["#photograph"],
+      opacity: 0,
+      easing: 'easeOutQuart',
+      duration: 300,
+      complete: () =>  {
+        this.setState({childViewOpen:false})
+        this.attachListeners()
+      }
+    })
   }
+
+
 
 }
 

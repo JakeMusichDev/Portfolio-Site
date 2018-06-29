@@ -17,13 +17,8 @@ export default class WorkProjectFocusView extends Component {
         ref={ el => this.projectElement = el } 
         className={css(styles.workProject)}
       >
-        <div onClick={this.close} className={css(styles.closeButton)}>
-          <img src={`${xButton}`} alt=""/>
-        </div>
-        <div className={css(styles.projectName)}>
-          {project.projectName}
-        </div>
-
+        <div onClick={this.close} className={css(styles.closeButton)}><img src={`${xButton}`} alt=""/></div>
+        <div className={css(styles.projectName)}>{project.projectName}</div>
       </div>
     )
   }
@@ -78,7 +73,6 @@ const styles = StyleSheet.create({
   closeButton: {
     height: 100,
     width: 100,
-    gridRow: '2/4',
     display:'flex',
     top: '20vh',
     position: 'fixed',
@@ -89,10 +83,8 @@ const styles = StyleSheet.create({
     border: '1px solid pink'
   },
   projectName: {
-    height: 100,
+    height: 'auto',
     width: 100,
-    gridRow: '2/4',
-    gridColumn: '5/6',
     top: '20vh',
     display:'flex',
     right: 0,
@@ -100,7 +92,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     flexDirection: 'column',
-    cursor: 'pointer',
     border: '1px solid pink'
   }
 })

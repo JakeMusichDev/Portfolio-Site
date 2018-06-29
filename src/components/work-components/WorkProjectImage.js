@@ -10,11 +10,15 @@ export default class WorkProjectImage extends Component {
   
 
   render() {
-    const { image, onOpen } = this.props
+    const { image, movie, onOpen } = this.props
+    
     return (
       <div onClick={onOpen} className={css(styles.projectImage)}>
         <Reveal effect="fadeInUp" duration={1500}>
-          <img className={css(styles.img)} src={`${image}`} />    
+          {movie ? 
+            <video autoPlay height='500' width='auto' src={`${movie}`}></video> :
+            <img className={css(styles.img)} src={`${image}`} />
+          }
         </Reveal>
       </div>
     )

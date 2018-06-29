@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import Anime from 'animejs'
+import '../../styles/index.css'
 
 export default class PhotoProjectMenu extends Component {
   constructor(props) {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   menuProjectTitle: {
     // border: '1px solid red',
     fontSize: '1.5rem',
-    fontFamily: ['Vollkorn', 'sans-serif'], 
-
+    fontFamily: ['Vollkorn', 'serif'], 
+    cursor: 'pointer'
   }
 })
