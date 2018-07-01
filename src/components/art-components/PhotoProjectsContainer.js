@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import '../../styles/index.css'
-import Waypoint from 'react-waypoint'
 import Anime from 'animejs'
-import AOS from 'aos'
 
 import PhotoProjectCoverImage from './PhotoProjectCoverImage'
 import PhotoProjectView from './PhotoProjectView'

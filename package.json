@@ -14,8 +14,8 @@
   },
   "homepage": "https://github.com/JakeMusichDev/Portfolio-Site#readme",
   "scripts": {
-    "start-dev": "parcel index.html",
-    "build": "parcel build index.html",
+    "start-dev": "parcel index.html --open",
+    "build": "rm -rf dist && parcel build index.html",
     "start": "node server/server.js"
   },
   "engines": {
