@@ -31,7 +31,7 @@ app.use(serveStatic(join(__dirname, '..', 'dist')));
 
 // Set up catchall route
 app.get('*', (req, res) => {
-	res.sendFile(join(__dirname, '..', 'dist', 'index.html'));
+	res.sendFile(join(__dirname, 'dist', 'index.html'));
 });
 
 // Start up http server
