@@ -43,14 +43,15 @@ export default class PhotoProjectCoverImage extends Component {
 
     return (
       <div 
-        
         className={css(styles.photoProjectContainer)}
       >
-        <div 
+        <div
+          
           ref={ el => this.imageWrapper = el } 
           className={css(styles.imageWrapper)}
         >
           <div 
+            id='pv--cover-image'
             ref={thisDiv => { this.image = thisDiv}} 
             ref={ el => this.image = el } 
             className={css(styles.headerImg)} 

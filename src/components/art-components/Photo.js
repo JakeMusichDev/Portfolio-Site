@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     height: 'auto',
     // width: '30vw',
     overflow: 'hidden',
-    border: '1px solid blue'
+    // border: '1px solid blue'
   },
   img: {
     height: '100%', 

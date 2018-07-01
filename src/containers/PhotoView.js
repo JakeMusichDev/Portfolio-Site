@@ -56,13 +56,49 @@ export default class PhotoView extends Component {
           currentIndex={currentIndex}
           handleOpenProject={this.handleOpenProject}
         />
-        <Arrow direction={"+"} handleNextActiveItem={this.onArrowClick} />
-        <Arrow direction={"-"} handleNextActiveItem={this.onArrowClick} />
+        <Arrow 
+          direction={"-"} 
+          handleNextActiveItem={this.onArrowClick}
+        />
+        <Arrow 
+          direction={"+"} 
+          handleNextActiveItem={this.onArrowClick}
+        />
 
         {this.renderIndividualProjectView()}
 
       </div>
     )
+  }
+
+  handleOpenProject = (project, projectDiv, projectWrapper) => {
+    this.anime = Anime.timeline().add({
+      targets: ['#directionArrow-up', '#directionArrow-down'],
+      easing: 'linear',
+      duration: 500,
+      opacity: 0,
+    }).add({
+      targets: ["#pv--header", "#pv--counter", '#pv--name',],
+      translateY: '-100%',
+      easing: 'easeInQuad',
+      duration: 1000,
+      offset: '-=200',
+      delay: function(target, index) {
+        return index * 100
+      },
+    }).add({
+      targets: ["#pv--cover-image"],
+      translateY: '-100%',
+      easing: 'easeOutExpo',
+      duration: 800,
+      elasticity: 10,
+      opacity: 1,
+      offset: '-=300',
+      complete: () =>  {
+        this.setState({childViewOpen:true})
+        this.removeListeners()
+      }
+    })
   }
 
   scrollMonitor = wheelEvent => {
@@ -102,18 +138,7 @@ export default class PhotoView extends Component {
     window.removeEventListener('wheel', this.handleScroll)
   }
 
-  handleOpenProject = (project, projectDiv, projectWrapper) => {
-    Anime({
-      targets: ["#photograph"],
-      opacity: 0,
-      easing: 'easeOutQuart',
-      duration: 300,
-      complete: () =>  {
-        this.setState({childViewOpen:true})
-        this.removeListeners()
-      }
-    })
-  }
+
 
   closeProject = () => {
     Anime({

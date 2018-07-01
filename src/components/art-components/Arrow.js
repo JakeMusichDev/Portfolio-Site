@@ -141,6 +141,6 @@ const styles = StyleSheet.create({
     // border: '1px solid white',
     height: 'auto',
     width: 'auto',
-  }
+  },
 })
 

@@ -26,8 +26,10 @@ export default class PhotoGridRow extends Component {
     const { content } = this.props
     return (
       <div  className={css(styles.photoHeaderContainer)}>
-        <div ref={ref => {this.header = ref}}  className={css(styles.photoHeaderTitle)}>
-          - photo series
+        <div className={css(styles.photoHeaderWrapper)}>
+          <div id='pv--header' ref={ref => {this.header = ref}}  className={css(styles.photoHeaderTitle)}>
+            - photo series
+          </div>
         </div>
       </div>
     )
@@ -42,6 +44,9 @@ const styles = StyleSheet.create({
     gridColumn: '5/6',
     gridRow: '2/3',
     alignSelf: 'end'
+  },
+  photoHeaderWrapper: {
+    overflow: 'hidden'
   },
   photoHeaderTitle: {
     // border:'1px solid green',

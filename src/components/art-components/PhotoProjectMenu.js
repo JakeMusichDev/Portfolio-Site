@@ -32,9 +32,13 @@ export default class PhotoProjectMenu extends Component {
     const { currentProject, currentIndex, handleOpenProject} = this.props
     return (
       <div ref={ref => {this.menu = ref}}  className={css(styles.scrollInstructionContainer)}>
-        <div className={css(styles.scrollInstruction)}>{currentIndex + 1}. / 11</div>
-        <div onClick={handleOpenProject} className={css(styles.menuProjectTitle)}>
-          {currentProject.name}
+        <div className={css(styles.wrapper)}>
+          <div id='pv--counter' className={css(styles.scrollInstruction)}>{currentIndex + 1}. / 11</div>
+        </div>
+        <div  className={css(styles.wrapper)}>
+          <div id='pv--name' onClick={handleOpenProject} className={css(styles.menuProjectTitle)}>
+            {currentProject.name}
+          </div>
         </div>
       </div>
     )
@@ -48,7 +52,6 @@ const styles = StyleSheet.create({
     display:'block',
     gridColumn: '4/6',
     gridRow: '4/5',
-    // border: '1px solid blue',
     alignSelf: 'end',
     fontFamily: ['Inconsolata', 'sans-serif'], 
     color: '#F2F2F2',
@@ -56,11 +59,16 @@ const styles = StyleSheet.create({
   },
   scrollInstruction: {
     width: 'auto',
+    marginBottom: '20px'
   },
   menuProjectTitle: {
-    // border: '1px solid red',
-    fontSize: '1.5rem',
-    fontFamily: ['Vollkorn', 'serif'], 
+    // border: '1px solid green',
+    fontSize: '3rem',
+    fontFamily: ['Vollkorn', 'serif'],
     cursor: 'pointer'
+  },
+  wrapper: {
+    overflow: 'hidden',
+    // border: '1px solid red'
   }
 })
