@@ -13,13 +13,12 @@ export default class Painting extends Component {
   }
 
   componentWillUnmount() {
-    this.destroyTilt()
+    // this.destroyTilt()
   }
 
   render() {
     const { item } = this.props
     return (
-
       <img 
         id={`paintingView--painting-${item.key}`} 
         ref={ el => this.image = el } 
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
   image: {
     // marginTop: '10vh',
     height: '90vh',
-    // width: 'auto',
+    width: 'auto',
   }
 })
 

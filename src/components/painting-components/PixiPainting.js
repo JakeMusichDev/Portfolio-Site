@@ -184,7 +184,7 @@ export default class PixiPainting extends Component {
     const {activePixiImage} = nextProps
     const assetPath =     '../../../assets/painting'
     const imageSprite = new PIXI.Sprite.fromImage(`${activePixiImage.src}`);
-    console.log(imageSprite);
+    // console.log(imageSprite);
     
     imageSprite.autoFit = true
     imageSprite.scale.set(1, 1)
@@ -199,8 +199,8 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     border:'1px solid #F2F2F2',
-    gridRow: '2/5',
-    gridColumn: '2/5'
+    gridRow: '2/7',
+    gridColumn: '3/5'
   },
   home: {
     height: '100%',

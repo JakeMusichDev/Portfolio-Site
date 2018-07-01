@@ -5,22 +5,22 @@ import Painting from './Painting'
 
 export default class PaintingsList extends Component {
   componentDidMount() {
-    Anime.timeline().add({
-      targets: this.container.children,
-      // height: '0%',
-      duration: 0,
-      opacity: 0,
-      translateY: '200%'
-    }).add({
-      targets: this.container.children,
-      translateY: '0%',
-      opacity: [0, 1],
-      easing: 'easeInSine',
-      duration: 1000,
-      delay: function(target, index) {
-        return index * 100;
-      },
-    })
+    // Anime.timeline().add({
+    //   targets: this.container.children,
+    //   // height: '0%',
+    //   duration: 0,
+    //   opacity: 0,
+    //   translateY: '200%'
+    // }).add({
+    //   targets: this.container.children,
+    //   translateY: '0%',
+    //   opacity: [0, 1],
+    //   easing: 'easeInSine',
+    //   duration: 1000,
+    //   delay: function(target, index) {
+    //     return index * 100;
+    //   },
+    // })
   }
 
   render() {
@@ -56,11 +56,11 @@ export default class PaintingsList extends Component {
 
 const styles = StyleSheet.create({
   paintingListContainer: {
-    height: '90%',
+    height: '100%',
     width: '100%',
     // marginTop: '10vh',
-    gridRow: '2/6',
-    gridColumn: '1/6',
+    gridRow: '3/9',
+    gridColumn: '1/4',
     color: '#F2F2F2',
     overflowX: 'scroll',
     // border:'1px solid green',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'right',
     flexWrap: 'wrap',
     // flexBasis: 'fit-content'
   },
@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
     // border:'1px solid blue',
     textAlign:'left',
     fontFamily: 'Vollkorn',
-    fontSize: "70px",
+    fontSize: 12,
     // align: "left",
     letterSpacing: '5px',
     padding: '3%',
-    // opacity: '0.5',
+    opacity: '0.5',
     // transition: '0.5s all',
     ":hover": {
       opacity: '1',
-      // scale: 1.1
+      scale: 1.2
     }
   }
 })

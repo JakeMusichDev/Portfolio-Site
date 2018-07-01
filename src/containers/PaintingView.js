@@ -23,30 +23,23 @@ export default class PaintingView extends Component {
   }
 
   render() {
-    return this.renderPaintingViewChildren()
+    const { activeIndex, childFocusViewActive, activePixiImage } = this.state
+
+    return (
+      <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
+        <PaintingsList handleHover={this.handleListHover} handleOpenPainting={this.handleOpenPainting} paintingData={paintingData} />
+        <PixiPainting currentItem={activeIndex} activePixiImage={activePixiImage} />
+        <div className={css(styles.title)}>
+          - recent paintings
+        </div>
+        {this.renderPaintingViewChildren()}
+      </div>
+    )
   }
 
   renderPaintingViewChildren = () => {
-    const { activeIndex, childFocusViewActive, activePixiImage } = this.state
-
-    if(childFocusViewActive) {
-      return(
-        <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
-          <ActivePaintingContainer activeIndex={activeIndex} paintingData={paintingData} />
-          <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
-          <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
-          <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'+'} />
-          <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'-'} />
-        </div>
-      )
-    } else {
-      return (
-        <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
-          <PaintingsList handleHover={this.handleListHover} handleOpenPainting={this.handleOpenPainting} paintingData={paintingData} />
-          <PixiPainting currentItem={activeIndex} activePixiImage={activePixiImage} />
-        </div>
-      ) 
-    }
+    const { activeIndex, childFocusViewActive, activePixiImage } = this.state;
+    return childFocusViewActive ? <PaintingCarousel data={paintingData} /> : null
   }
 
   handleOpenPainting = e => {
@@ -65,8 +58,7 @@ export default class PaintingView extends Component {
   handleNextActiveItem = e => {  
     const nextIndex = e === '+' ? 
       this.state.activeIndex += 1 :
-      this.state.activeIndex -= 1
-
+      this.state.activeIndex -= 1;
     this.setState({activeIndex: nextIndex})
   }
 }
@@ -77,14 +69,16 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 20%)',
-    gridTemplateRows: 'repeat(5, 20%)',
+    gridTemplateRows: 'repeat(8, 1fr)',
     color: 'white',
     background: 'rgb(15, 15, 15)',
-    // background: '#F2F2F2',
 
   },
-  paintingChildContainer: {
-    // height: '100vh',
-    // width: '100vw',
+  title: {
+    gridRow: '5/6',
+    gridColumn: '5/6',
+    textAlign: 'right',
+    fontSize: 10,
+
   }
 })
