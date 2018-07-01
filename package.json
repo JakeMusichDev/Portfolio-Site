@@ -17,9 +17,11 @@
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
+  "engines": {
+    "node": "10.5.0"
+  },
   "dependencies": {
     "animejs": "^2.2.0",
-    "aos": "^2.3.2",
     "aphrodite": "^2.2.0",
     "flickity": "^2.1.2",
     "npm": "^6.1.0",
@@ -28,12 +30,10 @@
     "react-dom": "^16.3.2",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.2.2",
-    "react-waypoint": "^8.0.2",
     "rellax": "^1.6.2",
     "underscore": "^1.9.0",
     "vanilla-tilt": "^1.4.1",
-    "wheel-indicator": "^1.1.4",
-    "wowjs": "^1.1.3"
+    "wheel-indicator": "^1.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import Photo from '../art-components/Photo'
-import Waypoint from 'react-waypoint'
 import '../../styles/index.css'
-import WOW from 'wowjs'
 import Anime from 'animejs'
 import Fade from 'react-reveal/Fade';
 
