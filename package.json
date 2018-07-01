@@ -14,9 +14,7 @@
   },
   "homepage": "https://github.com/RazzleRazzle/Portfolio-Site#readme",
   "dependencies": {
-    "anime": "^0.1.2",
     "animejs": "^2.2.0",
-    "aos": "^2.3.1",
     "aphrodite": "^2.2.0",
     "express": "^4.16.3",
     "flickity": "^2.1.2",
@@ -26,14 +24,10 @@
     "react-dom": "^16.3.2",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.2.2",
-    "react-slick": "^0.23.1",
-    "react-waypoint": "^8.0.1",
     "rellax": "^1.6.2",
-    "slick-carousel": "^1.8.1",
     "underscore": "^1.9.0",
     "vanilla-tilt": "^1.4.1",
-    "wheel-indicator": "^1.1.4",
-    "wowjs": "^1.1.3"
+    "wheel-indicator": "^1.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
