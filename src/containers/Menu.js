@@ -1,43 +1,57 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
-import { Routes } from '../routes/Routes'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import '../styles/index.css'
-import Wow from 'wowjs'
+import Anime from 'animejs'
 
-import cursorDot from '../../assets/app/Ellipse2.png'
-
+import MenuDirectory from '../components/menu-components/MenuDirectory'
 
 
 export default class Menu extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      menuActive:false
-    }
-  }
   componentDidMount() {
-    const wow = new Wow.WOW({
-      live: false
-    }).init();
+    Anime.timeline().add({
+      targets: '#appMenu--mainContainer',
+      duration: 0,
+      opacity: 0,
+      translateY: '-100%'
+    }).add({
+      targets: '#appMenu--mainContainer',
+      duration: 500,
+      opacity: 0.8,
+      easing: 'easeInQuad',
+      translateY: '0%'
+    })
   }
 
   render() {
     return (
-      <div className={css(styles.menuMainContainer)}>
-      
+      <div id='appMenu--mainContainer' className={css(styles.menuMainContainer)}>
+        <div className={css(styles.menuList)}>
+          <MenuDirectory />
+        </div>
       </div>
     )
   }
 
-  handleMenuOpen
+  onMenuClick = (e) => {
+    
+  } 
 }
 
 const styles = StyleSheet.create({
   menuMainContainer: {
-    display:'block',
-    height:'100vh',
+    height: '100vh',
     width: '100vw',
-    cursor: `url(${cursorDot}) 2 2, pointer`
+    color: 'white',
+    position: 'absolute',
+    background: '#2b061e',
+    opacity: 0.8,
+    top: 0,
+    right: 0,
+    border:"1px solid green",
+    zIndex: 100,
+  },
+  menuList: {
+    gridRow: '2/4',
+    gridColumn: '2/3',
   }
 })

@@ -7,39 +7,58 @@ import PaintingInfo from '../components/painting-components/PaintingInfo'
 import DirectionArrow from '../components/painting-components/DirectionArrow'
 import ActivePaintingContainer from '../components/painting-components/ActivePaintingContainer'
 import PaintingProgressIndication from '../components/painting-components/PaintingProgressIndication'
-
+import PaintingsList from '../components/painting-components/PaintingsList'
+import PixiPainting from '../components/painting-components/PixiPainting'
+import PaintingCarousel from '../components/painting-components/PaintingCarousel'
 
 export default class PaintingView extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      focuslViewOpen: false,
-      activeIndex: 0
+      childFocusViewActive: false,
+      activeIndex: 0,
+      activePixiImage: null
     }
   }
 
   render() {
-    const { activeIndex } = this.state
-    const { handleNextActiveItem, direction } = this.props
+    const { activeIndex, childFocusViewActive, activePixiImage } = this.state
+
     return (
       <div id="paintingView--mainContainer" className={css(styles.paintingViewContainer)}>
-        <ActivePaintingContainer activeIndex={activeIndex} paintingData={paintingData} />
-        <PaintingProgressIndication activeIndex={activeIndex} paintingData={paintingData} />
-        <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'+'} />
-        <DirectionArrow handleNextActiveItem={this.handleNextActiveItem} direction={'-'} />
-        <PaintingInfo activeIndex={activeIndex} paintingData={paintingData} />
+        <PaintingsList handleHover={this.handleListHover} handleOpenPainting={this.handleOpenPainting} paintingData={paintingData} />
+        <PixiPainting currentItem={activeIndex} activePixiImage={activePixiImage} />
+        <div className={css(styles.title)}>
+          - recent paintings
+        </div>
+        {this.renderPaintingViewChildren()}
       </div>
     )
   }
 
-  handleNextActiveItem = e => {
-    console.log(e);
-    
-    const nextIndex = e === '+' ? 
-      this.state.activeIndex += 1 : 
-      this.state.activeIndex -= 1
+  renderPaintingViewChildren = () => {
+    const { activeIndex, childFocusViewActive, activePixiImage } = this.state;
+    return childFocusViewActive ? <PaintingCarousel data={paintingData} /> : null
+  }
 
+  handleOpenPainting = e => {
+    this.setState({
+      childFocusViewActive: true, 
+      activeIndex: e
+    })
+  }
+
+  handleListHover = e => {
+    this.setState({
+      activePixiImage: e
+    })
+  }
+
+  handleNextActiveItem = e => {  
+    const nextIndex = e === '+' ? 
+      this.state.activeIndex += 1 :
+      this.state.activeIndex -= 1;
     this.setState({activeIndex: nextIndex})
   }
 }
@@ -50,8 +69,16 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 20%)',
-    gridTemplateRows: 'repeat(5, 20%)',
+    gridTemplateRows: 'repeat(8, 1fr)',
     color: 'white',
-    background: 'rgb(15, 15, 15)'
+    background: 'rgb(15, 15, 15)',
+
   },
+  title: {
+    gridRow: '5/6',
+    gridColumn: '5/6',
+    textAlign: 'right',
+    fontSize: 10,
+
+  }
 })

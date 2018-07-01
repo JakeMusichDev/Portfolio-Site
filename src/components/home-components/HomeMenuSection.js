@@ -43,7 +43,8 @@ export default class HomeMenuSection extends Component {
           <div
             onClick={e => onSectionClick(e, item)}
             className={css(styles.section)}>
-            { item.name.toUpperCase() }
+              <img src={item.svg} alt=""/>
+            {/* { item.name.toUpperCase() } */}
           </div>
         </div>
       </div>
@@ -81,7 +82,7 @@ export default class HomeMenuSection extends Component {
         VanillaTilt.init(elements[i], {
           reverse: false,
           max: 50,
-          perspective: 1000,
+          perspective: 800,
           scale: 1,
           speed: 700,
           transition: true,
@@ -129,13 +130,13 @@ const styles = StyleSheet.create({
     color: '#F2F2F2',
     webkitTextStrokeWidth: '1px',
     webkitTextStrokeColor: 'white',
-    fontSize: '7em',
+    fontSize: '5em',
     fontFamily: ['Vollkorn', 'sans-serif'],
-    letterSpacing: "10px",
+    letterSpacing: "5px",
     opacity:'0.8',
     transition: '0.4s opacity',
     height: 'auto',
-    border: '1px solid green',
+    // border: '1px solid green',
     width: 'auto',
     ":hover" : {
       opacity:0.9

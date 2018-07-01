@@ -12,13 +12,18 @@ export default class Socials extends Component {
   }
 
   componentDidMount() {
-    this.typeBio()
+    // this.typeBio()
   }
 
   render() {
     return (
-      <div className={css(styles.socialContainer)}>
-        <div id="contact-bio-container" className={css(styles.greeting)}></div>
+      <div className={css(styles.bioContainer)}>
+        <h3 className={css(styles.bioHeader)}>
+        Hello!
+        </h3>
+        <div id="contact-bio-container" className={css(styles.bioBody)}>
+          {contactCopy.contactBio}
+        </div>
       </div>
     )
   }
@@ -41,23 +46,22 @@ export default class Socials extends Component {
 }
 
 const styles = StyleSheet.create({
-  socialContainer: {
-    gridRow: '3/4',
-    gridColumn: '3/5',
-    fontFamily:["Source Code Pro","sans-serif"],
+  bioContainer: {
     height:"auto",
-    color:"white",
-    fontSize:"10px",
-    fontFamily: ['Inconsolata', 'serif'],
+    width: '100%',
     // border: '1px solid white',
-  },
-  greeting: {
-    height: '30vh',
-    color:"white",
-    fontSize:"11px",
-    alignText: 'block',
+    marginBottom: '100px',
     fontFamily: ['Inconsolata', 'serif'],
-    // marginTop:'40px',
-    zIndex: "2"
+  },
+  bioHeader: {
+    color:"white",
+    fontSize:"20px",
+    marginBottom: '5px'
+  },
+  bioBody: {
+    color:"white",
+    fontSize:"16px",
+    lineHeight: '120%',
+    alignText: 'block',
   },
 })

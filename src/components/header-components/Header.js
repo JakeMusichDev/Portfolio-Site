@@ -20,12 +20,10 @@ class Header extends Component {
     if(location.pathname !== '/') {
       return (
         <div className={css(styles.headerWrapper)}>
-        <HeaderName />
-        <HeaderMenu handleMenuActiveState={handleMenuActiveState} />
+          <HeaderName />
+          <HeaderMenu handleMenuActiveState={handleMenuActiveState} />
       </div>
-    )} else {
-      return null
-    }
+    )} else return null
   }
 }
 
@@ -39,6 +37,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top:0,
     left:0,
+    zIndex: 120
   }
 })
 

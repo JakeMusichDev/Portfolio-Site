@@ -7,10 +7,30 @@ export default class SectionCounter extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    const tl = Anime.timeline()
+    tl.add({
+      targets: this.menu,
+      opacity: 0,
+      duration: 0,
+      scale: 0.8,
+      translateX: '-100%',
+    }).add({
+      targets: this.menu,
+      opacity: [0.9],
+      duration: 1500,
+      elasticity: 0,
+      translateX: '0%',
+      easing: 'easeInQuint',
+      delay: 400,
+      scale: 1
+    })
+  }
+  
   render() {
     const { currentItem } = this.props
     return (
-      <div className={css(styles.scrollInstructionContainer)}>
+      <div className={css(styles.scrollInstructionContainer)} ref={ref=> {this.menu = ref}}>
         <span className={css(styles.scrollInstruction)}>{currentItem + 1}. / 03</span>
       </div>
     )

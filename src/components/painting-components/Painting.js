@@ -9,39 +9,62 @@ export default class Painting extends Component {
     this.state = {tiltArray:[]}
   }
   componentDidMount() {
-    this.animateIn()
+    // this.animateIn()
   }
 
   componentWillUnmount() {
-    this.destroyTilt()
+    // this.destroyTilt()
   }
 
   render() {
     const { item } = this.props
     return (
-      <div className={css(styles.paintingWrapper)}>
-        <img id={`paintingView--painting-${item.key}`}  className={css(styles.paintingImg)}src={`${item.src}`} alt=""/>
-      </div>
+      <img 
+        id={`paintingView--painting-${item.key}`} 
+        ref={ el => this.image = el } 
+        className={css(styles.image)} 
+        src={`${item.src}`} 
+        alt="" 
+      />
     )
   }
 
   animateIn = () => {
     const { item } = this.props
     const tl = Anime.timeline()
-    const _this = this;
-    tl.add({
-        targets: `#paintingView--painting-${item.key}`,
-        duration: 0,
-      })
-      .add({
-        targets: `#paintingView--painting-${item.key}`,
-        opacity:[0,1],
-        duration: 500,
-        easing: 'easeInQuint',
-        elasticity: 100,
-        scale: 1,
-        complete: () => _this.attachTilt()
-      })
+    const _this = this
+
+    // tl.add({
+    //     targets: `#paintingView--painting-${item.key}`,
+    //     duration: 0,
+    //   })
+    //   .add({
+    //     targets: `#paintingView--painting-${item.key}`,
+    //     opacity:[0,1],
+    //     duration: 500,
+    //     easing: 'easeInQuint',
+    //     elasticity: 100,
+    //     scale: 1,
+    //     complete: () => _this.attachTilt()
+    //   })
+
+      // Fire off intro animation
+    Anime.timeline().add({
+        targets: this.image,
+        opacity: [0, 1],
+        translateX: ['100%', '0%'],
+        elasticity: 0,
+        easing: 'easeOutSine',
+        duration: 1000,
+    }).add({
+        targets: this.imageWrapper,
+        offset: '-=1000',
+        opacity: [0, 1],
+        translateX: ['-100%', '0%'],
+        elasticity: 0,
+        easing: 'easeOutSine',
+        duration: 1000
+    })
   }
 
   attachTilt = () => {
@@ -90,15 +113,9 @@ export default class Painting extends Component {
 }
 
 const styles = StyleSheet.create({
-  paintingWrapper: {
-    height: '100%',
-    width: 'auto',
-    color: 'white',
-    // overflow: 'hidden',
-    // border: '1px solid white'
-  },
-  paintingImg: {
-    height: '100%',
+  image: {
+    // marginTop: '10vh',
+    height: '90vh',
     width: 'auto',
   }
 })

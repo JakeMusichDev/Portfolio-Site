@@ -6,11 +6,7 @@ import { breakPoints } from '../../utils/styles'
 import HomeMenuSlider from './HomeMenuSlider'
 import HomeMenuSection from './HomeMenuSection'
 
-const items = [
-  { name: 'art', route: '/art' },
-  { name: 'about', route: '/contact' },
-  { name: 'work', route: '/work' },
-]
+import {items} from '../../data/home-route-data.js'
 
 export default class HomeMenu extends Component {
   constructor(props) {
@@ -65,5 +61,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     color: 'white',
+    gridRow: '3/4',
+    gridColumn: '2/5'
   },
 })

@@ -20,12 +20,16 @@ export default class Art extends Component {
     if (this.state.currentChildView === 'photo') {
       return (
         <div id="art-container" className={css(styles.photoViewContainer)}>
-          <PhotoHeader />
-          <PhotoProjectsContainer />
+          {/* <PhotoHeader /> */}
+          {/* <PhotoProjectsContainer /> */}
         </div>
       )
     } else {
-      return 'Painting'
+      return (
+        <div>
+
+        </div>
+      )
     }
   }
 
@@ -38,7 +42,7 @@ export default class Art extends Component {
   render() {
     return (
       <div className={css(styles.artContainer)}>
-        {this.renderSection()}
+        {/* {this.renderSection()} */}
       </div>
     )
   }
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
   centerImage: {
     gridRow: '3/4',
     gridColumn: '3/4',
-    background: 'lightblue',
+    // background: 'lightblue',
   },
   lowerMenu: {
 

@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    // border: '1px solid pink',
+    border: '1px solid pink',
     alignContent: 'center',
     transition: '0.4s all',
     opacity: '0.5',
