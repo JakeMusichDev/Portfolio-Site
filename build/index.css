@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:400');
+/* @import url('https://fonts.googleapis.com/css?family=Inconsolata'); */
+
+:root {
+  --main-white: #F2F2F2;
+  --main-black: #0F0F0F;
+  --main-light-black: #211a1d;
+  --main-dark-purple: #2B061e;
+  --main-light-purple: #847996;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: relative;
+  outline: none;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------- https://github.com/majodev/google-webfonts-helper/  ------ */
+/* inconsolata-regular - latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url('inconsolata-v16-latin-regular.2663810f.eot'); /* IE9 Compat Modes */
+  src: local('Inconsolata Regular'), local('Inconsolata-Regular'),
+       url('inconsolata-v16-latin-regular.2663810f.eot?#iefix') format('embedded-opentype'), 
+       url('inconsolata-v16-latin-regular.e61abe69.woff2') format('woff2'), 
+       url('inconsolata-v16-latin-regular.51323edd.woff') format('woff'), 
+       url('inconsolata-v16-latin-regular.213667fc.ttf') format('truetype'), 
+       url('inconsolata-v16-latin-regular.c7cc9b82.svg#Inconsolata') format('svg'); /* Legacy iOS */
+}
+
+/* vollkorn-regular - latin */
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 400;
+  src: url('vollkorn-v8-latin-regular.9445d957.eot'); /* IE9 Compat Modes */
+  src: local('Vollkorn Regular'), local('Vollkorn-Regular'),
+       url('vollkorn-v8-latin-regular.9445d957.eot?#iefix') format('embedded-opentype'), 
+       url('vollkorn-v8-latin-regular.7d3d3557.woff2') format('woff2'), 
+       url('vollkorn-v8-latin-regular.91832ff3.woff') format('woff'), 
+       url('vollkorn-v8-latin-regular.58c69204.ttf') format('truetype'), 
+       url('vollkorn-v8-latin-regular.bbbc32be.svg#Vollkorn') format('svg'); /* Legacy iOS */
+}
+
+/* vollkorn-italic - latin */
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: italic;
+  font-weight: 400;
+  src: url('vollkorn-v8-latin-italic.a2f0a6b1.eot'); /* IE9 Compat Modes */
+  src: local('Vollkorn Italic'), local('Vollkorn-Italic'),
+       url('vollkorn-v8-latin-italic.a2f0a6b1.eot?#iefix') format('embedded-opentype'), 
+       url('vollkorn-v8-latin-italic.c66b950c.woff2') format('woff2'), 
+       url('vollkorn-v8-latin-italic.262bfee1.woff') format('woff'), 
+       url('vollkorn-v8-latin-italic.52605b9a.ttf') format('truetype'), 
+       url('vollkorn-v8-latin-italic.733bdf23.svg#Vollkorn') format('svg'); /* Legacy iOS */
+}
+
+
