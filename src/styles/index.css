@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400');
 /* @import url('https://fonts.googleapis.com/css?family=Inconsolata'); */
-@import "../../node_modules/slick-carousel/slick/slick.css";
-@import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
 :root {
   --main-white: #F2F2F2;

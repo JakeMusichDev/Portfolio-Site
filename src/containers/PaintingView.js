@@ -43,6 +43,10 @@ export default class PaintingView extends Component {
   }
 
   handleOpenPainting = e => {
+    Anime({
+      targets: "#"
+    })
+
     this.setState({
       childFocusViewActive: true, 
       activeIndex: e
