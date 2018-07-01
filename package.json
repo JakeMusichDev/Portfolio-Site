@@ -5,35 +5,27 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RazzleRazzle/Portfolio-Site.git"
+    "url": "git+https://github.com/JakeMusichDev/Portfolio-Site.git"
   },
   "author": "Jake A Musich",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RazzleRazzle/Portfolio-Site/issues"
+    "url": "https://github.com/JakeMusichDev/Portfolio-Site/issues"
   },
-  "homepage": "https://github.com/RazzleRazzle/Portfolio-Site#readme",
+  "homepage": "https://github.com/JakeMusichDev/Portfolio-Site#readme",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start-dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": "10.5.0"
   },
   "dependencies": {
-    "animejs": "^2.2.0",
-    "aos": "^2.3.2",
-    "aphrodite": "^2.2.0",
-    "flickity": "^2.1.2",
-    "npm": "^6.1.0",
-    "pixi.js": "^4.7.3",
-    "react": "^16.4.1",
-    "react-dom": "^16.3.2",
-    "react-reveal": "^1.2.2",
-    "react-router-dom": "^4.2.2",
-    "react-waypoint": "^8.0.2",
-    "rellax": "^1.6.2",
-    "underscore": "^1.9.0",
-    "vanilla-tilt": "^1.4.1",
-    "wheel-indicator": "^1.1.4",
-    "wowjs": "^1.1.3"
+    "corser": "^2.0.1",
+    "express": "^4.16.3",
+    "prerender-node": "^3.1.1",
+    "serve-static": "^1.13.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
@@ -47,6 +39,19 @@
     "lint-staged": "^7.0.5",
     "parcel-bundler": "^1.8.1",
     "prettier": "^1.12.1",
-    "signale": "^1.1.0"
+    "signale": "^1.1.0",
+    "animejs": "^2.2.0",
+    "aphrodite": "^2.2.0",
+    "flickity": "^2.1.2",
+    "npm": "^6.1.0",
+    "pixi.js": "^4.7.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.3.2",
+    "react-reveal": "^1.2.2",
+    "react-router-dom": "^4.2.2",
+    "rellax": "^1.6.2",
+    "underscore": "^1.9.0",
+    "vanilla-tilt": "^1.4.1",
+    "wheel-indicator": "^1.1.4"
   }
 }

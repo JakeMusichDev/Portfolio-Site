@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite/no-important'
 import '../styles/index.css'
 import * as PIXI from 'pixi.js'
-import Wow from 'wowjs'
-import AOS from 'aos'
 import cursorDot from '../../assets/app/Ellipse2.png'
 
 import Menu from './Menu'
